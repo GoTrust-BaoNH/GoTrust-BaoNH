@@ -1,0 +1,4 @@
+enum MainTabs {
+  home,
+  setting,
+}
