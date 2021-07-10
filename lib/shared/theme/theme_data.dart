@@ -180,7 +180,7 @@ class ThemeConfig {
 
   static ThemeData get lightTheme => createTheme(
         brightness: Brightness.light,
-        primaryColor: AppColor.primaryColorDark,
+        primaryColor: AppColor.primaryColorLight,
         primaryBackgroundColor: AppColor.primaryBackgroundColorLight,
         primaryTextColor: AppColor.primaryTextColorLight,
         secondTextColor: AppColor.secondTextColorLight,
@@ -193,18 +193,18 @@ class ThemeConfig {
         error: AppColor.errorColorLight,
       );
 
-  static ThemeData get darkTheme => createTheme(
-        brightness: Brightness.dark,
-        primaryColor: AppColor.primaryColorDark,
-        primaryBackgroundColor: AppColor.primaryBackgroundColorDark,
-        primaryTextColor: AppColor.primaryTextColorDark,
-        secondTextColor: AppColor.secondTextColorDark,
-        hintText: AppColor.primaryHintColorDark,
-        accentColor: AppColor.accentColorDark,
-        divider: AppColor.dividerColorDark,
-        disabled: AppColor.disabledColorDark,
-        shadowColor: AppColor.shadowColorDark,
-        primaryBorderColor: AppColor.primaryBorderColorDark,
-        error: AppColor.errorColorDark,
-      );
+  // static ThemeData get darkTheme => createTheme(
+  //       brightness: Brightness.dark,
+  //       primaryColor: AppColor.primaryColorDark,
+  //       primaryBackgroundColor: AppColor.primaryBackgroundColorDark,
+  //       primaryTextColor: AppColor.primaryTextColorDark,
+  //       secondTextColor: AppColor.secondTextColorDark,
+  //       hintText: AppColor.primaryHintColorDark,
+  //       accentColor: AppColor.accentColorDark,
+  //       divider: AppColor.dividerColorDark,
+  //       disabled: AppColor.disabledColorDark,
+  //       shadowColor: AppColor.shadowColorDark,
+  //       primaryBorderColor: AppColor.primaryBorderColorDark,
+  //       error: AppColor.errorColorDark,
+  //     );
 }

@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_trust/shared/constants/common.dart';
-import 'package:go_trust/shared/utils/size_config.dart';
+import 'package:go_trust/resource/assets_constant/images_constants.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/styles/text_style.dart';
+import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
+    final width = MediaQuery.of(context).size.width;
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: ExactAssetImage(
-            '${IMAGE_ASSET}bg_welcome.png',
-          ),
-        ),
-      ),
+      color: AppColor.primaryBackgroundColorLight,
       child: Stack(
         children: [
           Center(
-            child: Image.asset('${IMAGE_ASSET}ic_logo_app.png', width: 100, height: 100),
+            child: FCoreImage(
+              ImageConstants.appIcon,
+              width: width * 0.36,
+              fit: BoxFit.fitWidth,
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -33,7 +31,7 @@ class SplashScreen extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: '1.0.0',
-                      style: TextAppStyle().bodyContentTextStyle(),
+                      style: TextAppStyle().versionContentTextStyle(),
                     ),
                     // can add more TextSpans here...
                   ],

@@ -1,91 +1,113 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_trust/modules/auth/controller/auth_controller.dart';
 import 'package:get/get.dart';
-import 'package:go_trust/shared/utils/common_widget.dart';
-import 'package:go_trust/shared/utils/regex.dart';
-import 'package:go_trust/shared/widgets/background/gradient_background.dart';
-import 'package:go_trust/shared/widgets/button/border_button.dart';
-import 'package:go_trust/shared/widgets/text_input/input_field.dart';
+import 'package:go_trust/resource/assets_constant/icon_constants.dart';
+import 'package:go_trust/resource/assets_constant/images_constants.dart';
+import 'package:go_trust/routes/app_pages.dart';
+import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/widgets/button/gradient_button.dart';
+import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
+import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
 
-import '../controller/auth_controller.dart';
-
-class LoginScreen extends StatelessWidget {
-  final AuthController controller = Get.arguments;
-
+class LoginScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const GradientBackground(),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: CommonWidget.appBar(
-            context,
-            'login'.tr.toUpperCase(),
-            backIcon: Icons.arrow_back,
-            color: Colors.white,
+    final width = MediaQuery.of(context).size.width;
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 40, width: width),
+                    FCoreImage(
+                      ImageConstants.appIcon,
+                      width: width * 0.36,
+                      fit: BoxFit.fitWidth,
+                    ),
+                    const SizedBox(height: 30),
+                    Text('Xin chào', style: Theme.of(context).textTheme.headline6),
+                    const SizedBox(height: 12),
+                    Text(
+                      'Đăng nhập để sử dụng đầy đủ tính năng của ứng dụng',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: AppColor.primaryHintColorLight,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 24),
+                    const InputWidget(
+                      hint: 'Nhập số điện thoại của bạn',
+                      lable: 'Số điện thoại',
+                      inputType: TextInputType.number,
+                    ),
+                    const SizedBox(height: 32),
+                    AppGradientButton(
+                      onPressed: () {
+                        // Get.toNamed(Routes.AUTH + Routes.USER_INFO_SCREEN);
+                        Get.toNamed(Routes.BORROW_DATA_SCREEN);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: Text(
+                          'Đăng nhập',
+                          style: TextStyle(
+                            color: AppColor.secondTextColorLight,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Text(
+                          'Hoặc đăng nhập bằng: ',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: AppColor.primaryHintColorLight,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(width: 10),
+                        GestureDetector(
+                          onTap: (){
+                            // Get.toNamed(Routes.AUTH + Routes.QRCODE_SCREEN);
+                          },
+                          child: const FCoreImage(IconConstants.qr),
+                        ),
+                        const SizedBox(width: 10),
+                        const FCoreImage(IconConstants.facebook),
+                        const SizedBox(width: 10),
+                        const FCoreImage(IconConstants.google),
+                        const SizedBox(width: 10),
+                        const FCoreImage(IconConstants.apple),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8, bottom: 24),
+                  child: Text(
+                    'Bỏ qua đăng nhập',
+                    style: TextStyle(
+                      color: AppColor.primaryColorLight,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          body: Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-            child: _buildForms(context),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildForms(BuildContext context) {
-    return Form(
-      key: controller.loginFormKey,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            InputField(
-              controller: controller.loginUserNameController,
-              keyboardType: TextInputType.text,
-              labelText: 'email_address'.tr,
-              placeholder: 'enter_email_address'.tr,
-              validator: (value) {
-                if (!Regex.isEmail(value!)) {
-                  return 'email_format_error'.tr;
-                }
-
-                if (value.isEmpty) {
-                  return 'email_required'.tr;
-                }
-                return null;
-              },
-            ),
-            CommonWidget.rowHeight(),
-            InputField(
-              controller: controller.loginPasswordController,
-              keyboardType: TextInputType.emailAddress,
-              labelText: 'password'.tr,
-              placeholder: 'enter_password'.tr,
-              password: true,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'password_required'.tr;
-                }
-
-                if (value.length < 6 || value.length > 15) {
-                  return 'password_required_length'.tr;
-                }
-
-                return null;
-              },
-            ),
-            CommonWidget.rowHeight(height: 35),
-            BorderButton(
-              text: 'login'.tr.toUpperCase(),
-              textColor: Colors.green,
-              backgroundColor: Colors.white,
-              onPressed: () {
-                controller.login(context);
-              },
-            ),
-          ],
         ),
       ),
     );

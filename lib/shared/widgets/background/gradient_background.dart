@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
@@ -44,10 +43,7 @@ class GradientBackground extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               stops: const [0.1, 0.9],
-              colors: [
-                !Get.isDarkMode ? AppColor.primaryColorLight : AppColor.primaryColorDark,
-                !Get.isDarkMode ? AppColor.defaultHeaderOSColorLight : AppColor.defaultHeaderOSColorDark
-              ],
+              colors: [AppColor.primaryColorLight, AppColor.defaultHeaderOSColorLight],
             ),
           ),
           child: child,

@@ -1,64 +1,43 @@
 import 'package:flutter/material.dart';
-import '../../../shared/constants/colors.dart';
-import '../../../shared/constants/common.dart';
+import 'package:go_trust/shared/theme/theme_color.dart';
 
-class GradientButton extends StatelessWidget {
-  const GradientButton({
+class AppGradientButton extends StatelessWidget {
+  const AppGradientButton({
+    required this.onPressed,
+    required this.child,
     Key? key,
-    this.text = '',
-    this.child,
-    this.gradient,
-    this.width = double.infinity,
-    this.height = 50.0,
-    this.onPressed,
+    this.borderRadius,
   }) : super(key: key);
 
-  final String text;
-  final Widget? child;
-  final Gradient? gradient;
-  final double width;
-  final double height;
-  final Function? onPressed;
+  final Function()? onPressed;
+  final Widget child;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Container(
       width: width,
-      height: 64,
+      constraints: const BoxConstraints(minHeight: 48),
       decoration: BoxDecoration(
-        gradient: gradient ??
-            LinearGradient(
-              colors: <Color>[
-                hexToColor('#4CAF50'),
-                hexToColor('#087f23'),
-              ],
-            ),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: hexToColor('#F1F1F1'),
-            offset: const Offset(0, 1.5),
-            blurRadius: 1.5,
-          ),
-        ],
+        borderRadius: borderRadius ?? BorderRadius.circular(8),
+        color: onPressed == null ? AppThemeColor.primary.withOpacity(0.4) : null,
+        gradient: onPressed != null
+            ? const LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  AppThemeColor.color45C152,
+                  AppThemeColor.color0ADC90,
+                ],
+              )
+            : null,
       ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onPressed as void Function()?,
-          child: Center(
-            child: text != ''
-                ? Text(
-                    text,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: CommonConstants.normalText,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                : child,
-          ),
-        ),
+      child: MaterialButton(
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        shape: const StadiumBorder(),
+        onPressed: onPressed,
+        child: child,
       ),
     );
   }

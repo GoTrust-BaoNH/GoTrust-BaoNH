@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 
 class TextAppStyle {
+  static const String appFont = 'Mulish';
+
   TextStyle titleTextStyle() {
     return Get.theme.textTheme.headline6!;
   }
 
   TextStyle bodyContentTextStyle() {
-    return Get.theme.textTheme.bodyText1!;
+    return TextStyle(
+      color: AppColor.primaryTextColorLight,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    );
   }
 
   TextStyle versionTextStyle() {
-    return Get.theme.textTheme.headline3!;
+    return TextStyle(
+      color: AppColor.primaryTextColorLight.withOpacity(0.5),
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  TextStyle versionContentTextStyle() {
+    return TextStyle(
+      color: AppColor.primaryTextColorLight,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    );
   }
 
   TextStyle bodyTitleTextStyle() {

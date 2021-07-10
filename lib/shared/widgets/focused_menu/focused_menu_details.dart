@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import '../../../shared/utils/size_config.dart';
 
 class FocusedMenuDetails extends StatefulWidget {
   const FocusedMenuDetails({
@@ -95,8 +94,8 @@ class _FocusedMenuDetailsState extends State<FocusedMenuDetails> with SingleTick
   }
 
   Widget _buildActions() {
-    final sw = SizeConfig().screenWidth;
-    final sh = SizeConfig().screenHeight;
+    final sw = double.infinity;
+    final sh = double.infinity;
     return Container(
       width: sw - 30.0,
       height: sh * .2,

@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
+import 'package:go_trust/data/base/base_graphql_provider.dart';
 import 'package:go_trust/shared/models/request/login_request.dart';
 import 'package:go_trust/shared/models/request/register_request.dart';
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql;
-import '../../data/graphql/query/demo_query_graphql.dart';
-import '../../data/base/base_graphql_provider.dart';
 import '../../data/base/base_provider.dart';
 import '../../data/common/common_method.dart';
 import '../../data/common/define_field.dart';
+import '../../data/graphql/query/demo_query_graphql.dart';
 
 class ApiProvider extends BaseProvider {
   Future<Response> login(String path, LoginRequest data) {
