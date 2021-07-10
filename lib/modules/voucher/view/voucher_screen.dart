@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/voucher/controller/voucher_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
@@ -9,11 +8,8 @@ import 'package:go_trust/shared/theme/theme_color.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 part 'voucher_children.dart';
-
-part 'voucher_action.dart';
 
 class EmergencyScreen extends GetView<VoucherController> {
   @override
@@ -70,7 +66,7 @@ class EmergencyScreen extends GetView<VoucherController> {
               ),
               const SizedBox(height: 16),
               _buildQRCodeButton(
-                onQRButtonPressed: scanQRCode,
+                onQRButtonPressed: controller.scanQRCode,
               ),
               const SizedBox(height: 16),
               _buildGetVoucherButton(

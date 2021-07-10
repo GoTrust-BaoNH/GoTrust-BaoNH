@@ -7,7 +7,6 @@ import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/step_widget/step_widget.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
 
-part 'moto_rescue_checkout.action.dart';
 part 'moto_rescue_checkout.children.dart';
 
 class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
@@ -60,7 +59,7 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
             ),
             const SizedBox(height: 16),
             AppGradientButton(
-              onPressed: onBuyNowButtonPressed,
+              onPressed: controller.onBuyNowButtonPressed,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Text(

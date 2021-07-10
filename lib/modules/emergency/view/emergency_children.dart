@@ -7,9 +7,9 @@ extension EmergencyChildrenExtension on EmergencyScreen {
       child: Wrap(
         runSpacing: 32,
         children: List<Widget>.generate(
-          list.length,
+          controller.list.length,
           (index) {
-            final item = list[index];
+            final item = controller.list[index];
             return _hotlineItem(
                 serviceName: item.serviceName,
                 servicePhoneNumber: item.servicePhoneNumber,

@@ -7,6 +7,7 @@ import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/secondary_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
+import 'package:get/get.dart';
 
 class OtpScreen extends GetView<AuthController> {
   @override
@@ -27,7 +28,7 @@ class OtpScreen extends GetView<AuthController> {
                 ),
                 const SizedBox(height: 30),
                 Text(
-                  'Nhập OTP',
+                  'input_otp'.tr,
                   style: TextStyle(
                     color: AppColor.primaryTextColorLight,
                     fontSize: 24,
@@ -36,7 +37,7 @@ class OtpScreen extends GetView<AuthController> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Mã OTP vừa được gửi đến điện thoại của bạn',
+                  'sent_otp_to_phone'.tr,
                   style: TextStyle(
                     fontSize: 13,
                     color: AppColor.primaryHintColorLight,
@@ -44,9 +45,9 @@ class OtpScreen extends GetView<AuthController> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
-                const InputWidget(
-                  hint: 'Nhập mã OTP',
-                  lable: 'Mã xác thực',
+                InputWidget(
+                  hint: 'input_otp_code'.tr,
+                  lable: 'verify_code'.tr,
                 ),
                 const SizedBox(height: 16),
                 GestureDetector(
@@ -57,14 +58,14 @@ class OtpScreen extends GetView<AuthController> {
                     text: TextSpan(
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'Bạn không nhận được mã xác thực nào? ',
+                          text: 'not_received_otp'.tr,
                           style: TextStyle(
                             fontSize: 13,
                             color: AppColor.primaryHintColorLight,
                           ),
                         ),
                         TextSpan(
-                          text: 'Gửi lại OTP',
+                          text: 'resend_otp'.tr,
                           style: TextStyle(
                             fontSize: 13,
                             color: AppColor.primaryColorLight,
@@ -81,7 +82,7 @@ class OtpScreen extends GetView<AuthController> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Text(
-                      'Quay về',
+                      'return'.tr,
                       style: TextStyle(
                         color: AppColor.primaryColorLight,
                         fontSize: 16,

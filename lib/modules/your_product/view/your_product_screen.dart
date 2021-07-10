@@ -18,60 +18,6 @@ import 'package:intl/intl.dart';
 part 'your_product_children.dart';
 
 class BorrowDataScreen extends GetView<YourProductController> {
-  List<YourProductModel> list = [
-    YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().add(const Duration(days: 10)).toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MedicalOnline,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.OnlineShopping,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      isContractProcessing: true,
-      expiredDate: DateTime.now().add(const Duration(days: 10)).toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoRescue,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      isContractProcessing: true,
-      expiredDate: DateTime.now().toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().add(const Duration(days: 10)).toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().toString(),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

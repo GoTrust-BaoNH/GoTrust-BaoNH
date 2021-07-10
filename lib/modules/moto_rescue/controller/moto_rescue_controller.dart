@@ -21,6 +21,10 @@ class MotoRescueController extends BaseController {
     await super.onReady();
   }
 
+  void onItemPressed() {
+    // Get.toNamed(RouteList.mapScreen);
+  }
+
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {
     final locator = Get.find<DialogService>();
     final dialogResult = await locator.showDialog(dialogRequest);

@@ -9,24 +9,8 @@ import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
 
 part 'emergency_children.dart';
-part 'emergency_action.dart';
 
 class EmergencyScreen extends GetView<EmergencyController> {
-  List<EmergencyModel> list = [
-    EmergencyModel(serviceName: 'Service 1', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 2', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 3', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 4', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 1', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 2', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 3', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 4', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 1', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 2', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 3', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 4', servicePhoneNumber: '1800xxxx'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +20,7 @@ class EmergencyScreen extends GetView<EmergencyController> {
         children: [
           titleBase(
             context,
-            title: 'Liên hệ khẩn cấp',
+            title: 'urgent_contact'.tr,
             color: AppColor.primaryTextColorLight,
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -45,17 +29,17 @@ class EmergencyScreen extends GetView<EmergencyController> {
           ),
           Expanded(
             child: _listHotline(onItemPressed: (item) {
-              onItemListServicePressed(item);
+              controller.onItemListServicePressed(item);
             }),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
             child: AppGradientButton(
-              onPressed: (){
+              onPressed: () {
                 // print
               },
               child: Text(
-                'Chat ngay',
+                'chat_now'.tr,
                 style: TextStyle(
                   color: AppColor.secondTextColorLight,
                   fontSize: 16,

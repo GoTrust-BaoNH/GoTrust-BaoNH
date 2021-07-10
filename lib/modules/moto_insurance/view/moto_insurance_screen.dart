@@ -13,7 +13,6 @@ import 'package:go_trust/shared/widgets/step_widget/step_widget.dart';
 import 'package:go_trust/shared/widgets/tabs/custom_tab.dart';
 import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
 
-part 'moto_insurance_action.dart';
 part 'moto_insurance_children.dart';
 
 class MotoInsuranceScreen extends GetView<MotoInsuranceController> {
@@ -26,7 +25,7 @@ class MotoInsuranceScreen extends GetView<MotoInsuranceController> {
         children: [
           titleBase(
             context,
-            title: 'Bảo hiểm TNDSBB Xe máy',
+            title: 'moto_insurance'.tr,
             color: AppThemeColor.textBlack,
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -43,9 +42,9 @@ class MotoInsuranceScreen extends GetView<MotoInsuranceController> {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
             child: AppGradientButton(
-              onPressed: onBuyButtonPressed,
+              onPressed: controller.onBuyButtonPressed,
               child: Text(
-                'Mua ngay',
+                'buy_now'.tr,
                 style: TextStyle(
                   color: AppColor.secondTextColorLight,
                   fontSize: 16,

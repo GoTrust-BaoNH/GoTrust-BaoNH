@@ -7,9 +7,9 @@ extension NotificaitonsExtension on NotificationScreen {
       child: Wrap(
         runSpacing: 4,
         children: List<Widget>.generate(
-          list.length,
+          controller.list.length,
           (index) {
-            final item = list[index];
+            final item = controller.list[index];
             return _notificationItem(
               notificationType: item.notificationType,
               isExpired: item.isExpired,

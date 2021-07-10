@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:go_trust/modules/borrow_data/controller/borrow_data_controller.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/methods/common_method.dart';
 import 'package:go_trust/shared/models/data_package/data_package_model.dart';
 import 'package:go_trust/shared/models/data_package/data_package_model_mock.dart';
 import 'package:go_trust/shared/theme/theme_color.dart';
@@ -11,9 +12,6 @@ import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
-import 'package:intl/intl.dart';
-
-part 'borrow_data_detail.action.dart';
 
 part 'borrow_data_detail.children.dart';
 
@@ -35,7 +33,7 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
-                      'Ứng data 4G',
+                      'borrow_data'.tr,
                       style: TextStyle(
                         color: AppColor.primaryTextColorLight,
                         fontSize: 20,
@@ -46,7 +44,7 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
-                      'Số điện thoại của bạn',
+                      'your_phone'.tr,
                       style: TextStyle(
                         fontSize: 14,
                         color: AppColor.primaryHintColorLight,
@@ -94,7 +92,7 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Số tiền phải thanh toán sau:',
+                      '${'paid_amount'.tr}: ',
                       style: TextStyle(
                         color: AppColor.primaryHintColorLight,
                         fontSize: 14,
@@ -123,7 +121,7 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Text(
-                      'Xác nhận',
+                      'confirm'.tr,
                       style: TextStyle(
                         color: AppColor.secondTextColorLight,
                         fontSize: 16,

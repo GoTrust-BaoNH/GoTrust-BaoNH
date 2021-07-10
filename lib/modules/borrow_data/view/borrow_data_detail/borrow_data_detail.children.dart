@@ -66,7 +66,9 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: List<Widget>.generate(data.items.length, (index) => dataButton(data: data.items[index], onTap: () {})),
+          children: List<Widget>.generate(data.items.length, (index) => dataButton(data: data.items[index], onTap: () {
+            // print
+          })),
         )
       ],
     );
@@ -105,7 +107,7 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
                   Padding(
                     padding: const EdgeInsets.only(top: 2),
                     child: Text(
-                      data.price.formatVnd,
+                      formatVnd(data.price.toString()),
                       style: TextStyle(
                         color: AppColor.primaryHintColorLight,
                         fontSize: 12,
@@ -132,12 +134,5 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
         ),
       ),
     );
-  }
-}
-
-extension _Price on int {
-  String get formatVnd {
-    final oCcy = NumberFormat('#,###', 'en_US');
-    return '${oCcy.format(this)} VNĐ';
   }
 }

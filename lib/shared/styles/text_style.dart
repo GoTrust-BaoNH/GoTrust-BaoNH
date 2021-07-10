@@ -5,18 +5,6 @@ import 'package:go_trust/shared/constants/colors.dart';
 class TextAppStyle {
   static const String appFont = 'Mulish';
 
-  TextStyle titleTextStyle() {
-    return Get.theme.textTheme.headline6!;
-  }
-
-  TextStyle bodyContentTextStyle() {
-    return TextStyle(
-      color: AppColor.primaryTextColorLight,
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
-    );
-  }
-
   TextStyle versionTextStyle() {
     return TextStyle(
       color: AppColor.primaryTextColorLight.withOpacity(0.5),
@@ -26,6 +14,18 @@ class TextAppStyle {
   }
 
   TextStyle versionContentTextStyle() {
+    return TextStyle(
+      color: AppColor.primaryTextColorLight,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  TextStyle titleTextStyle() {
+    return Get.theme.textTheme.headline6!;
+  }
+
+  TextStyle bodyContentTextStyle() {
     return TextStyle(
       color: AppColor.primaryTextColorLight,
       fontSize: 20,

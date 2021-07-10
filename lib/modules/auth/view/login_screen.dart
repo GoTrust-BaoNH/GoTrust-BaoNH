@@ -31,10 +31,13 @@ class LoginScreen extends GetView<AuthController> {
                       fit: BoxFit.fitWidth,
                     ),
                     const SizedBox(height: 30),
-                    Text('Xin chào', style: Theme.of(context).textTheme.headline6),
+                    Text(
+                      'hello'.tr,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
                     const SizedBox(height: 12),
                     Text(
-                      'Đăng nhập để sử dụng đầy đủ tính năng của ứng dụng',
+                      'login_for_use_app'.tr,
                       style: TextStyle(
                         fontSize: 13,
                         color: AppColor.primaryHintColorLight,
@@ -42,9 +45,9 @@ class LoginScreen extends GetView<AuthController> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
-                    const InputWidget(
-                      hint: 'Nhập số điện thoại của bạn',
-                      lable: 'Số điện thoại',
+                    InputWidget(
+                      hint: 'input_your_phone'.tr,
+                      lable: 'phone'.tr,
                       inputType: TextInputType.number,
                     ),
                     const SizedBox(height: 32),
@@ -56,7 +59,7 @@ class LoginScreen extends GetView<AuthController> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         child: Text(
-                          'Đăng nhập',
+                          'login'.tr,
                           style: TextStyle(
                             color: AppColor.secondTextColorLight,
                             fontSize: 16,
@@ -68,7 +71,7 @@ class LoginScreen extends GetView<AuthController> {
                     Row(
                       children: [
                         Text(
-                          'Hoặc đăng nhập bằng: ',
+                          '${'login_other'.tr} :',
                           style: TextStyle(
                             fontSize: 13,
                             color: AppColor.primaryHintColorLight,
@@ -77,7 +80,7 @@ class LoginScreen extends GetView<AuthController> {
                         ),
                         const SizedBox(width: 10),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             // Get.toNamed(Routes.AUTH + Routes.QRCODE_SCREEN);
                           },
                           child: const FCoreImage(IconConstants.qr),
@@ -98,7 +101,7 @@ class LoginScreen extends GetView<AuthController> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 24),
                   child: Text(
-                    'Bỏ qua đăng nhập',
+                    'skip_login'.tr,
                     style: TextStyle(
                       color: AppColor.primaryColorLight,
                       fontSize: 14,

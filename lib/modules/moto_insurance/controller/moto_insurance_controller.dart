@@ -24,6 +24,10 @@ class MotoInsuranceController extends BaseController {
     await super.onReady();
   }
 
+  void onBuyButtonPressed (){
+
+  }
+
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {
     final locator = Get.find<DialogService>();
     final dialogResult = await locator.showDialog(dialogRequest);

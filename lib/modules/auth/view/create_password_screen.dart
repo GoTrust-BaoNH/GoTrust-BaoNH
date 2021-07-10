@@ -7,6 +7,7 @@ import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
+import 'package:get/get.dart';
 
 class CreatePasswordScreen extends GetView<AuthController> {
   @override
@@ -27,7 +28,7 @@ class CreatePasswordScreen extends GetView<AuthController> {
                 ),
                 const SizedBox(height: 30),
                 Text(
-                  'Tạo mật khẩu',
+                  'create_password'.tr,
                   style: TextStyle(
                     color: AppColor.primaryTextColorLight,
                     fontSize: 24,
@@ -36,7 +37,7 @@ class CreatePasswordScreen extends GetView<AuthController> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Vui lòng cài mật khẩu cho tài khoản của bạn',
+                  'please_setup_password'.tr,
                   style: TextStyle(
                     fontSize: 13,
                     color: AppColor.primaryHintColorLight,
@@ -44,9 +45,9 @@ class CreatePasswordScreen extends GetView<AuthController> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
-                const InputWidget(
-                  hint: 'Nhập mật khẩu mới',
-                  lable: 'Mật khẩu',
+                InputWidget(
+                  hint: 'input_new_password'.tr,
+                  lable: 'password'.tr,
                 ),
                 const SizedBox(height: 32),
                 AppGradientButton(
@@ -54,7 +55,7 @@ class CreatePasswordScreen extends GetView<AuthController> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Text(
-                      'Xác nhận',
+                      'confirm'.tr,
                       style: TextStyle(
                         color: AppColor.secondTextColorLight,
                         fontSize: 16,

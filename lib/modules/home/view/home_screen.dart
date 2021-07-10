@@ -33,7 +33,7 @@ class HomeScreen extends GetView<HomeController> {
                       right: 16,
                     ),
                     child: Text(
-                      'Bảo hiểm và tiện ích 24/7',
+                      'insurance_utilities'.tr,
                       style: Theme.of(context).accentTextTheme.bodyText2,
                     ),
                   ),
@@ -45,11 +45,11 @@ class HomeScreen extends GetView<HomeController> {
                       right: 16,
                     ),
                     child: CustomTab(
-                      items: const [
-                        'Tất cả',
-                        'Bảo hiểm',
-                        'Tiện ích',
-                        'Đã mua',
+                      items: [
+                        'all'.tr,
+                        'insurance'.tr,
+                        'utilities'.tr,
+                        'bought'.tr,
                       ],
                       activeItemDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(18),
@@ -86,7 +86,7 @@ class HomeScreen extends GetView<HomeController> {
                       right: 16,
                     ),
                     child: Text(
-                      'Bảo hiểm và tiện ích 24/7',
+                      'insurance_utilities'.tr,
                       style: Theme.of(context).accentTextTheme.bodyText2,
                     ),
                   ),
@@ -107,7 +107,7 @@ class HomeScreen extends GetView<HomeController> {
                       right: 16,
                     ),
                     child: Text(
-                      'Đối tác của chúng tôi',
+                      'our_partner'.tr,
                       style: Theme.of(context).accentTextTheme.bodyText2,
                     ),
                   ),

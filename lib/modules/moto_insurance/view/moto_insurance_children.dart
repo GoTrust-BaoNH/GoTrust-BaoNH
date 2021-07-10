@@ -17,8 +17,7 @@ extension MotoInsurranceChildren on MotoInsuranceScreen {
           Padding(
             padding: getPadding,
             child: Text(
-              '''
-Bảo hiểm TNDSBB của chủ xe cơ giới là giấy tờ buộc người điều khiển phương tiện ôtô,xe gắn máy phải mang theo khi tham gia giao thông.\nBảo hiểm TNDSBB có trách nhiệm bồi thường thiệt hại cho “Bên thứ 3” khi xảy ra tai nạn.''',
+              'note_insurance_vehicle'.tr,
               style: TextStyle(
                 color: AppColor.primaryTextColorLight,
                 fontSize: 12,
@@ -30,8 +29,7 @@ Bảo hiểm TNDSBB của chủ xe cơ giới là giấy tờ buộc ngư�
           Padding(
             padding: getPadding,
             child: Text(
-              '''
-Lấy ví dụ, nếu anh A điều khiển phương tiện cơ giới gây tai nạn cho anh B thì Bảo hiểm TNDSBB có trách nhiệm bồi thường thiệt hại cho anh B theo quy định của Pháp luật.''',
+              'example_insurance_vehicle'.tr,
               style: TextStyle(
                 color: AppColor.primaryHintColorLight,
                 fontSize: 11,
@@ -43,9 +41,9 @@ Lấy ví dụ, nếu anh A điều khiển phương tiện cơ giới g�
 
   Widget get _tab => Center(
         child: CustomTab(
-          items: const [
-            'Khi bạn có bảo hiểm',
-            'Khi không có bảo hiểm',
+          items: [
+            'has_insurance'.tr,
+            'no_insurance'.tr,
           ],
           onTabChanged: controller.pageController.jumpToPage,
           itemSpace: 20,
@@ -86,7 +84,7 @@ Lấy ví dụ, nếu anh A điều khiển phương tiện cơ giới g�
             children: [
               RichText(
                 text: TextSpan(
-                  text: 'CHI PHÍ: ',
+                  text: '${'cost'.tr.toUpperCase()}: ',
                   style: TextStyle(
                     color: AppColor.primaryTextColorLight,
                     fontSize: 12,
@@ -102,7 +100,7 @@ Lấy ví dụ, nếu anh A điều khiển phương tiện cơ giới g�
                       ),
                     ),
                     TextSpan(
-                      text: ' / năm',
+                      text: ' / ${'year'.tr}',
                       style: TextStyle(
                         color: AppColor.primaryHintColorLight,
                         fontSize: 16,
@@ -120,25 +118,21 @@ Lấy ví dụ, nếu anh A điều khiển phương tiện cơ giới g�
                     leading: _buildIcon(
                       IconConstants.bhMotoCertificate,
                     ),
-                    title: _insuranceDescription('''
-Giấy chứng nhận điện tử hợp pháp, không cần mang theo thẻ giấy'''),
+                    title: _insuranceDescription('legal_e_certificates'.tr),
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: _buildIcon(
                       IconConstants.bhMotoBoiThuongTaiSan,
                     ),
-                    title: _insuranceDescription(
-                        'Bồi thường cho tài sản của nạn nhân do gây tai nạn đến 50 triệu đồng/vụ'),
+                    title: _insuranceDescription('compensation_property'.trParams({'value': '50'})!),
                   ),
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: _buildIcon(
                         IconConstants.bhMotoBoiThuongYte,
                       ),
-                      title: _insuranceDescription(
-                        'Bồi thường chi phí y tế, tử vong cho nạn nhân do gây tai nạn đến 150 triệu đồng/người/vụ',
-                      )),
+                      title: _insuranceDescription('compensation_medical_expenses'.trParams({'value': '150'})!)),
                 ],
               ),
             ],
@@ -162,7 +156,7 @@ Giấy chứng nhận điện tử hợp pháp, không cần mang theo t
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'BẤT LỢI KHI KHÔNG CÓ BẢO HIỂM TNDSBB:',
+                '${'disadvantages_no_insurance'.tr.toUpperCase()}:',
                 style: TextStyle(
                   color: AppColor.primaryTextColorLight,
                   fontSize: 12,
@@ -177,21 +171,21 @@ Giấy chứng nhận điện tử hợp pháp, không cần mang theo t
                     leading: _buildIcon(
                       IconConstants.bhMotoBiPhatTien,
                     ),
-                    title: _insuranceDescription('''Bị phạt tiền đến 200.000đ do không có bảo hiểm khi bị kiểm tra'''),
+                    title: _insuranceDescription('fined_up_insurance'.trParams({'value': '200.000VND'})!),
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: _buildIcon(
                       IconConstants.bhMotoBoiThuong,
                     ),
-                    title: _insuranceDescription('''Tự bồi thường tài sản của nạn nhân do gây tai nạn'''),
+                    title: _insuranceDescription('self_compensation_victim_insurance'.tr),
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: _buildIcon(
                       IconConstants.bhMotoTuBoithuong,
                     ),
-                    title: _insuranceDescription('''Tự bồi thường chi phí y tế, tử vong cho nạn nhân do gây tai nạn'''),
+                    title: _insuranceDescription('self_compensation_medical_insurance'.tr),
                   ),
                 ],
               ),

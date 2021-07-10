@@ -5,6 +5,7 @@ import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
+import 'package:get/get.dart';
 
 class UserInfoScreen extends GetView<AuthController> {
   @override
@@ -22,7 +23,7 @@ class UserInfoScreen extends GetView<AuthController> {
                 width: width,
               ),
               Text(
-                'Nhập thông tin cá nhân',
+                'input_info'.tr,
                 style: TextStyle(
                   color: AppColor.primaryTextColorLight,
                   fontSize: 24,
@@ -31,7 +32,7 @@ class UserInfoScreen extends GetView<AuthController> {
               ),
               const SizedBox(height: 12),
               Text(
-                'Nhập các thông tin sau',
+                'input_info_follow'.tr,
                 style: TextStyle(
                   fontSize: 13,
                   color: AppColor.primaryHintColorLight,
@@ -40,7 +41,7 @@ class UserInfoScreen extends GetView<AuthController> {
               ),
               const SizedBox(height: 4),
               Text(
-                'giúp bạn mua sắm sản phẩm nhanh hơn',
+                'help_buy_faster'.tr,
                 style: TextStyle(
                   fontSize: 13,
                   color: AppColor.primaryHintColorLight,
@@ -48,24 +49,24 @@ class UserInfoScreen extends GetView<AuthController> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
-              const InputWidget(
-                hint: 'Nhập họ và tên',
-                lable: 'Họ và tên',
+              InputWidget(
+                hint: 'input_name'.tr,
+                lable: 'name'.tr,
               ),
               const SizedBox(height: 16),
-              const InputWidget(
-                hint: 'Nhập số điện thoại',
-                lable: 'Số điện thoại',
+              InputWidget(
+                hint: 'input_phone'.tr,
+                lable: 'phone'.tr,
               ),
               const SizedBox(height: 16),
-              const InputWidget(
-                hint: 'Nhập số CMND / CCCD',
-                lable: 'Số CMND / CCCD',
+              InputWidget(
+                hint: 'input_private_id'.tr,
+                lable: 'private_id'.tr,
               ),
               const SizedBox(height: 16),
-              const InputWidget(
-                hint: 'Nhập email',
-                lable: 'Email',
+              InputWidget(
+                hint: 'input_email'.tr,
+                lable: 'email'.tr,
               ),
               const SizedBox(height: 32),
               AppGradientButton(
@@ -75,7 +76,7 @@ class UserInfoScreen extends GetView<AuthController> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'Xác nhận',
+                    'confirm'.tr,
                     style: TextStyle(
                       color: AppColor.secondTextColorLight,
                       fontSize: 16,
@@ -89,7 +90,7 @@ class UserInfoScreen extends GetView<AuthController> {
                   // print()
                 },
                 child: Text(
-                  'Nhập sau',
+                  'enter_late'.tr,
                   style: TextStyle(
                     color: AppColor.primaryColorLight,
                     fontSize: 14,

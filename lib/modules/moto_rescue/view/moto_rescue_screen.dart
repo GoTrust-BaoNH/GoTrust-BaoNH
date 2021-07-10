@@ -8,8 +8,6 @@ import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 
-part 'moto_rescue.action.dart';
-
 part 'moto_rescue.children.dart';
 
 class MotoRescueScreen extends GetView<MotoRescueController> {
@@ -27,7 +25,7 @@ class MotoRescueScreen extends GetView<MotoRescueController> {
             Container(
               margin: const EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
-                'Cứu hộ xe máy 24/7',
+                'motorbike_rescue'.tr,
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
@@ -61,7 +59,7 @@ class MotoRescueScreen extends GetView<MotoRescueController> {
                         color: const Color(0xffFF6B00),
                       ),
                     ),
-                    title: 'Khắc phục sự cố về khóa',
+                    title: 'fix_lock_problem'.tr,
                   );
                 },
               ),
@@ -78,7 +76,7 @@ class MotoRescueScreen extends GetView<MotoRescueController> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'Gọi tổng đài',
+                    'call_operator'.tr,
                     style: Theme.of(context).accentTextTheme.headline2,
                   ),
                 ),

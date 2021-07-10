@@ -6,7 +6,6 @@ import 'package:go_trust/shared/constants/colors.dart';
 class QRCodeScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(

@@ -2,7 +2,7 @@ part of 'moto_rescue_screen.dart';
 
 extension _RescusMotoChildren on MotoRescueScreen {
   Widget containerItem({required String title, required Widget icon}) => InkWell(
-        onTap: onItemPressed,
+        onTap: controller.onItemPressed,
         child: Container(
           margin: const EdgeInsets.all(8),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),

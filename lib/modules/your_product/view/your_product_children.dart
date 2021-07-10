@@ -6,9 +6,9 @@ extension YourProductChildrenExtension on BorrowDataScreen {
   }) {
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      itemCount: list.length,
+      itemCount: controller.list.length,
       itemBuilder: (context, index) {
-        final item = list[index];
+        final item = controller.list[index];
         return ProductItem(
             productType: item.productType,
             productName: item.productName,

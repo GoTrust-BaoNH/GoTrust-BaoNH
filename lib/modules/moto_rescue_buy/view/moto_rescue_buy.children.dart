@@ -45,7 +45,7 @@ extension _BuyMotoRecusChildren on MotoRescueBuyScreen {
                   )
                 : type == 'bool'
                     ? Container(
-                        child: value.toBool
+                        child: toBool(value)
                             ? const Icon(
                                 Icons.radio_button_checked,
                                 color: AppThemeColor.primary,
@@ -57,14 +57,5 @@ extension _BuyMotoRecusChildren on MotoRescueBuyScreen {
         ],
       ),
     );
-  }
-}
-
-extension _StringExt on String {
-  bool get toBool {
-    if (this == 'true') {
-      return true;
-    }
-    return false;
   }
 }

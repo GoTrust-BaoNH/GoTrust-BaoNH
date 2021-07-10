@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 import '../../../data/repository/api_repository.dart';
@@ -19,6 +20,10 @@ class BorrowDataController extends BaseController {
   @override
   Future<void> onReady() async {
     await super.onReady();
+  }
+
+  void onBorrowDataPressed() {
+    Get.toNamed(Routes.BORROW_DATA_SCREEN + Routes.BORROW_DATA_DETAIL_SCREEN);
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

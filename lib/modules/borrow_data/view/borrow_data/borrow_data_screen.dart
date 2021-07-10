@@ -1,16 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/borrow_data/controller/borrow_data_controller.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
-import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 
-part 'borrow_data_screen.action.dart';
 part 'borrow_data_screen.children.dart';
 
 class BorrowDataScreen extends GetView<BorrowDataController> {
@@ -28,14 +26,14 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: Text(
-                'Ứng data 4G',
+                'borrow_data'.tr,
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: Text(
-                'Số điện thoại của bạn',
+                'your_phone'.tr,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
@@ -46,11 +44,11 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
             Container(
               margin: const EdgeInsets.only(top: 32),
               child: AppGradientButton(
-                onPressed: onBorrowDataPressed,
+                onPressed: controller.onBorrowDataPressed,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'Ứng ngay 1GB data',
+                    'borrow_value_data'.trParams({'value': '1'})!,
                     style: TextStyle(
                       color: AppColor.secondTextColorLight,
                       fontSize: 16,
@@ -63,14 +61,14 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
               margin: const EdgeInsets.only(top: 16),
               child: greyButton(
                 onPressed: () {},
-                title: 'Ứng ngay 10 phút gọi thoại',
+                title: 'borrow_value_call'.trParams({'value': '10'})!,
               ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 16),
               child: greyButton(
                 onPressed: () {},
-                title: 'Nạp tiền bằng Go Trust',
+                title: 'recharge_with'.trParams({'appName': APP_NAME})!,
               ),
             ),
           ],
