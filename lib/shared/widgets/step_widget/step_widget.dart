@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 const double _itemSize = 14;
 
@@ -56,17 +57,17 @@ class StepWidget extends StatelessWidget {
         Row(
           children: <Widget>[
             Text(
-              'Thông tin',
+              'info'.tr,
               style: Theme.of(context).accentTextTheme.subtitle1,
             ),
             Expanded(child: Container()),
             Text(
-              'Xác nhận',
+              'confirm'.tr,
               style: Theme.of(context).accentTextTheme.subtitle1,
             ),
             Expanded(child: Container()),
             Text(
-              'Thanh toán',
+              'payment'.tr,
               style: Theme.of(context).accentTextTheme.subtitle1,
             ),
           ],

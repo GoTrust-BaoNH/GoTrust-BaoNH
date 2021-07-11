@@ -94,8 +94,8 @@ class _FocusedMenuDetailsState extends State<FocusedMenuDetails> with SingleTick
   }
 
   Widget _buildActions() {
-    final sw = double.infinity;
-    final sh = double.infinity;
+    const sw = double.infinity;
+    const sh = double.infinity;
     return Container(
       width: sw - 30.0,
       height: sh * .2,

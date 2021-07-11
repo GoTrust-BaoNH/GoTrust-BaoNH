@@ -13,19 +13,10 @@ class YourProductController extends BaseController {
 
   final ApiRepository apiRepository;
 
-  @override
-  Future<void> onInit() async {
-    await super.onInit();
-  }
-
-  @override
-  Future<void> onReady() async {
-    await super.onReady();
-  }
 
   List<YourProductModel> list = [
     YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
+      productType: ProductEnum.MotoInsurance,
       productName: 'Bảo hiểm TNDSBB Xe máy',
       contractCode: 'Mã hợp đồng: HK012345',
       price: '1.500.000',
@@ -55,27 +46,37 @@ class YourProductController extends BaseController {
       expiredDate: DateTime.now().toString(),
     ),
     YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
+      productType: ProductEnum.MotoInsurance,
       productName: 'Bảo hiểm TNDSBB Xe máy',
       contractCode: 'Mã hợp đồng: HK012345',
       price: '1.500.000',
       expiredDate: DateTime.now().toString(),
     ),
     YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
+      productType: ProductEnum.MotoInsurance,
       productName: 'Bảo hiểm TNDSBB Xe máy',
       contractCode: 'Mã hợp đồng: HK012345',
       price: '1.500.000',
       expiredDate: DateTime.now().add(const Duration(days: 10)).toString(),
     ),
     YourProductModel(
-      productType: ProductEnum.MotoInsurrance,
+      productType: ProductEnum.MotoInsurance,
       productName: 'Bảo hiểm TNDSBB Xe máy',
       contractCode: 'Mã hợp đồng: HK012345',
       price: '1.500.000',
       expiredDate: DateTime.now().toString(),
     ),
   ];
+
+  @override
+  Future<void> onInit() async {
+    await super.onInit();
+  }
+
+  @override
+  Future<void> onReady() async {
+    await super.onReady();
+  }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {
     final locator = Get.find<DialogService>();

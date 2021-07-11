@@ -25,11 +25,11 @@ extension YourProductChildrenExtension on BorrowDataScreen {
   Widget get _buildHorizontalTabs => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: CustomTab(
-          items: const [
-            'Tất cả',
-            'Đang có hiệu lưc',
-            'Đợi duyệt',
-            'Sắp hết hạn',
+          items: [
+            'all'.tr,
+            'in_effect'.tr,
+            'wait_approval'.tr,
+            'expired_soon'.tr,
           ],
           activeItemDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
@@ -72,9 +72,9 @@ class ProductItem extends StatelessWidget {
       child: AppGradientButton(
         onPressed: renewButtonPressed,
         borderRadius: const BorderRadius.all(Radius.circular(50)),
-        child: const Text(
-          'Gia hạn',
-          style: TextStyle(
+        child: Text(
+          'extension'.tr,
+          style: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w500,
             fontStyle: FontStyle.normal,
@@ -143,9 +143,9 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Đang chờ phê duyệt hồ sơ.',
-            style: TextStyle(
+          Text(
+            'wait_application_approval'.tr,
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
               color: AppThemeColor.gray1,
@@ -197,13 +197,13 @@ class BuildProductDetailWidget extends StatelessWidget {
     );
   }
 
-  bool isExpiriedDate() {
+  bool isExpiredDate() {
     if (expiredDate != null) {
       final timeNow = DateTime.now().add(
         const Duration(days: 7),
       );
-      final expriryTime = DateTime.parse(expiredDate!);
-      if (expriryTime.isAfter(timeNow)) {
+      final expiredTime = DateTime.parse(expiredDate!);
+      if (expiredTime.isAfter(timeNow)) {
         return false;
       }
     }
@@ -237,7 +237,7 @@ class BuildProductDetailWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            getLabelText('Mã hợp đồng: '),
+            getLabelText('${'contract_code'.tr}: '),
             valueText(
               contractCode,
             )
@@ -246,7 +246,7 @@ class BuildProductDetailWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            getLabelText('Giá trị: '),
+            getLabelText('${'value'.tr}: '),
             valueText(
               price,
             )
@@ -255,13 +255,13 @@ class BuildProductDetailWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            getLabelText('Hiệu lực: '),
+            getLabelText('${'effect'.tr}: '),
             Text(
               getTime,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-                color: isExpiriedDate() ? AppThemeColor.accent : AppThemeColor.primary,
+                color: isExpiredDate() ? AppThemeColor.accent : AppThemeColor.primary,
                 fontFamily: TextAppStyle.appFont,
               ),
             )

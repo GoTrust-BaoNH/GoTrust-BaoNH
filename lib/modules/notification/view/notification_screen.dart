@@ -16,14 +16,14 @@ class NotificationScreen extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar(context, title: 'Notificatons'),
+      appBar: appbar(context, title: 'notification'.tr),
       body: Column(
         children: [
           Container(
             alignment: Alignment.centerLeft,
             child: titleBase(
               context,
-              title: 'Thông báo',
+              title: 'notification'.tr,
               color: AppColor.primaryTextColorLight,
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -37,7 +37,7 @@ class NotificationScreen extends GetView<NotificationController> {
           TextButton(
             onPressed: () {},
             child: Text(
-              'Xem thêm thông báo',
+              'see_more_notification'.tr,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,

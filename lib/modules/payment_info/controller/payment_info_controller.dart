@@ -3,7 +3,6 @@ import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
-import 'package:intl/intl.dart';
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
@@ -27,11 +26,6 @@ class PaymentInfoController extends BaseController {
   @override
   Future<void> onReady() async {
     await super.onReady();
-  }
-
-  String formatVnd(String price) {
-    final oCcy = NumberFormat('#.###', 'en_US');
-    return '${oCcy.format(price)} VNĐ';
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

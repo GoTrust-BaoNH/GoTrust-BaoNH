@@ -22,7 +22,7 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 20),
               child: Text(
-                'Cứu hộ xe máy 24/7',
+                'motorbike_rescue'.tr,
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
@@ -30,29 +30,29 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 16),
               child: Text(
-                'Vui lòng xác nhận thông tin',
+                'confirm_information'.tr,
                 style: Theme.of(context).accentTextTheme.bodyText2,
               ),
             ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                  children: const [
+                  children: [
                     InputWidget(
-                      hint: 'Nhập họ và tên chủ xe',
-                      lable: 'Họ và tên chủ xe',
+                      hint: 'input_name_owner_vehicle'.tr,
+                      lable: 'name_owner_vehicle'.tr,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     InputWidget(
-                      hint: 'Nhập số điện thoại',
-                      lable: 'Số điện thoại',
+                      hint: 'input_phone'.tr,
+                      lable: 'phone'.tr,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     InputWidget(
-                      hint: 'Nhập số xe',
-                      lable: 'Biển số xe',
+                      hint: 'input_license_plates'.tr,
+                      lable: 'license_plates'.tr,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ),
@@ -63,7 +63,7 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Text(
-                  'Mua ngay',
+                  'buy_now'.tr,
                   style: Theme.of(context).accentTextTheme.headline2,
                 ),
               ),

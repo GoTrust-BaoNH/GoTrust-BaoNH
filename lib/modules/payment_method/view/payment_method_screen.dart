@@ -19,7 +19,7 @@ class PaymentMethodScreen extends GetView<PaymentMethodController> {
             Container(
               margin: const EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
-                'Cứu hộ xe máy 24/7',
+                'motorbike_rescue'.tr,
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
@@ -27,7 +27,7 @@ class PaymentMethodScreen extends GetView<PaymentMethodController> {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 12),
               child: Text(
-                'Chọn hình thức thanh toán',
+                'choose_payment_method'.tr,
                 style: Theme.of(context).accentTextTheme.bodyText2,
               ),
             ),
@@ -53,7 +53,7 @@ class PaymentMethodScreen extends GetView<PaymentMethodController> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Text(
-                  'Tiếp tục',
+                  'next'.tr,
                   style: Theme.of(context).accentTextTheme.headline2,
                 ),
               ),

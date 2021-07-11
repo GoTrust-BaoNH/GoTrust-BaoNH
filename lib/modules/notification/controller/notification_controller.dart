@@ -15,18 +15,18 @@ class NotificationController extends BaseController {
 
   List<NotificationModel> list = [
     NotificationModel(
-        notificationType: ProductEnum.MotoInsurrance,
+        notificationType: ProductEnum.MotoInsurance,
         status: 'Đã duyệt thành công',
         description: 'Gói bảo hiểm',
         createTime: '1 phút trước'),
     NotificationModel(
-        notificationType: ProductEnum.MotoInsurrance,
+        notificationType: ProductEnum.MotoInsurance,
         status: 'Còn 04 ngày nữa hết hạn!',
         description: 'Gói bảo hiểm',
         isExpired: true,
         createTime: '2 phút trước'),
     NotificationModel(
-        notificationType: ProductEnum.MotoInsurrance,
+        notificationType: ProductEnum.MotoInsurance,
         status: 'Đã duyệt thành công',
         description: 'Gói bảo hiểm',
         createTime: '3 phút trước'),

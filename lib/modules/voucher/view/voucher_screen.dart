@@ -28,7 +28,7 @@ class EmergencyScreen extends GetView<VoucherController> {
             children: [
               titleBase(
                 context,
-                title: 'Nhập mã khuyến mãi',
+                title: 'input_promo_code'.tr,
                 color: AppThemeColor.textBlack,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
@@ -43,7 +43,7 @@ class EmergencyScreen extends GetView<VoucherController> {
               AppGradientButton(
                 onPressed: () {},
                 child: Text(
-                  'Xác nhận',
+                  'confirm'.tr,
                   style: TextStyle(
                     color: AppColor.secondTextColorLight,
                     fontSize: 16,
@@ -52,10 +52,10 @@ class EmergencyScreen extends GetView<VoucherController> {
                 ),
               ),
               const SizedBox(height: 24),
-              const Center(
+              Center(
                 child: Text(
-                  'Hoặc',
-                  style: TextStyle(
+                  'or'.tr,
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
@@ -73,10 +73,9 @@ class EmergencyScreen extends GetView<VoucherController> {
                 onButtonPressed: () {},
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Mã khuyến mại hoặc QR Code được cung cấp\n'
-                'trong các chương trình khuyến mãi của chúng tôi',
-                style: TextStyle(
+              Text(
+                'promo_or_qr_code'.tr,
+                style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.italic,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/payment_info/controller/payment_info_controller.dart';
+import 'package:go_trust/shared/methods/common_method.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
@@ -24,7 +25,7 @@ class PaymentMethodScreen extends GetView<PaymentInfoController> {
               Container(
                 margin: const EdgeInsets.only(top: 20, bottom: 20),
                 child: Text(
-                  'Thông tin thanh toán',
+                  'info_payment'.tr,
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
@@ -33,29 +34,29 @@ class PaymentMethodScreen extends GetView<PaymentInfoController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const InputWidget(
-                        hint: 'Nhập tên ghi trên thẻ',
-                        lable: 'Chủ thẻ',
+                      InputWidget(
+                        hint: 'input_card_holder'.tr,
+                        lable: 'card_holder'.tr,
                       ),
                       const SizedBox(height: 16),
-                      const InputWidget(
-                        hint: 'Nhập số thẻ',
-                        lable: 'Số thẻ',
+                      InputWidget(
+                        hint: 'input_card_number'.tr,
+                        lable: 'card_number'.tr,
                       ),
                       const SizedBox(height: 16),
                       Row(
-                        children: const [
-                           Expanded(
+                        children: [
+                          Expanded(
                             child: InputWidget(
-                              hint: 'Nhập số CVV',
-                              lable: 'CVV',
+                              hint: 'input_cvv'.tr,
+                              lable: 'cvv'.tr,
                             ),
                           ),
-                           SizedBox(width: 16),
-                           Expanded(
+                          const SizedBox(width: 16),
+                          Expanded(
                             child: InputWidget(
-                              hint: 'Tháng / năm',
-                              lable: 'Ngày hết hạn',
+                              hint: '${'month'.tr} / ${'year'.tr}',
+                              lable: 'expired_date'.tr,
                             ),
                           ),
                         ],
@@ -63,7 +64,7 @@ class PaymentMethodScreen extends GetView<PaymentInfoController> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20, bottom: 12),
                         child: Text(
-                          'Nội dung thanh toán',
+                          'content_billing'.tr,
                           style: Theme.of(context).accentTextTheme.bodyText2,
                         ),
                       ),
@@ -84,11 +85,11 @@ class PaymentMethodScreen extends GetView<PaymentInfoController> {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'Số tiền thanh toán',
+                                    text: 'payment_amount'.tr,
                                     style: Theme.of(context).textTheme.bodyText2,
                                   ),
                                   TextSpan(
-                                    text: controller.formatVnd(controller.price.toString()),
+                                    text: formatVnd(controller.price.toString()),
                                     style: Theme.of(context).accentTextTheme.bodyText1,
                                   ),
                                 ],
@@ -107,7 +108,7 @@ class PaymentMethodScreen extends GetView<PaymentInfoController> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'Xác nhận',
+                    'confirm'.tr,
                     style: Theme.of(context).accentTextTheme.headline2,
                   ),
                 ),

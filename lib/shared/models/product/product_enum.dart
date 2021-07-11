@@ -3,8 +3,8 @@
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 
 enum ProductEnum {
-  MotoInsurrance,
-  OtoInsurrance,
+  MotoInsurance,
+  OtoInsurance,
   MotoRescue,
   MedicalOnline,
   OnlineShopping,
@@ -21,7 +21,7 @@ enum ProductEnum {
 extension ProductExtension on ProductEnum {
   String get icon {
     switch (this) {
-      case ProductEnum.MotoInsurrance:
+      case ProductEnum.MotoInsurance:
         return IconConstants.bhXeMay;
       case ProductEnum.MotoRescue:
         return IconConstants.cuuHoXeMay;
@@ -31,7 +31,7 @@ extension ProductExtension on ProductEnum {
         return IconConstants.khamBenh;
       case ProductEnum.OnlineShopping:
         return IconConstants.onlineShopping;
-      case ProductEnum.OtoInsurrance:
+      case ProductEnum.OtoInsurance:
         return IconConstants.bhOto;
       case ProductEnum.OtoRescue:
         return IconConstants.cuuHoOto;
@@ -54,7 +54,7 @@ extension ProductExtension on ProductEnum {
 
   String get productName {
     switch (this) {
-      case ProductEnum.MotoInsurrance:
+      case ProductEnum.MotoInsurance:
         return 'TNDSBB Xe máy';
       case ProductEnum.MotoRescue:
         return 'Cứu hộ xe máy 24/7';
@@ -64,7 +64,7 @@ extension ProductExtension on ProductEnum {
         return 'Khám bệnh online 24/7';
       case ProductEnum.OnlineShopping:
         return 'GoTRUST Online Shopping';
-      case ProductEnum.OtoInsurrance:
+      case ProductEnum.OtoInsurance:
         return 'TNDSBB Ô tô';
       case ProductEnum.FlightDelay:
         return 'Trễ chuyến bay';

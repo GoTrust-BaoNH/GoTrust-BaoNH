@@ -12,7 +12,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Text('Mã khuyến mãi'),
+          Text('promo_code'.tr),
           TextField(
             controller: controller.textController,
             maxLines: 2,
@@ -24,9 +24,9 @@ extension VoucherChildrenExtension on EmergencyScreen {
               color: AppThemeColor.textBlack,
               fontFamily: TextAppStyle.appFont,
             ),
-            decoration: const InputDecoration(
-                hintText: 'Nhập mã khuyến mãi',
-                hintStyle: TextStyle(
+            decoration: InputDecoration(
+                hintText: 'input_promo_code'.tr,
+                hintStyle: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.normal,
@@ -77,7 +77,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
               height: 48,
               child: Center(
                 child: Text(
-                  'Quét mã khuyến mãi QR Code',
+                  'scan_promo_code'.tr,
                   style: TextStyle(
                     color: AppColor.primaryColorLight,
                     fontSize: 16,
@@ -108,7 +108,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
         onPressed: onButtonPressed,
         child: Center(
           child: Text(
-            'Nhận mã khuyến mãi',
+            'input_promo_code'.tr,
             style: TextStyle(
               color: AppColor.primaryColorLight,
               fontSize: 16,

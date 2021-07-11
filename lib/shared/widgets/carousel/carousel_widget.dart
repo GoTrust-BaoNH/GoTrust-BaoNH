@@ -77,7 +77,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
             ? CarouselSlider(
                 items: List.generate(
                   widget.items.length,
-                  (int index) {
+                  (index) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Container(
@@ -119,7 +119,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                 activeColor: const Color(0xffFF6B00),
                 size: const Size.square(6),
                 activeSize: const Size.square(6),
-                activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
               ),
             ),
           )
