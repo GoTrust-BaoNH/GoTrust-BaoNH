@@ -48,7 +48,7 @@ extension _BuyMotoRecusChildren on MotoRescueBuyScreen {
                         child: toBool(value)
                             ? const Icon(
                                 Icons.radio_button_checked,
-                                color: AppThemeColor.primary,
+                                color: AppColor.primary,
                               )
                             : const Icon(Icons.radio_button_off),
                       )

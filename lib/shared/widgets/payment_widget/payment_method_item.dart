@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/models/payment_model/payment_method_model.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 
 class PaymentMethodItem extends StatefulWidget {
@@ -34,7 +34,7 @@ class _PaymentMethodItemState extends State<PaymentMethodItem> {
           borderRadius: BorderRadius.circular(8),
           color: widget.isSelected ? const Color(0xffF1FFF4) : null,
           border: Border.all(
-              color: widget.isSelected ? AppThemeColor.primary : const Color(0xffE0E0E0), width: widget.isSelected ? 2 : 1),
+              color: widget.isSelected ? AppColor.primary : const Color(0xffE0E0E0), width: widget.isSelected ? 2 : 1),
         ),
         child: Row(
           children: <Widget>[
@@ -43,7 +43,7 @@ class _PaymentMethodItemState extends State<PaymentMethodItem> {
               child: widget.isSelected
                   ? const Icon(
                       Icons.radio_button_checked,
-                      color: AppThemeColor.accent,
+                      color: AppColor.accent,
                     )
                   : const Icon(
                       Icons.radio_button_off,

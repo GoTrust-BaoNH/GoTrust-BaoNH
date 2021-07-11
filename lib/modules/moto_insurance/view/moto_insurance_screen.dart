@@ -5,7 +5,6 @@ import 'package:go_trust/modules/moto_insurance/controller/moto_insurance_contro
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
@@ -26,7 +25,7 @@ class MotoInsuranceScreen extends GetView<MotoInsuranceController> {
           titleBase(
             context,
             title: 'moto_insurance'.tr,
-            color: AppThemeColor.textBlack,
+            color: AppColor.textBlack,
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 20,

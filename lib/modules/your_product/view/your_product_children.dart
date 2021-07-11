@@ -138,7 +138,7 @@ class ProductItem extends StatelessWidget {
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
-              color: AppThemeColor.textBlack,
+              color: AppColor.textBlack,
               fontFamily: TextAppStyle.appFont,
             ),
           ),
@@ -148,7 +148,7 @@ class ProductItem extends StatelessWidget {
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
-              color: AppThemeColor.gray1,
+              color: AppColor.gray1,
               fontFamily: TextAppStyle.appFont,
             ),
           ),
@@ -177,7 +177,7 @@ class BuildProductDetailWidget extends StatelessWidget {
       style: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w400,
-        color: AppThemeColor.gray1,
+        color: AppColor.gray1,
         fontFamily: TextAppStyle.appFont,
       ),
     );
@@ -189,7 +189,7 @@ class BuildProductDetailWidget extends StatelessWidget {
       style: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w400,
-        color: AppThemeColor.textBlack,
+        color: AppColor.textBlack,
         fontFamily: TextAppStyle.appFont,
       ),
       maxLines: 2,
@@ -230,7 +230,7 @@ class BuildProductDetailWidget extends StatelessWidget {
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w400,
-            color: AppThemeColor.textBlack,
+            color: AppColor.textBlack,
             fontFamily: TextAppStyle.appFont,
           ),
         ),
@@ -261,7 +261,7 @@ class BuildProductDetailWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-                color: isExpiredDate() ? AppThemeColor.accent : AppThemeColor.primary,
+                color: isExpiredDate() ? AppColor.accent : AppColor.primary,
                 fontFamily: TextAppStyle.appFont,
               ),
             )

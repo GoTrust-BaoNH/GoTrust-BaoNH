@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:go_trust/modules/auth/controller/auth_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
@@ -24,19 +25,12 @@ class UserInfoScreen extends GetView<AuthController> {
               ),
               Text(
                 'input_info'.tr,
-                style: TextStyle(
-                  color: AppColor.primaryTextColorLight,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextAppStyle().titlePageTextStyle(),
               ),
               const SizedBox(height: 12),
               Text(
                 'input_info_follow'.tr,
-                style: TextStyle(
-                  fontSize: 13,
-                  color: AppColor.primaryHintColorLight,
-                ),
+                style: TextAppStyle().contentPageTextStyle(),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 4),
@@ -77,10 +71,7 @@ class UserInfoScreen extends GetView<AuthController> {
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
                     'confirm'.tr,
-                    style: TextStyle(
-                      color: AppColor.secondTextColorLight,
-                      fontSize: 16,
-                    ),
+                    style: TextAppStyle().textEnableButtonStyle(),
                   ),
                 ),
               ),
@@ -91,10 +82,7 @@ class UserInfoScreen extends GetView<AuthController> {
                 },
                 child: Text(
                   'enter_late'.tr,
-                  style: TextStyle(
-                    color: AppColor.primaryColorLight,
-                    fontSize: 14,
-                  ),
+                  style: TextAppStyle().textClickColorStyle(),
                 ),
               )
             ],

@@ -56,19 +56,21 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
           padding: const EdgeInsets.only(bottom: 16),
           child: Text(
             data.title,
-            style: TextStyle(
-              color: AppColor.primaryColorLight,
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextAppStyle().textTitleDataStyle(),
           ),
         ),
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: List<Widget>.generate(data.items.length, (index) => dataButton(data: data.items[index], onTap: () {
-            // print
-          })),
+          children: List<Widget>.generate(
+            data.items.length,
+            (index) => dataButton(
+              data: data.items[index],
+              onTap: () {
+                // print
+              },
+            ),
+          ),
         )
       ],
     );
@@ -85,8 +87,8 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
         height: 84,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: data.isSelected ? AppThemeColor.greenF1FFF4 : AppThemeColor.grayF2F2F2,
-          border: data.isSelected ? Border.all(color: AppThemeColor.primary, width: 2) : null,
+          color: data.isSelected ? AppColor.greenF1FFF4 : AppColor.grayF2F2F2,
+          border: data.isSelected ? Border.all(color: AppColor.primary, width: 2) : null,
         ),
         child: Stack(
           children: [
@@ -98,20 +100,13 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
                 children: <Widget>[
                   Text(
                     data.title,
-                    style: TextStyle(
-                      color: AppColor.primaryTextColorLight,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextAppStyle().textTitleButtonDataStyle(),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 2),
                     child: Text(
                       formatVnd(data.price.toString()),
-                      style: TextStyle(
-                        color: AppColor.primaryHintColorLight,
-                        fontSize: 12,
-                      ),
+                      style: TextAppStyle().textSubTitleButtonDataStyle(),
                     ),
                   )
                 ],
@@ -124,7 +119,7 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
                       padding: EdgeInsets.all(3),
                       child: Icon(
                         Icons.check_circle,
-                        color: AppThemeColor.primary,
+                        color: AppColor.primary,
                         size: 18,
                       ),
                     ),

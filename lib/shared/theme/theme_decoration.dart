@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class ThemeDecoration {
@@ -8,8 +8,8 @@ class ThemeDecoration {
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
           colors: [
-            AppThemeColor.color45C152,
-            AppThemeColor.color0ADC90,
+            AppColor.color45C152,
+            AppColor.color0ADC90,
           ],
           // stops: [
           //   0.0,

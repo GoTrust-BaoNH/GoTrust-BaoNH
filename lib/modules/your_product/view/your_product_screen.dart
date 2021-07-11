@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/your_product/controller/your_product_controller.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/models/product/product_enum.dart';
 import 'package:go_trust/shared/models/product/product_model.dart';
-import 'package:go_trust/shared/styles/text_style.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
@@ -27,7 +27,7 @@ class BorrowDataScreen extends GetView<YourProductController> {
           titleBase(
             context,
             title: 'your_product'.tr,
-            color: AppThemeColor.textBlack,
+            color: AppColor.textBlack,
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 20,

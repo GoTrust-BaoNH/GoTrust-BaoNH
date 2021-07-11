@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/routes/app_pages.dart';
-import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
@@ -33,15 +33,12 @@ class LoginScreen extends GetView<AuthController> {
                     const SizedBox(height: 30),
                     Text(
                       'hello'.tr,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: TextAppStyle().titlePageTextStyle(),
                     ),
                     const SizedBox(height: 12),
                     Text(
                       'login_for_use_app'.tr,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: AppColor.primaryHintColorLight,
-                      ),
+                      style: TextAppStyle().contentPageTextStyle(),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
@@ -60,10 +57,7 @@ class LoginScreen extends GetView<AuthController> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         child: Text(
                           'login'.tr,
-                          style: TextStyle(
-                            color: AppColor.secondTextColorLight,
-                            fontSize: 16,
-                          ),
+                          style: TextAppStyle().textEnableButtonStyle(),
                         ),
                       ),
                     ),
@@ -72,10 +66,7 @@ class LoginScreen extends GetView<AuthController> {
                       children: [
                         Text(
                           '${'login_other'.tr} :',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: AppColor.primaryHintColorLight,
-                          ),
+                          style: TextAppStyle().contentPageTextStyle(),
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(width: 10),
@@ -102,10 +93,7 @@ class LoginScreen extends GetView<AuthController> {
                   padding: const EdgeInsets.only(top: 8, bottom: 24),
                   child: Text(
                     'skip_login'.tr,
-                    style: TextStyle(
-                      color: AppColor.primaryColorLight,
-                      fontSize: 14,
-                    ),
+                    style: TextAppStyle().textClickColorStyle(),
                   ),
                 ),
               ),

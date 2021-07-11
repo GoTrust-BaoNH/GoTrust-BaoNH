@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:go_trust/modules/moto_rescue_buy/controller/moto_rescue_buy_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/methods/common_method.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';

@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:go_trust/modules/auth/controller/auth_controller.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/secondary_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
@@ -29,19 +30,12 @@ class OtpScreen extends GetView<AuthController> {
                 const SizedBox(height: 30),
                 Text(
                   'input_otp'.tr,
-                  style: TextStyle(
-                    color: AppColor.primaryTextColorLight,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextAppStyle().titlePageTextStyle(),
                 ),
                 const SizedBox(height: 12),
                 Text(
                   'sent_otp_to_phone'.tr,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: AppColor.primaryHintColorLight,
-                  ),
+                  style: TextAppStyle().contentPageTextStyle(),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
@@ -59,17 +53,11 @@ class OtpScreen extends GetView<AuthController> {
                       children: <TextSpan>[
                         TextSpan(
                           text: 'not_received_otp'.tr,
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: AppColor.primaryHintColorLight,
-                          ),
+                          style: TextAppStyle().contentPageTextStyle(),
                         ),
                         TextSpan(
                           text: 'resend_otp'.tr,
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: AppColor.primaryColorLight,
-                          ),
+                          style: TextAppStyle().textClickColorStyle(),
                         ),
                       ],
                     ),
@@ -83,11 +71,7 @@ class OtpScreen extends GetView<AuthController> {
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Text(
                       'return'.tr,
-                      style: TextStyle(
-                        color: AppColor.primaryColorLight,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: TextAppStyle().textDisableButtonStyle(),
                     ),
                   ),
                 ),

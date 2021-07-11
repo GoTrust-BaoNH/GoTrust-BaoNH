@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 
 class AppGradientButton extends StatelessWidget {
   const AppGradientButton({
@@ -21,14 +21,14 @@ class AppGradientButton extends StatelessWidget {
       constraints: const BoxConstraints(minHeight: 48),
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? BorderRadius.circular(8),
-        color: onPressed == null ? AppThemeColor.primary.withOpacity(0.4) : null,
+        color: onPressed == null ? AppColor.primary.withOpacity(0.4) : null,
         gradient: onPressed != null
             ? const LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: [
-                  AppThemeColor.color45C152,
-                  AppThemeColor.color0ADC90,
+                  AppColor.color45C152,
+                  AppColor.color0ADC90,
                 ],
               )
             : null,

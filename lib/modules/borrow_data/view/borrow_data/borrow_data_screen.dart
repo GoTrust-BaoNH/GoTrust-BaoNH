@@ -4,6 +4,7 @@ import 'package:go_trust/modules/borrow_data/controller/borrow_data_controller.d
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/constants/common.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
@@ -27,14 +28,14 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
               margin: const EdgeInsets.only(top: 20),
               child: Text(
                 'borrow_data'.tr,
-                style: Theme.of(context).textTheme.headline1,
+                style: TextAppStyle().titlePageTextStyle(),
               ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: Text(
                 'your_phone'.tr,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: TextAppStyle().contentPage2TextStyle(),
               ),
             ),
             Container(
@@ -49,10 +50,7 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
                     'borrow_value_data'.trParams({'value': '1'})!,
-                    style: TextStyle(
-                      color: AppColor.secondTextColorLight,
-                      fontSize: 16,
-                    ),
+                    style: TextAppStyle().textEnableButtonStyle(),
                   ),
                 ),
               ),

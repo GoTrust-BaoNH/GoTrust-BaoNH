@@ -3,8 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/voucher/controller/voucher_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
-import 'package:go_trust/shared/styles/text_style.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
@@ -29,7 +28,7 @@ class EmergencyScreen extends GetView<VoucherController> {
               titleBase(
                 context,
                 title: 'input_promo_code'.tr,
-                color: AppThemeColor.textBlack,
+                color: AppColor.textBlack,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
                   vertical: 20,
@@ -59,7 +58,7 @@ class EmergencyScreen extends GetView<VoucherController> {
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
-                    color: AppThemeColor.gray1,
+                    color: AppColor.gray1,
                     fontFamily: TextAppStyle.appFont,
                   ),
                 ),
@@ -79,7 +78,7 @@ class EmergencyScreen extends GetView<VoucherController> {
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.italic,
-                  color: AppThemeColor.gray1,
+                  color: AppColor.gray1,
                   fontFamily: TextAppStyle.appFont,
                 ),
               ),

@@ -11,6 +11,9 @@ class ThemeConfig {
     required Color accentColor,
     required Color primaryTextColor,
     required Color secondTextColor,
+    required Color thirdTextColor,
+    required Color fourthTextColor,
+    required Color fifthTextColor,
     required Color primaryBackgroundColor,
     required Color error,
     Color? hintText,
@@ -96,7 +99,7 @@ class ThemeConfig {
       inputDecorationTheme: InputDecorationTheme(
         errorStyle: TextStyle(color: error),
         labelStyle: TextStyle(
-          fontFamily: 'Rubik',
+          fontFamily: 'Mulish',
           fontWeight: FontWeight.w600,
           fontSize: 14,
           color: primaryTextColor.withOpacity(0.5),
@@ -107,62 +110,82 @@ class ThemeConfig {
           fontWeight: FontWeight.w300,
         ),
       ),
-      fontFamily: 'Rubik',
+      fontFamily: 'Mulish',
       unselectedWidgetColor: Colors.grey,
       textTheme: TextTheme(
+        /// headline1 Color: primaryTextColor -> Black Gray (#333333)
         headline1: baseTextTheme.headline1!.copyWith(
           color: primaryTextColor,
-          fontSize: 34,
+          fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
+
+        /// headline2 Color: secondTextColor -> White
         headline2: baseTextTheme.headline2!.copyWith(
-          color: primaryTextColor,
-          fontSize: 34,
+          color: secondTextColor,
+          fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
+
+        /// headline3 Color: thirdTextColor -> Black (#000000)
         headline3: baseTextTheme.headline3!.copyWith(
-          color: primaryTextColor,
+          color: thirdTextColor,
           fontSize: 20,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.bold,
         ),
+
+        /// headline4 Color: fourthTextColor -> Green
         headline4: baseTextTheme.headline4!.copyWith(
-          color: primaryTextColor,
+          color: fourthTextColor,
           fontSize: 20,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.bold,
         ),
+
+        /// headline5 Color: fifthTextColor -> Gray
         headline5: baseTextTheme.headline5!.copyWith(
-          color: primaryColor,
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
+          color: fifthTextColor,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
+
+        /// headline6 Color: primaryTextColor -> Black Gray (#333333)
         headline6: baseTextTheme.headline6!.copyWith(
           color: primaryTextColor,
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
+
+        /// bodyText1 Color: primaryTextColor -> Black Gray (#333333)
         bodyText1: baseTextTheme.bodyText1!.copyWith(
           color: primaryTextColor,
           fontSize: 14,
+          fontWeight: FontWeight.normal,
         ),
+
+        /// bodyText2 Color: secondTextColor -> White
         bodyText2: baseTextTheme.bodyText2!.copyWith(
-          color: primaryTextColor,
+          color: secondTextColor,
           fontSize: 14,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.normal,
         ),
+
+        /// subtitle1 Color: primaryTextColor -> Black Gray (#333333)
         subtitle1: baseTextTheme.subtitle1!.copyWith(
           color: primaryTextColor,
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
         ),
+
+        /// subtitle2 Color: fifthTextColor -> Gray
         subtitle2: baseTextTheme.subtitle2!.copyWith(
-          color: primaryTextColor,
-          fontSize: 11,
-          fontWeight: FontWeight.w500,
+          color: fifthTextColor,
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
         ),
         button: baseTextTheme.button!.copyWith(
-          color: primaryTextColor,
-          fontSize: 12,
-          fontWeight: FontWeight.w700,
+          color: secondTextColor,
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
         ),
         caption: baseTextTheme.caption!.copyWith(
           color: primaryTextColor,
@@ -184,6 +207,9 @@ class ThemeConfig {
         primaryBackgroundColor: AppColor.primaryBackgroundColorLight,
         primaryTextColor: AppColor.primaryTextColorLight,
         secondTextColor: AppColor.secondTextColorLight,
+        thirdTextColor: AppColor.thirdTextColorLight,
+        fourthTextColor: AppColor.fourthTextColorLight,
+        fifthTextColor: AppColor.fifthTextColorLight,
         hintText: AppColor.primaryHintColorLight,
         accentColor: AppColor.accentColorLight,
         divider: AppColor.dividerColorLight,
@@ -193,18 +219,18 @@ class ThemeConfig {
         error: AppColor.errorColorLight,
       );
 
-  // static ThemeData get darkTheme => createTheme(
-  //       brightness: Brightness.dark,
-  //       primaryColor: AppColor.primaryColorDark,
-  //       primaryBackgroundColor: AppColor.primaryBackgroundColorDark,
-  //       primaryTextColor: AppColor.primaryTextColorDark,
-  //       secondTextColor: AppColor.secondTextColorDark,
-  //       hintText: AppColor.primaryHintColorDark,
-  //       accentColor: AppColor.accentColorDark,
-  //       divider: AppColor.dividerColorDark,
-  //       disabled: AppColor.disabledColorDark,
-  //       shadowColor: AppColor.shadowColorDark,
-  //       primaryBorderColor: AppColor.primaryBorderColorDark,
-  //       error: AppColor.errorColorDark,
-  //     );
+// static ThemeData get darkTheme => createTheme(
+//       brightness: Brightness.dark,
+//       primaryColor: AppColor.primaryColorDark,
+//       primaryBackgroundColor: AppColor.primaryBackgroundColorDark,
+//       primaryTextColor: AppColor.primaryTextColorDark,
+//       secondTextColor: AppColor.secondTextColorDark,
+//       hintText: AppColor.primaryHintColorDark,
+//       accentColor: AppColor.accentColorDark,
+//       divider: AppColor.dividerColorDark,
+//       disabled: AppColor.disabledColorDark,
+//       shadowColor: AppColor.shadowColorDark,
+//       primaryBorderColor: AppColor.primaryBorderColorDark,
+//       error: AppColor.errorColorDark,
+//     );
 }

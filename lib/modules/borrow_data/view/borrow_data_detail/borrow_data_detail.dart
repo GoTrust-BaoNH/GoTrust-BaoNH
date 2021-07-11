@@ -7,7 +7,7 @@ import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/methods/common_method.dart';
 import 'package:go_trust/shared/models/data_package/data_package_model.dart';
 import 'package:go_trust/shared/models/data_package/data_package_model_mock.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
@@ -34,21 +34,14 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
                       'borrow_data'.tr,
-                      style: TextStyle(
-                        color: AppColor.primaryTextColorLight,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: TextAppStyle().titlePage2TextStyle(),
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
                       'your_phone'.tr,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AppColor.primaryHintColorLight,
-                      ),
+                      style: TextAppStyle().contentPage2TextStyle(),
                     ),
                   ),
                   Container(
@@ -93,18 +86,11 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                   children: <Widget>[
                     Text(
                       '${'paid_amount'.tr}: ',
-                      style: TextStyle(
-                        color: AppColor.primaryHintColorLight,
-                        fontSize: 14,
-                      ),
+                      style: TextAppStyle().titlePriceColorStyle(),
                     ),
                     Text(
                       '50000 VNĐ',
-                      style: TextStyle(
-                        color: AppColor.primaryTextColorLight,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: TextAppStyle().textPriceColorStyle(),
                     ),
                   ],
                 ),
@@ -122,10 +108,7 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Text(
                       'confirm'.tr,
-                      style: TextStyle(
-                        color: AppColor.secondTextColorLight,
-                        fontSize: 16,
-                      ),
+                      style: TextAppStyle().textEnableButtonStyle(),
                     ),
                   ),
                 ),

@@ -21,7 +21,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
               fontSize: 14,
               fontWeight: FontWeight.w500,
               fontStyle: FontStyle.normal,
-              color: AppThemeColor.textBlack,
+              color: AppColor.textBlack,
               fontFamily: TextAppStyle.appFont,
             ),
             decoration: InputDecoration(
@@ -30,7 +30,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.normal,
-                  color: AppThemeColor.gray1,
+                  color: AppColor.gray1,
                   fontFamily: TextAppStyle.appFont,
                 ),
                 alignLabelWithHint: false,
@@ -50,7 +50,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
-          color: AppThemeColor.greyE1EBE4),
+          color: AppColor.greyE1EBE4),
       child: MaterialButton(
         onPressed: onQRButtonPressed,
         child: Stack(
@@ -63,12 +63,12 @@ extension VoucherChildrenExtension on EmergencyScreen {
                   const Icon(
                     Icons.qr_code_scanner,
                     size: 20,
-                    color: AppThemeColor.greenDark,
+                    color: AppColor.greenDark,
                   ),
                   const SizedBox(width: 16),
                   Container(
                     width: 0.5,
-                    color: AppThemeColor.greenDark,
+                    color: AppColor.greenDark,
                   ),
                 ],
               ),
@@ -102,7 +102,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
         borderRadius: BorderRadius.all(
           Radius.circular(8),
         ),
-        color: AppThemeColor.greyE1EBE4,
+        color: AppColor.greyE1EBE4,
       ),
       child: MaterialButton(
         onPressed: onButtonPressed,

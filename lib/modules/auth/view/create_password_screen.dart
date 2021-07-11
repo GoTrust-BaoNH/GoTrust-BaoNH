@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:go_trust/modules/auth/controller/auth_controller.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
@@ -29,19 +30,12 @@ class CreatePasswordScreen extends GetView<AuthController> {
                 const SizedBox(height: 30),
                 Text(
                   'create_password'.tr,
-                  style: TextStyle(
-                    color: AppColor.primaryTextColorLight,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextAppStyle().titlePageTextStyle(),
                 ),
                 const SizedBox(height: 12),
                 Text(
                   'please_setup_password'.tr,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: AppColor.primaryHintColorLight,
-                  ),
+                  style: TextAppStyle().contentPageTextStyle(),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
@@ -56,10 +50,7 @@ class CreatePasswordScreen extends GetView<AuthController> {
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Text(
                       'confirm'.tr,
-                      style: TextStyle(
-                        color: AppColor.secondTextColorLight,
-                        fontSize: 16,
-                      ),
+                      style: TextAppStyle().textEnableButtonStyle(),
                     ),
                   ),
                 ),

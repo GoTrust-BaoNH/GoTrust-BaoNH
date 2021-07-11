@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_trust/shared/styles/text_style.dart';
 
 class NormalIconStyle {
-  Color? get iconTextColor => TextAppStyle().bodyWhiteTextStyle().color;
+  Color? get iconTextColor => Get.theme.textTheme.headline2!.color;
 
   double? get size => 16;
 }

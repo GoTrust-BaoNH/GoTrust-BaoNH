@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_trust/shared/theme/theme_color.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 
 class InputWidget extends StatelessWidget {
@@ -35,7 +35,7 @@ class InputWidget extends StatelessWidget {
                   TextSpan(
                     text: '*',
                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                          color: AppThemeColor.accent,
+                          color: AppColor.accent,
                         ),
                   ),
                 ],
@@ -49,7 +49,7 @@ class InputWidget extends StatelessWidget {
               keyboardType: inputType,
               decoration: ThemeDecoration.inputNoneBorder.copyWith(
                 hintText: hint,
-                hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(color: AppThemeColor.gray1),
+                hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(color: AppColor.gray1),
               ),
             ),
           ),

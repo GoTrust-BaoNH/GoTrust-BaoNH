@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/common.dart';
-import 'package:go_trust/shared/styles/text_style.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 
 PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME}) {
   return AppBar(

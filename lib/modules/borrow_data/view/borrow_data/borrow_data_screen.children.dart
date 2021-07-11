@@ -61,11 +61,7 @@ extension _BorrowDataChildrenExtension on BorrowDataScreen {
         onPressed: onPressed,
         child: Text(
           title,
-          style: TextStyle(
-            color: AppColor.primaryColorLight,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          style: TextAppStyle().textDisableButtonDataStyle(),
         ),
       ),
     );
