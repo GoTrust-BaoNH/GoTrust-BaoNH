@@ -99,12 +99,9 @@ class MotoRescueBuyScreen extends GetView<MotoRescueBuyController> {
               const SizedBox(height: 16),
               AppGradientButton(
                 onPressed: controller.onBuyNowButtonPressed,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  child: Text(
-                    'buy_now'.tr,
-                    style: Theme.of(context).accentTextTheme.headline2,
-                  ),
+                child: Text(
+                  'buy_now'.tr,
+                  style: Theme.of(context).accentTextTheme.headline6,
                 ),
               ),
               const SizedBox(height: 16)

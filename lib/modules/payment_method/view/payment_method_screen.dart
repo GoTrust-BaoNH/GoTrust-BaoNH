@@ -43,19 +43,15 @@ class PaymentMethodScreen extends GetView<PaymentMethodController> {
                     // });
                   },
                 ),
-                separatorBuilder: (context, index) =>
-                const SizedBox(height: 16),
+                separatorBuilder: (context, index) => const SizedBox(height: 16),
               ),
             ),
             const SizedBox(height: 16),
             AppGradientButton(
               onPressed: controller.onNextButtonPressed,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Text(
-                  'next'.tr,
-                  style: Theme.of(context).accentTextTheme.headline2,
-                ),
+              child: Text(
+                'next'.tr,
+                style: Theme.of(context).accentTextTheme.headline6,
               ),
             ),
             const SizedBox(height: 16)

@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:go_trust/modules/auth/controller/auth_controller.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
-import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
-import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/secondary_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
-import 'package:get/get.dart';
 
 class OtpScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: appbar(context),
       body: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
@@ -46,7 +44,7 @@ class OtpScreen extends GetView<AuthController> {
                 const SizedBox(height: 16),
                 GestureDetector(
                   onTap: () {
-                    // print('Resend SMS);
+                    Get.toNamed(Routes.AUTH + Routes.CREATE_PASSWORD_SCREEN);
                   },
                   child: RichText(
                     text: TextSpan(
@@ -66,13 +64,12 @@ class OtpScreen extends GetView<AuthController> {
                 ),
                 const SizedBox(height: 32),
                 SecondaryButton(
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: Text(
-                      'return'.tr,
-                      style: TextAppStyle().textDisableButtonStyle(),
-                    ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Text(
+                    'return'.tr,
+                    style: TextAppStyle().textDisableButtonStyle(),
                   ),
                 ),
                 const SizedBox(height: 16),

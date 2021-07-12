@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/constants/storage.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
@@ -45,26 +47,14 @@ class HomeController extends BaseController {
   ];
 
   final List<Map<String, dynamic>> bestSellerItem = [
-    {
-      'icon': IconConstants.cuuHoXeMay,
-      'title': 'Cứu hộ xe máy 24/7',
-      'image': 'https://cdn.honda.com.vn/motorbikes/January2020/M4GRJvkB8BU2L6fHpATX.png'
-    },
+    {'icon': IconConstants.cuuHoXeMay, 'title': 'Cứu hộ xe máy 24/7', 'image': 'https://cdn.honda.com.vn/motorbikes/January2020/M4GRJvkB8BU2L6fHpATX.png'},
     {
       'icon': IconConstants.sucKhoeVang,
       'title': 'Bảo hiểm sức khỏe vàng',
       'image': 'https://duocphamhvqy.com.vn/wp-content/uploads/2018/12/nguyen-ngoc-nhan-suc-khoe-la-vang.jpg'
     },
-    {
-      'icon': IconConstants.onlineShopping,
-      'title': 'GoTrust Online Shopping',
-      'image': 'https://webdoctor.vn/wp-content/uploads/2017/07/online-shopping-ecommerce-ss-1920.png'
-    },
-    {
-      'icon': IconConstants.treChuyenBay,
-      'title': 'Bảo hiểm trễ chuyến bay',
-      'image': 'https://www.vietnamairlinesgiare.vn/wp-content/uploads/2015/03/vietnam-airlines1.jpg'
-    },
+    {'icon': IconConstants.onlineShopping, 'title': 'GoTrust Online Shopping', 'image': 'https://webdoctor.vn/wp-content/uploads/2017/07/online-shopping-ecommerce-ss-1920.png'},
+    {'icon': IconConstants.treChuyenBay, 'title': 'Bảo hiểm trễ chuyến bay', 'image': 'https://www.vietnamairlinesgiare.vn/wp-content/uploads/2015/03/vietnam-airlines1.jpg'},
   ];
 
   final List<String> listPartner = [
@@ -85,8 +75,38 @@ class HomeController extends BaseController {
     await super.onReady();
   }
 
-  void onHomeItemPressed() {
-    // Navigator.of(context).pushNamed(RouteList.recusMoto);
+  void onHomeItemPressed(String item) {
+    switch (item) {
+      case IconConstants.goTrustLive:
+        break;
+      case IconConstants.goTrustCyber:
+        break;
+      case IconConstants.onlineShopping:
+        break;
+      case IconConstants.bhXeMay:
+        break;
+      case IconConstants.bhOto:
+        break;
+      case IconConstants.taiNan:
+        break;
+      case IconConstants.sucKhoeVang:
+        break;
+      case IconConstants.goTrustCare:
+        break;
+      case IconConstants.treChuyenBay:
+        break;
+      case IconConstants.cuuHoXeMay:
+        Get.toNamed(Routes.MOTO_RESCUE_BUY_SCREEN);
+        break;
+      case IconConstants.cuuHoOto:
+        break;
+      case IconConstants.khamBenh:
+        break;
+      case IconConstants.ic4g:
+        Get.toNamed(Routes.BORROW_DATA_SCREEN);
+        break;
+      default:
+    }
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

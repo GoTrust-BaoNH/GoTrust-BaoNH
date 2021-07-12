@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:go_trust/modules/home/controller/home_controller.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
@@ -64,13 +63,13 @@ class HomeScreen extends GetView<HomeController> {
                       children: List<Widget>.generate(controller.itemData.length, (index) {
                         final dynamic item = controller.itemData[index];
                         return homeItem(
-                          icon: FCoreImage(
-                            item['icon'],
-                            fit: BoxFit.fitHeight,
-                          ),
-                          title: item['title'],
-                          isOwner: true,
-                        );
+                            icon: FCoreImage(
+                              item['icon'],
+                              fit: BoxFit.fitHeight,
+                            ),
+                            title: item['title'],
+                            isOwner: true,
+                            index: item['icon']);
                       }),
                     ),
                   ),

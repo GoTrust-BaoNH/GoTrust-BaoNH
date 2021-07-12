@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/models/moto_resue/moto_rescue_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
@@ -24,7 +26,9 @@ class MotoRescueBuyController extends BaseController {
     await super.onReady();
   }
 
-  void onBuyNowButtonPressed() {}
+  void onBuyNowButtonPressed() {
+    Get.toNamed(Routes.MOTO_RESCUE_CHECKOUT_SCREEN);
+  }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {
     final locator = Get.find<DialogService>();

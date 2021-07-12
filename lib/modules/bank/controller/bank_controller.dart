@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
@@ -35,9 +37,9 @@ class BankController extends BaseController {
 
     searchController.addListener(() {
       listBank = listBankMock.where((element) {
-          final _bankTitle = element['title']!.toString().toLowerCase();
-          return _bankTitle.contains(searchController.text.toLowerCase());
-        }).toList();
+        final _bankTitle = element['title']!.toString().toLowerCase();
+        return _bankTitle.contains(searchController.text.toLowerCase());
+      }).toList();
     });
   }
 
@@ -47,7 +49,7 @@ class BankController extends BaseController {
   }
 
   void onBankItemPressed() {
-    // Navigator.of(context).pushNamed(RouteList.paymentInfo);
+    Get.toNamed(Routes.PAYMENT_INFO_SCREEN);
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

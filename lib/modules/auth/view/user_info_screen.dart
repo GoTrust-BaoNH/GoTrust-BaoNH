@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:go_trust/modules/auth/controller/auth_controller.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
-import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
-import 'package:get/get.dart';
 
 class UserInfoScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: appbar(context),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
@@ -65,21 +64,16 @@ class UserInfoScreen extends GetView<AuthController> {
               const SizedBox(height: 32),
               AppGradientButton(
                 onPressed: () {
-                  // print();
+                  Get.toNamed(Routes.HOME);
                 },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  child: Text(
-                    'confirm'.tr,
-                    style: TextAppStyle().textEnableButtonStyle(),
-                  ),
+                child: Text(
+                  'confirm'.tr,
+                  style: TextAppStyle().textEnableButtonStyle(),
                 ),
               ),
               const SizedBox(height: 8),
               TextButton(
-                onPressed: () {
-                  // print()
-                },
+                onPressed: () {},
                 child: Text(
                   'enter_late'.tr,
                   style: TextAppStyle().textClickColorStyle(),

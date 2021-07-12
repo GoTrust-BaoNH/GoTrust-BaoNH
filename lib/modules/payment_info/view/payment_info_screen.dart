@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/payment_info/controller/payment_info_controller.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/methods/common_method.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/text_input/input_widget.dart';
 
-class PaymentMethodScreen extends GetView<PaymentInfoController> {
+class PaymentInfoScreen extends GetView<PaymentInfoController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -104,13 +105,12 @@ class PaymentMethodScreen extends GetView<PaymentInfoController> {
               ),
               const SizedBox(height: 16),
               AppGradientButton(
-                onPressed: () {},
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  child: Text(
-                    'confirm'.tr,
-                    style: Theme.of(context).accentTextTheme.headline2,
-                  ),
+                onPressed: () {
+                  Get.toNamed(Routes.MOTO_RESCUE_SCREEN);
+                },
+                child: Text(
+                  'confirm'.tr,
+                  style: Theme.of(context).accentTextTheme.headline6,
                 ),
               ),
               const SizedBox(height: 16)

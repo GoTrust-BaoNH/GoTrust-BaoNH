@@ -16,7 +16,7 @@ import 'package:intl/intl.dart';
 
 part 'your_product_children.dart';
 
-class BorrowDataScreen extends GetView<YourProductController> {
+class YourProductScreen extends GetView<YourProductController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/routes/app_pages.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
 
@@ -13,6 +14,19 @@ PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME}) {
         fontWeight: FontWeight.w600,
         fontFamily: TextAppStyle.appFont,
         color: Colors.white,
+      ),
+    ),
+    brightness: Brightness.dark,
+    flexibleSpace: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            AppColor.color45C152,
+            AppColor.color0ADC90,
+          ],
+        ),
       ),
     ),
     centerTitle: true,
@@ -29,13 +43,13 @@ PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME}) {
           color: Colors.white,
         ),
         onPressed: () {
-          // Navigator.of(context).pushNamed(RouteList.notifications);
+          Get.toNamed(Routes.NOTIFICATION_SCREEN);
         },
       ),
       IconButton(
         icon: const Icon(Icons.menu),
         onPressed: () {
-          Get.toNamed(Routes.NOTIFICATION_SCREEN);
+          Get.toNamed(Routes.YOUR_PRODUCT_SCREEN);
         },
         color: Colors.white,
       ),

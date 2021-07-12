@@ -3,6 +3,7 @@ import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
@@ -11,16 +12,15 @@ class PaymentInfoController extends BaseController {
 
   final ApiRepository apiRepository;
 
-  late final String paymentDescription;
+  late String paymentDescription;
   final int price = 560000;
 
-  final paymentDescriptionMock =
-  '''Gói dịch vụ tiện ích cứu hộ xe máy 24/7 \nThời gian: 1 năm \nLoại xe: dưới 175cc''';
+  final paymentDescriptionMock = '''Gói dịch vụ tiện ích cứu hộ xe máy 24/7 \nThời gian: 1 năm \nLoại xe: dưới 175cc''';
 
   @override
   Future<void> onInit() async {
-    await super.onInit();
     paymentDescription = paymentDescriptionMock;
+    await super.onInit();
   }
 
   @override

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
@@ -24,8 +26,8 @@ class MotoInsuranceController extends BaseController {
     await super.onReady();
   }
 
-  void onBuyButtonPressed (){
-
+  void onBuyButtonPressed() {
+    Get.toNamed(Routes.PAYMENT_METHOD_SCREEN);
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

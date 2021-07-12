@@ -7,14 +7,14 @@ extension _HomePageChildren on HomeScreen {
       borderRadius: 0,
       items: promotions
           .map((e) => CarouselItem(
-        image: e,
-      ))
+                image: e,
+              ))
           .toList(),
       imageBuilder: (url, index) {
         return LayoutBuilder(builder: (
-            context,
-            boxConstraints,
-            ) {
+          context,
+          boxConstraints,
+        ) {
           const color = Colors.transparent;
           return Container(
             width: boxConstraints.maxWidth,
@@ -33,11 +33,14 @@ extension _HomePageChildren on HomeScreen {
     required Widget icon,
     required bool isOwner,
     required String title,
+    required String index,
   }) {
     final itemWidth = Get.width / 3 - 16 * 2;
     final iconHeight = itemWidth * 3 / 4.2;
     return InkWell(
-      onTap: controller.onHomeItemPressed,
+      onTap: () {
+        controller.onHomeItemPressed(index);
+      },
       child: Container(
         width: itemWidth,
         child: Column(
@@ -157,44 +160,49 @@ extension _HomePageChildren on HomeScreen {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List<Widget>.generate(
                 controller.emergencyData.length,
-                (index) => Container(
-                  width: Get.width / 4 - 32,
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          border: Border.all(
-                            color: const Color(0xffFF6B00).withOpacity(0.4),
-                            width: 2,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xffF47458).withOpacity(0.25),
-                              spreadRadius: 0,
-                              blurRadius: 8,
-                              offset: const Offset(0, 4),
+                (index) => GestureDetector(
+                  onTap: () {
+                    controller.onHomeItemPressed(controller.emergencyData[index]['icon']!);
+                  },
+                  child: Container(
+                    width: Get.width / 4 - 32,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                            border: Border.all(
+                              color: const Color(0xffFF6B00).withOpacity(0.4),
+                              width: 2,
                             ),
-                          ],
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xffF47458).withOpacity(0.25),
+                                spreadRadius: 0,
+                                blurRadius: 8,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: FCoreImage(
+                            controller.emergencyData[index]['icon']!,
+                            fit: BoxFit.contain,
+                          ),
                         ),
-                        child: FCoreImage(
-                          controller.emergencyData[index]['icon']!,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      Text(
-                        controller.emergencyData[index]['title']!,
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: AppColor.primaryTextColorLight,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      )
-                    ],
+                        Text(
+                          controller.emergencyData[index]['title']!,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: AppColor.primaryTextColorLight,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

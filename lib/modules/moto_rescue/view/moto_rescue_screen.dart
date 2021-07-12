@@ -73,12 +73,9 @@ class MotoRescueScreen extends GetView<MotoRescueController> {
               ),
               child: AppGradientButton(
                 onPressed: () {},
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  child: Text(
-                    'call_operator'.tr,
-                    style: Theme.of(context).accentTextTheme.headline2,
-                  ),
+                child: Text(
+                  'call_operator'.tr,
+                  style: Theme.of(context).accentTextTheme.headline6,
                 ),
               ),
             ),

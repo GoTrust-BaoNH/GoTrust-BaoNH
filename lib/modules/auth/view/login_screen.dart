@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_trust/modules/auth/controller/auth_controller.dart';
 import 'package:get/get.dart';
+import 'package:go_trust/modules/auth/controller/auth_controller.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/routes/app_pages.dart';
@@ -50,15 +50,11 @@ class LoginScreen extends GetView<AuthController> {
                     const SizedBox(height: 32),
                     AppGradientButton(
                       onPressed: () {
-                        // Get.toNamed(Routes.AUTH + Routes.USER_INFO_SCREEN);
-                        Get.toNamed(Routes.BORROW_DATA_SCREEN);
+                        Get.toNamed(Routes.AUTH + Routes.OTP_SCREEN);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: Text(
-                          'login'.tr,
-                          style: TextAppStyle().textEnableButtonStyle(),
-                        ),
+                      child: Text(
+                        'login'.tr,
+                        style: TextAppStyle().textEnableButtonStyle(),
                       ),
                     ),
                     const SizedBox(height: 16),

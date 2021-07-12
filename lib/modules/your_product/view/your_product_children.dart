@@ -1,6 +1,6 @@
 part of 'your_product_screen.dart';
 
-extension YourProductChildrenExtension on BorrowDataScreen {
+extension YourProductChildrenExtension on YourProductScreen {
   Widget _listProduct({
     required void Function(YourProductModel) onItemPressed,
   }) {
@@ -117,8 +117,7 @@ class ProductItem extends StatelessWidget {
                 flex: 3,
                 child: isContractProcessing
                     ? _buildProcessing()
-                    : BuildProductDetailWidget(
-                        productName: productName, contractCode: contractCode, price: price, expiredDate: expiredDate),
+                    : BuildProductDetailWidget(productName: productName, contractCode: contractCode, price: price, expiredDate: expiredDate),
               )
             ],
           ),
