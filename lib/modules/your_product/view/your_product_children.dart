@@ -74,6 +74,7 @@ class ProductItem extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(50)),
         child: Text(
           'extension'.tr,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w500,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 
 class BankItem extends StatelessWidget {
   const BankItem({
@@ -29,7 +30,7 @@ class BankItem extends StatelessWidget {
           ),
           Text(
             title,
-            style: Theme.of(context).accentTextTheme.headline1,
+            style: TextAppStyle().textBankNamePaymentStyle(),
           )
         ],
       ),

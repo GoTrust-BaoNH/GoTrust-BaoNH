@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_trust/modules/payment_info/controller/payment_info_controller.dart';
 import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/methods/common_method.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
@@ -63,10 +64,10 @@ class PaymentInfoScreen extends GetView<PaymentInfoController> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 12),
+                        padding: const EdgeInsets.only(top: 40, bottom: 12),
                         child: Text(
                           'content_billing'.tr,
-                          style: Theme.of(context).accentTextTheme.bodyText2,
+                          style: TextAppStyle().textTitlePagePaymentStyle(),
                         ),
                       ),
                       Container(
@@ -81,17 +82,23 @@ class PaymentInfoScreen extends GetView<PaymentInfoController> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(controller.paymentDescription),
+                            Text(
+                              controller.paymentDescription,
+                              style: TextAppStyle().textContentPagePaymentStyle(),
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
                             RichText(
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'payment_amount'.tr,
-                                    style: Theme.of(context).textTheme.bodyText2,
+                                    text: '${'payment_amount'.tr}: ',
+                                    style: TextAppStyle().textContentPagePaymentStyle(),
                                   ),
                                   TextSpan(
                                     text: formatVnd(controller.price.toString()),
-                                    style: Theme.of(context).accentTextTheme.bodyText1,
+                                    style: TextAppStyle().textTitlePagePaymentStyle(),
                                   ),
                                 ],
                               ),

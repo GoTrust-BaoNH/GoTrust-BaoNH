@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/moto_rescue/controller/moto_rescue_controller.dart';
+import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
@@ -54,9 +55,14 @@ class MotoRescueScreen extends GetView<MotoRescueController> {
                     icon: Container(
                       width: 40,
                       height: 40,
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: const Color(0xffFF6B00),
+                        color: AppColor.redPrimary.withOpacity(0.2),
+                      ),
+                      child: const FCoreImage(
+                        IconConstants.repair,
+                        color: AppColor.redPrimary,
                       ),
                     ),
                     title: 'fix_lock_problem'.tr,

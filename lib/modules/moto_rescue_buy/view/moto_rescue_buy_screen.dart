@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:go_trust/modules/moto_rescue_buy/controller/moto_rescue_buy_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/methods/common_method.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
@@ -39,7 +40,7 @@ class MotoRescueBuyScreen extends GetView<MotoRescueBuyController> {
                   ),
                   child: CustomTab(
                     items: [
-                      'car_below'.trParams({'value': '175'})!,
+                      'motorcycle_below'.trParams({'value': '175'})!,
                       'motorcycle_on'.trParams({'value': '175'})!,
                     ],
                     activeItemDecoration: BoxDecoration(
@@ -67,7 +68,7 @@ class MotoRescueBuyScreen extends GetView<MotoRescueBuyController> {
                             ),
                             TextSpan(
                               text: formatVnd(controller.viewModel.price.toString()),
-                              style: Theme.of(context).accentTextTheme.headline3,
+                              style: TextAppStyle().textPricePageMotoStyle(),
                             ),
                             TextSpan(
                               text: ' / ${'year'.tr}',

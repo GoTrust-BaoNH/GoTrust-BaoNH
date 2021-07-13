@@ -28,7 +28,7 @@ class PaymentMethodModel {
 
 const paymentMethodMock = '''
 {
-"image": "assets/images/alepay.png",
+"image": "lib/resource/assets_resources/images/alepay.png",
 "title": "Thanh toán vằng ví điện tử Ale pay"
 }
 ''';

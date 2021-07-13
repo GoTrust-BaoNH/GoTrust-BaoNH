@@ -34,6 +34,7 @@ class AppGradientButton extends StatelessWidget {
             : null,
       ),
       child: MaterialButton(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: const StadiumBorder(),
         onPressed: onPressed,

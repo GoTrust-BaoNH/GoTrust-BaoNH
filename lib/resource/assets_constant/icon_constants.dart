@@ -1,5 +1,6 @@
 class IconConstants {
   static const String edit = 'lib/resource/assets_resources/icons/ic_edit.png';
+  static const String menu = 'lib/resource/assets_resources/icons/ic_menu.svg';
 
   static const String sucKhoeVang = 'lib/resource/assets_resources/icons/ic_suc_khoe_vang.svg';
   static const String bhOto = 'lib/resource/assets_resources/icons/ic_bh_oto.svg';

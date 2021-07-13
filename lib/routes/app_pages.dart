@@ -30,6 +30,8 @@ import 'package:go_trust/modules/payment_method/binding/payment_method_binding.d
 import 'package:go_trust/modules/payment_method/view/payment_method_screen.dart';
 import 'package:go_trust/modules/splash/binding/splash_binding.dart';
 import 'package:go_trust/modules/splash/view/splash_screen.dart';
+import 'package:go_trust/modules/voucher/binding/home_binding.dart';
+import 'package:go_trust/modules/voucher/view/voucher_screen.dart';
 import 'package:go_trust/modules/your_product/binding/your_product_binding.dart';
 import 'package:go_trust/modules/your_product/view/your_product_screen.dart';
 
@@ -116,5 +118,10 @@ final routePages = [
     name: Routes.YOUR_PRODUCT_SCREEN,
     page: () => YourProductScreen(),
     binding: YourProductBinding(),
+  ),
+  GetPage(
+    name: Routes.VOUCHER_SCREEN,
+    page: () => VoucherScreen(),
+    binding: VoucherBinding(),
   ),
 ];

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/payment_method/controller/payment_method_controller.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/payment_widget/payment_method_item.dart';
@@ -28,7 +29,7 @@ class PaymentMethodScreen extends GetView<PaymentMethodController> {
               padding: const EdgeInsets.only(top: 20, bottom: 12),
               child: Text(
                 'choose_payment_method'.tr,
-                style: Theme.of(context).accentTextTheme.bodyText2,
+                style: TextAppStyle().textTitlePagePaymentStyle(),
               ),
             ),
             Expanded(

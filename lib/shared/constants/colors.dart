@@ -13,6 +13,8 @@ class AppColor {
   static Color thirdTextColorLight = const Color(0xFF000000); // black
   static Color fourthTextColorLight = const Color(0xFF13862B); // green
   static Color fifthTextColorLight = const Color(0xFF888888); // gray
+  static Color sixTextColorLight = const Color(0xFF4F4F4F); // gray
+  static Color sevenTextColorLight = const Color(0xFF1B1B1E); // gray
   static Color primaryHintColorLight = const Color(0xFF888888); // gray
   static Color primaryBorderColorLight = const Color(0xFFF0F0F0); // gray
   static Color primarySelectedColorLight = const Color(0xFFADADAD); // gray

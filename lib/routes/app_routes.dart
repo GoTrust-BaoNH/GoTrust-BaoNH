@@ -21,4 +21,5 @@ abstract class Routes {
   static const BANK_SCREEN = '/bank_screen';
   static const PAYMENT_INFO_SCREEN = '/payment_info_screen';
   static const YOUR_PRODUCT_SCREEN = '/your_product_screen';
+  static const VOUCHER_SCREEN = '/voucher_screen';
 }

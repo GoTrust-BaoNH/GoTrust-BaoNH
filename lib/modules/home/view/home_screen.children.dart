@@ -132,7 +132,10 @@ extension _HomePageChildren on HomeScreen {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-            child: Text(title),
+            child: Text(
+              title,
+              style: TextAppStyle().textTitleCardPageHomeStyle(),
+            ),
           )
         ],
       ),
@@ -149,11 +152,7 @@ extension _HomePageChildren on HomeScreen {
           const SizedBox(height: 4),
           Text(
             'Liên hệ khẩn cấp',
-            style: TextStyle(
-              color: AppColor.primaryColorLight,
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextAppStyle().textTitlePageHomeStyle(),
           ),
           Expanded(
             child: Row(
@@ -206,6 +205,56 @@ extension _HomePageChildren on HomeScreen {
                   ),
                 ),
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget userInfoWidget() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      height: 60,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            AppColor.color45C152,
+            AppColor.color0ADC90,
+          ],
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${'hello'.tr}, Olaga Evans',
+                style: TextAppStyle().textUserNamePageHomeStyle(),
+              ),
+              Text(
+                '0345678910',
+                style: TextAppStyle().textPhonePageHomeStyle(),
+              ),
+            ],
+          ),
+          Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              color: AppColor.secondBackgroundColorLight,
+            ),
+            child: Icon(
+              Icons.person,
+              size: 20,
+              color: AppColor.accentColorLight,
             ),
           ),
         ],

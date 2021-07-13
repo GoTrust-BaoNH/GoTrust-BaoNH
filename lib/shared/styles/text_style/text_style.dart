@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 
 part 'borrow_data_page/borrow_data_text_style.dart';
+part 'home_page/home_page_text_style.dart';
+part 'moto_page/moto_page_text_style.dart';
+part 'payment_page/payment_page_text_style.dart';
 
 /// Define color at theme_data.dart
 class TextAppStyle {

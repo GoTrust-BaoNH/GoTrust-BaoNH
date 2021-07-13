@@ -99,6 +99,7 @@ class HomeController extends BaseController {
         Get.toNamed(Routes.MOTO_RESCUE_BUY_SCREEN);
         break;
       case IconConstants.cuuHoOto:
+        Get.toNamed(Routes.VOUCHER_SCREEN);
         break;
       case IconConstants.khamBenh:
         break;

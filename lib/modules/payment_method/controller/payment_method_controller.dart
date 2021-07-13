@@ -19,10 +19,10 @@ class PaymentMethodController extends BaseController {
 
   @override
   Future<void> onInit() async {
-    await super.onInit();
     for (var i = 0; i < 4; i++) {
       viewModel.add(PaymentMethodModel.fromMock());
     }
+    await super.onInit();
   }
 
   @override

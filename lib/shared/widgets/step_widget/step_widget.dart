@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_trust/shared/constants/colors.dart';
 
 const double _itemSize = 14;
 
@@ -56,19 +57,37 @@ class StepWidget extends StatelessWidget {
         const SizedBox(height: 12),
         Row(
           children: <Widget>[
-            Text(
-              'info'.tr,
-              style: Theme.of(context).accentTextTheme.subtitle1,
+            Expanded(
+              child: Text(
+                'info'.tr,
+                style: TextStyle(
+                  color: AppColor.primaryTextColorLight,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
-            Expanded(child: Container()),
-            Text(
-              'confirm'.tr,
-              style: Theme.of(context).accentTextTheme.subtitle1,
+            Expanded(
+              child: Text(
+                'confirm'.tr,
+                style: TextStyle(
+                  color: AppColor.primaryTextColorLight,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
-            Expanded(child: Container()),
-            Text(
-              'payment'.tr,
-              style: Theme.of(context).accentTextTheme.subtitle1,
+            Expanded(
+              child: Text(
+                'payment'.tr,
+                style: TextStyle(
+                  color: AppColor.primaryTextColorLight,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.right,
+              ),
             ),
           ],
         ),

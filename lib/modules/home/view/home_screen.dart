@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/home/controller/home_controller.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/carousel/carousel_widget.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
@@ -15,10 +17,17 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar(context),
+      appBar: appbar(context,
+          leadingIcon: IconButton(
+            icon: const Icon(Icons.call, color: Colors.white),
+            onPressed: () {
+              Get.toNamed(Routes.EMERGENCY_SCREEN);
+            },
+          )),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          userInfoWidget(),
           emergencyWidget(),
           Expanded(
             child: SingleChildScrollView(
@@ -33,7 +42,7 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                     child: Text(
                       'insurance_utilities'.tr,
-                      style: Theme.of(context).accentTextTheme.bodyText2,
+                      style: TextAppStyle().textTitlePageHomeStyle(),
                     ),
                   ),
                   Padding(
@@ -86,7 +95,7 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                     child: Text(
                       'insurance_utilities'.tr,
-                      style: Theme.of(context).accentTextTheme.bodyText2,
+                      style: TextAppStyle().textTitlePageHomeStyle(),
                     ),
                   ),
                   Column(

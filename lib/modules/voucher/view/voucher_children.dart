@@ -1,6 +1,6 @@
 part of 'voucher_screen.dart';
 
-extension VoucherChildrenExtension on EmergencyScreen {
+extension VoucherChildrenExtension on VoucherScreen {
   Widget _buildInputVoucher() {
     return Card(
       shape: const RoundedRectangleBorder(
@@ -52,6 +52,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
           ),
           color: AppColor.greyE1EBE4),
       child: MaterialButton(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         onPressed: onQRButtonPressed,
         child: Stack(
           children: [
@@ -105,6 +106,7 @@ extension VoucherChildrenExtension on EmergencyScreen {
         color: AppColor.greyE1EBE4,
       ),
       child: MaterialButton(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         onPressed: onButtonPressed,
         child: Center(
           child: Text(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/moto_rescue_checkout/controller/moto_rescue_checkout_controller.dart';
+import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/step_widget/step_widget.dart';
@@ -31,7 +32,7 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
               padding: const EdgeInsets.only(top: 20, bottom: 16),
               child: Text(
                 'confirm_information'.tr,
-                style: Theme.of(context).accentTextTheme.bodyText2,
+                style: TextAppStyle().textTitlePageMotoStyle(),
               ),
             ),
             Expanded(

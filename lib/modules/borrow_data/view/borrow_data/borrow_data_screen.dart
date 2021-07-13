@@ -46,12 +46,9 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
               margin: const EdgeInsets.only(top: 32),
               child: AppGradientButton(
                 onPressed: controller.onBorrowDataPressed,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  child: Text(
-                    'borrow_value_data'.trParams({'value': '1'})!,
-                    style: TextAppStyle().textEnableButtonStyle(),
-                  ),
+                child: Text(
+                  'borrow_value_data'.trParams({'value': '1'})!,
+                  style: TextAppStyle().textEnableButtonStyle(),
                 ),
               ),
             ),

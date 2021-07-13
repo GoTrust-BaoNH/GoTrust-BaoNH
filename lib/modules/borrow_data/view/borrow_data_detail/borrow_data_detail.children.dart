@@ -20,6 +20,7 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
                 color: AppColor.primaryTextColorLight,
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
+                letterSpacing: 4,
               ),
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
@@ -67,7 +68,7 @@ extension _BorrowDataDetailChildren on BorrowDataDetailScreen {
             (index) => dataButton(
               data: data.items[index],
               onTap: () {
-                // print
+                data.items[index].isSelected = true;
               },
             ),
           ),

@@ -22,15 +22,22 @@ extension _RescusMotoChildren on MotoRescueScreen {
             children: [
               icon,
               const SizedBox(height: 8),
-              Text(
-                title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: AppColor.primaryTextColorLight,
-                  fontSize: 14,
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: AppColor.primaryTextColorLight,
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                    ),
+                    //textAlign: TextAlignVertical.center,
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),

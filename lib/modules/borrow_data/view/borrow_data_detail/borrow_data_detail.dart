@@ -56,12 +56,11 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                         dataPackageModel,
                       ).length,
                       itemBuilder: (context, index) => Container(
-                        margin: const EdgeInsets.only(top: 22),
+                        margin: const EdgeInsets.only(bottom: 22),
                         child: dataPackagesList(
-                          data: dataPackagesModelListFromRawJson(
-                            dataPackageModel,
-                          )[index],
-                        ),
+                            data: dataPackagesModelListFromRawJson(
+                          dataPackageModel,
+                        )[index]),
                       ),
                     ),
                   ),
@@ -77,7 +76,7 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  top: 4,
+                  top: 15,
                   left: 16,
                   right: 16,
                 ),
@@ -104,12 +103,9 @@ class BorrowDataDetailScreen extends GetView<BorrowDataController> {
                 ),
                 child: AppGradientButton(
                   onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: Text(
-                      'confirm'.tr,
-                      style: TextAppStyle().textEnableButtonStyle(),
-                    ),
+                  child: Text(
+                    'confirm'.tr,
+                    style: TextAppStyle().textEnableButtonStyle(),
                   ),
                 ),
               ),

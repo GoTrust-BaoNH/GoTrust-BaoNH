@@ -20,6 +20,7 @@ extension _BorrowDataChildrenExtension on BorrowDataScreen {
               style: TextStyle(
                 color: AppColor.primaryTextColorLight,
                 fontSize: 20,
+                letterSpacing: 4,
               ),
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
@@ -56,6 +57,7 @@ extension _BorrowDataChildrenExtension on BorrowDataScreen {
         color: const Color(0xFFE1EBE4),
       ),
       child: MaterialButton(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: const StadiumBorder(),
         onPressed: onPressed,

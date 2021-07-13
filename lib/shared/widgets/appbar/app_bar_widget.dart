@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
+import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 
-PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME}) {
+PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME, IconButton? leadingIcon}) {
   return AppBar(
     title: Text(
       title,
@@ -16,6 +18,7 @@ PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME}) {
         color: Colors.white,
       ),
     ),
+    elevation: 0,
     brightness: Brightness.dark,
     flexibleSpace: Container(
       decoration: const BoxDecoration(
@@ -30,12 +33,13 @@ PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME}) {
       ),
     ),
     centerTitle: true,
-    leading: IconButton(
-      icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    ),
+    leading: leadingIcon ??
+        IconButton(
+          icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
     actions: [
       IconButton(
         icon: const Icon(
@@ -47,7 +51,10 @@ PreferredSizeWidget appbar(BuildContext context, {String title = APP_NAME}) {
         },
       ),
       IconButton(
-        icon: const Icon(Icons.menu),
+        icon: const FCoreImage(
+          IconConstants.menu,
+          fit: BoxFit.fitHeight,
+        ),
         onPressed: () {
           Get.toNamed(Routes.YOUR_PRODUCT_SCREEN);
         },

@@ -65,18 +65,18 @@ class LoginScreen extends GetView<AuthController> {
                           style: TextAppStyle().contentPageTextStyle(),
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 15),
                         GestureDetector(
                           onTap: () {
-                            // Get.toNamed(Routes.AUTH + Routes.QRCODE_SCREEN);
+                            Get.toNamed(Routes.AUTH + Routes.QRCODE_SCREEN);
                           },
                           child: const FCoreImage(IconConstants.qr),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 23),
                         const FCoreImage(IconConstants.facebook),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 23),
                         const FCoreImage(IconConstants.google),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 23),
                         const FCoreImage(IconConstants.apple),
                       ],
                     ),

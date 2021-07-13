@@ -21,6 +21,7 @@ class SecondaryButton extends StatelessWidget {
         color: AppColor.disabledButtonColorLight,
       ),
       child: MaterialButton(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: const StadiumBorder(),
         onPressed: onPressed,

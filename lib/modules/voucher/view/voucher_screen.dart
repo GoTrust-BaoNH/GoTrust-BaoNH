@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/voucher/controller/voucher_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
@@ -10,7 +10,7 @@ import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
 
 part 'voucher_children.dart';
 
-class EmergencyScreen extends GetView<VoucherController> {
+class VoucherScreen extends GetView<VoucherController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
