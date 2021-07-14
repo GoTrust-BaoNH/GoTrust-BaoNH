@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "789977948269",
+    "project_id": "gotrust-login",
+    "storage_bucket": "gotrust-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789977948269:android:ca75acda9b2f6543cc1f64",
+        "android_client_info": {
+          "package_name": "com.go.trust.gotrust"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789977948269-9b65eb7oepb7obidlqc6qukstuokvif5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1fMIkdxd1R1sS2mRBx4lY13a59LCsNO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789977948269-9b65eb7oepb7obidlqc6qukstuokvif5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
