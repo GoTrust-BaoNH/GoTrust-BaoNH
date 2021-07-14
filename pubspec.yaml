@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_barcode_scanner:
+    path: ../go_trust/external_library/flutter_barcode_scanner
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -38,7 +40,6 @@ dependencies:
   flutter_launcher_icons: ^0.9.0
   extended_image: ^4.1.0
   intl: ^0.17.0
-  flutter_barcode_scanner: ^2.0.0
   carousel_slider: ^4.0.0
   dots_indicator: ^2.0.0
 

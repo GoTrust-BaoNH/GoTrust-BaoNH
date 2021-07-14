@@ -331,9 +331,9 @@ packages:
   flutter_barcode_scanner:
     dependency: "direct main"
     description:
-      name: flutter_barcode_scanner
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "external_library/flutter_barcode_scanner"
+      relative: true
+    source: path
     version: "2.0.0"
   flutter_easyloading:
     dependency: "direct main"

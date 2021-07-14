@@ -16,13 +16,8 @@ class TextAppStyle {
   }
 
   TextStyle versionContentTextStyle() {
-    /// headline2 Color: secondTextColor -> White
-    /// headline2: baseTextTheme.headline2!.copyWith(
-    ///   color: secondTextColor,
-    ///   fontSize: 20,
-    ///  fontWeight: FontWeight.bold,
-    /// ),
-    return Get.theme.textTheme.headline2!;
+    /// headline4 Color: fourthTextColor -> Green
+    return Get.theme.textTheme.headline4!;
   }
 
   TextStyle textEnableButtonStyle() {

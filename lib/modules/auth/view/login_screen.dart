@@ -68,7 +68,8 @@ class LoginScreen extends GetView<AuthController> {
                         const SizedBox(width: 15),
                         GestureDetector(
                           onTap: () {
-                            Get.toNamed(Routes.AUTH + Routes.QRCODE_SCREEN);
+                            // Get.toNamed(Routes.AUTH + Routes.QRCODE_SCREEN);
+                            controller.scanQRCode();
                           },
                           child: const FCoreImage(IconConstants.qr),
                         ),

@@ -8,13 +8,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
   @override
+  Future<void> onInit() async {
+    super.onInit();
+    await loadInitSplashScreen();
+  }
+
+  @override
   Future<void> onReady() async {
     super.onReady();
+  }
 
-    await Future.delayed(const Duration(milliseconds: 2000));
+  Future<void> loadInitSplashScreen() async {
+    await Future.delayed(const Duration(milliseconds: 1000));
     final storage = Get.find<SharedPreferences>();
-    loadLanguage(storage);
-    loadTheme(storage);
+    _loadLanguage(storage);
+    _loadTheme(storage);
     try {
       if (storage.getString(StorageConstants.token) != null) {
         print('Token: ${storage.getString(StorageConstants.token)}');
@@ -27,10 +35,12 @@ class SplashController extends GetxController {
     }
   }
 
-  void loadLanguage(SharedPreferences storage) {
+  void _loadLanguage(SharedPreferences storage) {
     final language = storage.getString(StorageConstants.language);
     if (language == null) {
       Get.updateLocale(const Locale('vi', 'VN'));
+      storage.setString(StorageConstants.language, VIETNAMESE_LANG);
+      return;
     }
 
     if (language == VIETNAMESE_LANG) {
@@ -41,7 +51,7 @@ class SplashController extends GetxController {
     Get.updateLocale(const Locale('en', 'US'));
   }
 
-  void loadTheme(SharedPreferences storage) {
+  void _loadTheme(SharedPreferences storage) {
     final theme = storage.getString(StorageConstants.theme);
     if (theme == null || theme == LIGHT_THEME) {
       Get.changeThemeMode(ThemeMode.light);
@@ -51,5 +61,10 @@ class SplashController extends GetxController {
 
     Get.changeThemeMode(ThemeMode.dark);
     storage.setString(StorageConstants.theme, DARK_THEME);
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
   }
 }
