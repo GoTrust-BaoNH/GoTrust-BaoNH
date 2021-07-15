@@ -17,6 +17,7 @@ const TOTAL_FIELD = 'total';
 const TOTAL_PAGES_FIELD = 'total_pages';
 const DATA_FIELD = 'data';
 const SUPPORT_FIELD = 'support';
+const PROVIDER_FIELD = 'provider';
 
 // TimeOut
 const TIME_OUT_SECOND = '30';

@@ -1,0 +1,21 @@
+mutation ($phoneNumber: String, $password: String){
+    login(phoneNumber: $phoneNumber, password: $password) {
+        token
+        user{
+            oauthId
+            oauthProvider
+            qrcodeSecret
+            createdDate
+            email
+            fullName
+            id
+            password
+            phoneNumber
+            privateId
+            status
+            updatedDate
+            username
+        }
+        registed
+    }
+}

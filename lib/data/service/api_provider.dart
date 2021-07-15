@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_graphql_provider.dart';
+import 'package:go_trust/data/common/common_method.dart';
+import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/data/graphql/mutation/login_with_auth_mutation_graphql.dart';
 import 'package:go_trust/shared/models/request/login_request.dart';
 import 'package:go_trust/shared/models/request/register_request.dart';
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql;
 import '../../data/base/base_provider.dart';
-import '../../data/common/common_method.dart';
-import '../../data/common/define_field.dart';
-import '../../data/graphql/query/demo_query_graphql.dart';
 
 class ApiProvider extends BaseProvider {
   Future<Response> login(String path, LoginRequest data) {
@@ -17,17 +17,17 @@ class ApiProvider extends BaseProvider {
     return post(path, data.toJson());
   }
 
-  Future<graphql.QueryResult> getListTodo({required int limit, required int offset}) {
-    print('Request Demo GraphQl with API: URI: ');
-    return BaseGraphQLProvider.instance.value
+  Future<graphql.QueryResult> loginOAuth({required String provider, required String token}) {
+    print('Request login with auth API: URI: ');
+    return BaseAuthGraphQLProvider.instance.value
         .query(
       graphql.QueryOptions(
-        document: GetActiveTodosQuery(
-          variables: GetActiveTodosArguments(),
+        document: LoginWithAuthMutationGraphqlMutation(
+          variables: LoginWithAuthMutationGraphqlArguments(),
         ).document,
         variables: {
-          LIMIT_FIELD: limit,
-          OFFSET_FIELD: offset,
+          PROVIDER_FIELD: provider,
+          TOKEN_FIELD: token,
         },
       ),
     )

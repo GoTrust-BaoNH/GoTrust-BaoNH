@@ -1,18 +1,21 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:go_trust/data/common/common_method.dart';
 import 'package:go_trust/data/common/define_api.dart';
+import 'package:go_trust/data/graphql/mutation/login_with_auth_mutation_graphql.dart';
 import 'package:go_trust/data/interceptors/graphql_interceptor.dart';
 import 'package:go_trust/shared/models/request/login_request.dart';
 import 'package:go_trust/shared/models/request/register_request.dart';
 import 'package:go_trust/shared/models/response/login_response.dart';
 import 'package:go_trust/shared/models/response/register_response.dart';
+import 'package:go_trust/shared/models/users/login_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-import '../../data/graphql/query/demo_query_graphql.dart';
 import '../../data/service/api_provider.dart';
 
 class ApiRepository {
@@ -38,7 +41,7 @@ class ApiRepository {
 
           if (result.status == LoginStatus.success) {
             Map<String, dynamic>? _userData = await FacebookAuth.instance.getUserData(
-              fields: "name,email,picture.width(200),photos",
+              fields: 'name,email,picture.width(200),photos',
             );
             // FacebookAuth.instance.logOut();
             // TODO: mapping api server and return login response
@@ -55,7 +58,7 @@ class ApiRepository {
             ],
           );
 
-          GoogleSignInAccount? account = await _googleSignIn.signIn();
+          final account = await _googleSignIn.signIn();
           //_googleSignIn.signOut();
           // TODO: mapping api server and return login response
         } catch (error) {
@@ -124,13 +127,13 @@ class ApiRepository {
     }
   }
 
-  Future<List<GetActiveTodos$Query$TodosSelectColumn>> getList({required int limit, required int offset}) async {
-    final c = Completer<List<GetActiveTodos$Query$TodosSelectColumn>>();
+  Future<LoginModel> getLoginUserWithAuth({required String provider, required String token}) async {
+    final c = Completer<LoginModel>();
     try {
-      final results = await apiProvider.getListTodo(limit: limit, offset: offset);
+      final results = await apiProvider.loginOAuth(provider: provider, token: token);
       if (!results.hasException) {
-        final listTodo = GetActiveTodos$Query.fromJson(results.data!).todos;
-        c.complete(listTodo);
+        final loginModel = convertUserLoginModel(LoginWithAuthMutationGraphql$Mutation.fromJson(results.data!).loginOAuth!);
+        c.complete(loginModel);
       } else {
         print('Exception: ${results.exception}');
         c.completeError(handleErrorGraphQL(results.exception!));

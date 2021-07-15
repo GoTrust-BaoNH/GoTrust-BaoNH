@@ -49,7 +49,7 @@ const Map<String, String> vi_VN = {
   'chosen_language': 'Chọn ngôn ngữ',
   'english': 'Tiếng Anh',
   'vietnamese': 'Tiếng Việt',
-  'network_error': 'Lội mạng',
+  'network_error': 'Lỗi mạng',
   'network_error_message': 'Không thể kết mối mạng.',
   'hello': 'Xin chào',
   'login_for_use_app': 'Đăng nhập để sử dụng đầy đủ tính năng của ứng dụng',
