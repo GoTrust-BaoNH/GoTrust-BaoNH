@@ -56,6 +56,31 @@ class AuthController extends BaseController {
     }
   }
 
+  Future<void> loginWithFacebook(BuildContext context) async {
+    AppFocus.unFocus(context);
+
+    final res = await apiRepository.login(
+      LoginType.Facebook,
+      LoginRequest(
+        username: '',
+        password: '',
+      ),
+    );
+
+    if (res == null) {
+      await EasyLoading.dismiss();
+      await callDialogErrorNetwork();
+      return;
+    }
+
+    final prefs = Get.find<SharedPreferences>();
+    if (res.token.isNotEmpty) {
+      await prefs.setString(StorageConstants.token, res.token);
+      await prefs.setString(StorageConstants.userId, '');
+      await Get.offAndToNamed(Routes.HOME);
+    }
+  }
+
   Future<void> scanQRCode() async {
     try {
       qrCodeResult = await FlutterBarcodeScanner.scanBarcode(

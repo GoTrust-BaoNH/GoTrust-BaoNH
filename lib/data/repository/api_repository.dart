@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:go_trust/data/common/define_api.dart';
 import 'package:go_trust/data/interceptors/graphql_interceptor.dart';
 import 'package:go_trust/shared/models/request/login_request.dart';
@@ -25,15 +26,34 @@ class ApiRepository {
       case LoginType.QrCode:
         break;
       case LoginType.Facebook:
+        try {
+          final result = await FacebookAuth.instance.login(permissions: [
+            'email',
+            'public_profile',
+            'user_photos',
+          ]);
+
+          if (result.status == LoginStatus.success) {
+            Map<String, dynamic>? _userData = await FacebookAuth.instance.getUserData(
+              fields: "name,email,picture.width(200),photos",
+            );
+            // FacebookAuth.instance.logOut();
+            // TODO: mapping api server and return login response
+          }
+        } catch (error) {
+          print(error);
+        }
         break;
       case LoginType.Google:
-        final _googleSignIn = GoogleSignIn(
-          scopes: [
-            'email',
-          ],
-        );
         try {
+          final _googleSignIn = GoogleSignIn(
+            scopes: [
+              'email',
+            ],
+          );
+
           GoogleSignInAccount? account = await _googleSignIn.signIn();
+          //_googleSignIn.signOut();
           // TODO: mapping api server and return login response
         } catch (error) {
           print(error);

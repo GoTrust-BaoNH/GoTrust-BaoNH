@@ -74,7 +74,12 @@ class LoginScreen extends GetView<AuthController> {
                           child: const FCoreImage(IconConstants.qr),
                         ),
                         const SizedBox(width: 23),
-                        const FCoreImage(IconConstants.facebook),
+                        GestureDetector(
+                          onTap: () {
+                            controller.loginWithFacebook(context);
+                          },
+                          child: const FCoreImage(IconConstants.facebook),
+                        ),
                         const SizedBox(width: 23),
                         GestureDetector(
                           onTap: () {
