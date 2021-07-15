@@ -88,7 +88,12 @@ class LoginScreen extends GetView<AuthController> {
                           child: const FCoreImage(IconConstants.google),
                         ),
                         const SizedBox(width: 23),
-                        const FCoreImage(IconConstants.apple),
+                        GestureDetector(
+                          onTap: () {
+                            controller.loginWithApple(context);
+                          },
+                          child: const FCoreImage(IconConstants.apple),
+                        ),
                       ],
                     ),
                   ],
