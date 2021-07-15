@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_barcode_scanner:
-    path: ../go_trust/external_library/flutter_barcode_scanner
+    path: /Users/tan.pv/GoTrustMobile/external_library/flutter_barcode_scanner
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -49,6 +49,9 @@ dependencies:
   artemis: ^7.0.0-beta.17
   build_runner: ^2.0.5
   json_serializable: ^4.1.3
+
+  #login
+  google_sign_in: ^5.0.4
 
 dev_dependencies:
   flutter_test:

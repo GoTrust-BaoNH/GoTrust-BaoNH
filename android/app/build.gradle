@@ -34,7 +34,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -46,7 +46,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.go.trust.go_trust"
+        applicationId "com.go.trust.gotrust"
         minSdkVersion 21
         targetSdkVersion 30
         renderscriptTargetApi 21
