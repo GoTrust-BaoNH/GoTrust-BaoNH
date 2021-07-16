@@ -10,4 +10,6 @@ class LoginModel {
   String? token;
   UserModel? user;
   bool registered;
+  bool? status;
+  String? message;
 }

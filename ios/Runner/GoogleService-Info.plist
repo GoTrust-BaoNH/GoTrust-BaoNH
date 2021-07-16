@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>789977948269-5gj8vcmajf0r7b9jv0b84va511qc0i73.apps.googleusercontent.com</string>
+	<string>217684060706-1lmabrn0u6mvgdnfarc3krcv17pltdcp.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.789977948269-5gj8vcmajf0r7b9jv0b84va511qc0i73</string>
+	<string>com.googleusercontent.apps.217684060706-1lmabrn0u6mvgdnfarc3krcv17pltdcp</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>217684060706-fpfjf6m1ilofuj73q961kjeartvbaq3p.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDjGVbF3deDFSMSTjKLDaUc3nyZ3JfB1K8</string>
+	<string>AIzaSyCyEFeDxAcg3QoUsdWXkzDQOQVKWqx67BY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>789977948269</string>
+	<string>217684060706</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.go.trust.gotrust</string>
+	<string>com.go.trust.gotrust.test</string>
 	<key>PROJECT_ID</key>
-	<string>gotrust-login</string>
+	<string>firebase-nttfinal</string>
 	<key>STORAGE_BUCKET</key>
-	<string>gotrust-login.appspot.com</string>
+	<string>firebase-nttfinal.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:789977948269:ios:70da99e5e8e77d78cc1f64</string>
+	<string>1:217684060706:ios:5596e5926c639b3e54f87b</string>
+	<key>DATABASE_URL</key>
+	<string>https://nttfinal.firebaseio.com</string>
 </dict>
 </plist>
