@@ -15,7 +15,7 @@ Object handleErrorGraphQL(OperationException exception) {
 
   } else {
      _handleGraphQlErrorServer(exception, exception.graphqlErrors.first.extensions!['code']);
-     return exception.graphqlErrors.first.extensions!['code'];
+     return exception.graphqlErrors.first.extensions!['message'];
   }
 }
 

@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
@@ -14,6 +15,7 @@ import 'package:go_trust/data/common/define_api.dart';
 import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/request/common_dialog_request.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
+import 'package:go_trust/shared/models/users/login_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -52,7 +54,32 @@ class AuthController extends BaseController {
   }
 
   Future<void> loginWithSocial(BuildContext context, LoginType loginType) async {
-    UserCredential? userCredential;
+    final userCredential = await getUserCredential(loginType);
+    if (userCredential == null) {
+      showError(content: 'error_login_social'.tr);
+    } else {
+      try {
+        await EasyLoading.show();
+        final loginModel = await apiRepository.getLoginUserWithAuth(
+            provider: userCredential.credential!.providerId, token: await userCredential.user!.getIdToken());
+        await EasyLoading.dismiss();
+        if (loginModel.token != null) {
+          await Get.offAllNamed(Routes.HOME);
+        } else {
+          await callDialogErrorNetwork();
+        }
+      } catch (ex) {
+        print('Login fail with error: $ex');
+        showError(content: ex.toString());
+      } finally {
+        if (EasyLoading.isShow) {
+          await EasyLoading.dismiss();
+        }
+      }
+    }
+  }
+
+  Future<UserCredential?> getUserCredential(LoginType loginType) async {
     switch (loginType) {
       case LoginType.UserNamePassWord:
         break;
@@ -61,90 +88,100 @@ class AuthController extends BaseController {
       case LoginType.QrCode:
         break;
       case LoginType.Facebook:
-        try {
-          // Trigger the sign-in flow
-          final result = await FacebookAuth.instance.login();
-
-          // Create a credential from the access token
-          final facebookAuthCredential = FacebookAuthProvider.credential(result.accessToken!.token);
-
-          // Once signed in, return the UserCredential
-          userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-        } catch (error) {
-          print(error);
-        }
-        break;
+        return await fbLoginProvider();
       case LoginType.Google:
-        try {
-          // Trigger the authentication flow
-          final googleUser = await GoogleSignIn().signIn();
-
-          // Obtain the auth details from the request
-          final googleAuth = await googleUser!.authentication;
-
-          // Create a new credential
-          final credential = GoogleAuthProvider.credential(
-            accessToken: googleAuth.accessToken,
-            idToken: googleAuth.idToken,
-          );
-
-          // Once signed in, return the UserCredential
-          userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-        } catch (error) {
-          print(error);
-        }
-        break;
+        return await googleLoginProvider();
       case LoginType.Apple:
-        try {
-          if (Platform.isAndroid) {
-            break;
-          }
-          // To prevent replay attacks with the credential returned from Apple, we
-          // include a nonce in the credential request. When signing in with
-          // Firebase, the nonce in the id token returned by Apple, is expected to
-          // match the sha256 hash of `rawNonce`.
-          final rawNonce = generateNonce();
-          final nonce = sha256ofString(rawNonce);
-
-          // Request credential for the currently signed in Apple account.
-          final appleCredential = await SignInWithApple.getAppleIDCredential(
-            scopes: [
-              AppleIDAuthorizationScopes.email,
-              AppleIDAuthorizationScopes.fullName,
-            ],
-            nonce: nonce,
-          );
-
-          // Create an `OAuthCredential` from the credential returned by Apple.
-          final oauthCredential = OAuthProvider('apple.com').credential(
-            idToken: appleCredential.identityToken,
-            rawNonce: rawNonce,
-          );
-
-          // Sign in the user with Firebase. If the nonce we generated earlier does
-          // not match the nonce in `appleCredential.identityToken`, sign in will fail.
-          userCredential = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
-        } catch (error) {
-          print(error);
-        }
-        break;
+        return await appleLoginProvider();
       default:
-    }
-
-    if (userCredential == null) {
-      await callDialogErrorNetwork();
-    } else {
-      final loginModel = await apiRepository.getLoginUserWithAuth(provider: userCredential.credential!.providerId, token: await userCredential.user!.getIdToken());
-      if (loginModel.token != null) {
-        goToHome();
-      } else {
-        await callDialogErrorNetwork();
-      }
     }
   }
 
-  void goToHome() {
-    Get.offAllNamed(Routes.HOME);
+  Future<UserCredential?> fbLoginProvider() async {
+    try {
+      // Trigger the sign-in flow
+      final result = await FacebookAuth.instance.login();
+
+      // Create a credential from the access token
+      final facebookAuthCredential = FacebookAuthProvider.credential(result.accessToken!.token);
+
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    } catch (ex) {
+      print(ex);
+      showError(content: ex.toString());
+      return null;
+    }
+  }
+
+  Future<UserCredential?> googleLoginProvider() async {
+    try {
+      // Trigger the authentication flow
+      final googleUser = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final googleAuth = await googleUser!.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (ex) {
+      print(ex);
+      showError(content: ex.toString());
+      return null;
+    }
+  }
+
+  Future<UserCredential?> appleLoginProvider() async {
+    try {
+      if (Platform.isAndroid) {
+        return null;
+      }
+      // To prevent replay attacks with the credential returned from Apple, we
+      // include a nonce in the credential request. When signing in with
+      // Firebase, the nonce in the id token returned by Apple, is expected to
+      // match the sha256 hash of `rawNonce`.
+      final rawNonce = generateNonce();
+      final nonce = sha256ofString(rawNonce);
+
+      // Request credential for the currently signed in Apple account.
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        nonce: nonce,
+      );
+
+      // Create an `OAuthCredential` from the credential returned by Apple.
+      final oauthCredential = OAuthProvider('apple.com').credential(
+        idToken: appleCredential.identityToken,
+        rawNonce: rawNonce,
+      );
+
+      // Sign in the user with Firebase. If the nonce we generated earlier does
+      // not match the nonce in `appleCredential.identityToken`, sign in will fail.
+      return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+    } catch (ex) {
+      print(ex);
+      showError(content: ex.toString());
+      return null;
+    }
+  }
+
+  void showError({required String content}) {
+    Get.snackbar(
+      'error'.tr,
+      content,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
   }
 
   void goToVerifyOTP() {

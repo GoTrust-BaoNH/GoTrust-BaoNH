@@ -36,6 +36,7 @@ const Map<String, String> en_US = {
   'dark': 'Dark',
   'light': 'Light',
   'error_login': 'Login is fail',
+  'error_login_social': 'Login with social is fail',
   'translate': 'Change language',
   'translate_app': 'Change language of app',
   'alert': 'Alert',
