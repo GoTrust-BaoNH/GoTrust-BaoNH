@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -60,6 +62,7 @@ class LoginScreen extends GetView<AuthController> {
                     ),
                     const SizedBox(height: 16),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
                           '${'login_other'.tr} :',
@@ -67,9 +70,9 @@ class LoginScreen extends GetView<AuthController> {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(width: 15),
+                        const Spacer(),
                         GestureDetector(
                           onTap: () {
-                            // Get.toNamed(Routes.AUTH + Routes.QRCODE_SCREEN);
                             controller.scanQRCode();
                           },
                           child: const FCoreImage(IconConstants.qr),
@@ -89,12 +92,15 @@ class LoginScreen extends GetView<AuthController> {
                           child: const FCoreImage(IconConstants.google),
                         ),
                         const SizedBox(width: 23),
+                        !Platform.isAndroid
+                            ?
                         GestureDetector(
-                          onTap: () {
-                            controller.loginWithSocial(context, LoginType.Apple);
-                          },
-                          child: const FCoreImage(IconConstants.apple),
-                        ),
+                                onTap: () {
+                                  controller.loginWithSocial(context, LoginType.Apple);
+                                },
+                                child: const FCoreImage(IconConstants.apple),
+                              )
+                            : Container(),
                       ],
                     ),
                   ],
