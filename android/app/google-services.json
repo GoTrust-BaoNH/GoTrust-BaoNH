@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "789977948269-3vvddlnh82vaf6b2srap2kj4gucknh7s.apps.googleusercontent.com",
+          "client_id": "217684060706-i6h430t3agdtla17bc12gcs2ncs8994f.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.go.trust.gotrust",
@@ -22,13 +22,13 @@
           }
         },
         {
-          "client_id": "789977948269-q537akcpec82bfcotrn3bqr8icndg3n9.apps.googleusercontent.com",
+          "client_id": "217684060706-k9tijd7rckt3r6k802jq26fd99qsv98q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.go.trust.gotrust",
             "certificate_hash": "9098a62b0c96d45812930398962704837548156e"
           }
-        },
+        },	  
         {
           "client_id": "789977948269-9b65eb7oepb7obidlqc6qukstuokvif5.apps.googleusercontent.com",
           "client_type": 3
@@ -45,13 +45,6 @@
             {
               "client_id": "789977948269-9b65eb7oepb7obidlqc6qukstuokvif5.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "789977948269-5gj8vcmajf0r7b9jv0b84va511qc0i73.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.go.trust.gotrust"
-              }
             }
           ]
         }

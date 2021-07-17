@@ -36,6 +36,7 @@ const Map<String, String> vi_VN = {
   'dark': 'Tối',
   'light': 'Sáng',
   'error_login': 'Đăng nhập thất bại',
+  'error_login_social': 'Đăng nhập với mạng xã hội thất bại',
   'translate': 'Thay đổi ngôn ngữ',
   'translate_app': 'Thay đổi ngôn ngữ của ứng dụng',
   'alert': 'Cảnh báo',
