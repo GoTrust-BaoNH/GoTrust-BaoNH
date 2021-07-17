@@ -145,7 +145,7 @@ extension _HomePageChildren on HomeScreen {
   Widget emergencyWidget() {
     return Container(
       padding: const EdgeInsets.all(16),
-      height: Get.width / 2,
+      height: Get.width / 2 + 16,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -190,14 +190,16 @@ extension _HomePageChildren on HomeScreen {
                             fit: BoxFit.contain,
                           ),
                         ),
-                        Text(
-                          controller.emergencyData[index]['title']!,
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: AppColor.primaryTextColorLight,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                        Flexible(
+                          child: Text(
+                            controller.emergencyData[index]['title']!,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: AppColor.primaryTextColorLight,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         )
                       ],

@@ -25,17 +25,17 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1650097565380740</string>
-				<string>com.googleusercontent.apps.217684060706-1lmabrn0u6mvgdnfarc3krcv17pltdcp</string>
+				<string>fb276040026598018</string>
+				<string>com.googleusercontent.apps.789977948269-5gj8vcmajf0r7b9jv0b84va511qc0i73</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>FacebookAppID</key>
-	<string>1650097565380740</string>
+	<string>276040026598018</string>
 	<key>FacebookDisplayName</key>
-	<string>chuyenrungron</string>
+	<string>276040026598018</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

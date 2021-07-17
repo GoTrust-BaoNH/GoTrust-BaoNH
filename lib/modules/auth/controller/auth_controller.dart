@@ -136,19 +136,11 @@ class AuthController extends BaseController {
     } else {
       final loginModel = await apiRepository.getLoginUserWithAuth(provider: userCredential.credential!.providerId, token: await userCredential.user!.getIdToken());
       if (loginModel.token != null) {
-        goToHome();
+        await Get.offAllNamed(Routes.HOME);
       } else {
         await callDialogErrorNetwork();
       }
     }
-  }
-
-  void goToHome() {
-    Get.offAllNamed(Routes.HOME);
-  }
-
-  void goToVerifyOTP() {
-    Get.offAllNamed(Routes.AUTH + Routes.OTP_SCREEN);
   }
 
   Future<void> scanQRCode() async {
@@ -193,7 +185,7 @@ class AuthController extends BaseController {
     if (phoneController!.text.isNotEmpty) {
       final loginModel = await apiRepository.registerOTP(phoneNumber: phoneController!.text);
       if (loginModel.status ?? false) {
-        goToVerifyOTP();
+        await Get.offAllNamed(Routes.AUTH + Routes.OTP_SCREEN);
       } else {
         await callDialogErrorNetwork();
       }
