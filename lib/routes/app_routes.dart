@@ -22,4 +22,7 @@ abstract class Routes {
   static const PAYMENT_INFO_SCREEN = '/payment_info_screen';
   static const YOUR_PRODUCT_SCREEN = '/your_product_screen';
   static const VOUCHER_SCREEN = '/voucher_screen';
+  static const SETTINGS_SCREEN = '/settings_screen';
+  static const CREATE_PIN_SCREEN = '/create_pin_screen';
+  static const LOGIN_PIN_SCREEN = '/login_pin_screen';
 }

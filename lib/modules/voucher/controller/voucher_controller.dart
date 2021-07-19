@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
@@ -29,12 +30,12 @@ class VoucherController extends BaseController {
 
   Future<void> scanQRCode() async {
     try {
-      qrCodeResult = await FlutterBarcodeScanner.scanBarcode(
-        '#FFFB6107',
-        'Cancel',
-        false, //show flash icon
-        ScanMode.QR,
-      );
+      // qrCodeResult = await FlutterBarcodeScanner.scanBarcode(
+      //   '#FFFB6107',
+      //   'Cancel',
+      //   false, //show flash icon
+      //   ScanMode.QR,
+      // );
     } on PlatformException {
       qrCodeResult = 'Failed to get platform version.';
     }

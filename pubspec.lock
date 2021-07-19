@@ -370,13 +370,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_barcode_scanner:
-    dependency: "direct main"
-    description:
-      path: "external_library/flutter_barcode_scanner"
-      relative: true
-    source: path
-    version: "2.0.0"
   flutter_easyloading:
     dependency: "direct main"
     description:
@@ -646,6 +639,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.1.3"
+  local_auth:
+    dependency: "direct main"
+    description:
+      name: local_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.6"
   logging:
     dependency: transitive
     description:

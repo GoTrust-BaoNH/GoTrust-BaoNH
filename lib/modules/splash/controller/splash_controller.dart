@@ -24,9 +24,9 @@ class SplashController extends GetxController {
     _loadLanguage(storage);
     _loadTheme(storage);
     try {
-      if (storage.getString(StorageConstants.token) != null) {
+      if ((storage.getString(StorageConstants.token)?.isNotEmpty ?? false) && (storage.getString(StorageConstants.pin)?.isNotEmpty ?? false)) {
         print('Token: ${storage.getString(StorageConstants.token)}');
-        await Get.offAndToNamed(Routes.HOME);
+        await Get.offAndToNamed(Routes.LOGIN_PIN_SCREEN);
       } else {
         await Get.offAndToNamed(Routes.AUTH);
       }

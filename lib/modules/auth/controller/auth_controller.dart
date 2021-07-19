@@ -6,17 +6,19 @@ import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_api.dart';
 import 'package:go_trust/routes/app_pages.dart';
+import 'package:go_trust/shared/constants/storage.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/request/common_dialog_request.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
-import 'package:go_trust/shared/models/users/login_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../data/repository/api_repository.dart';
@@ -25,8 +27,13 @@ class AuthController extends BaseController {
   AuthController({required this.apiRepository});
 
   final ApiRepository apiRepository;
+  final storage = Get.find<SharedPreferences>();
+  final LocalAuthentication auth = LocalAuthentication();
   String qrCodeResult = '';
   final TextEditingController? phoneController = TextEditingController();
+  final TextEditingController? createPinController = TextEditingController();
+  final TextEditingController? createRePinController = TextEditingController();
+  final TextEditingController? inputPinController = TextEditingController();
 
   @override
   Future<void> onInit() async {
@@ -60,11 +67,11 @@ class AuthController extends BaseController {
     } else {
       try {
         await EasyLoading.show();
-        final loginModel = await apiRepository.getLoginUserWithAuth(
-            provider: userCredential.credential!.providerId, token: await userCredential.user!.getIdToken());
+        final loginModel = await apiRepository.getLoginUserWithAuth(provider: userCredential.credential!.providerId, token: await userCredential.user!.getIdToken());
         await EasyLoading.dismiss();
         if (loginModel.token != null) {
-          await Get.offAllNamed(Routes.HOME);
+          await storage.setString(StorageConstants.token, loginModel.token!);
+          await Get.toNamed(Routes.AUTH + Routes.CREATE_PIN_SCREEN);
         } else {
           await callDialogErrorNetwork();
         }
@@ -190,12 +197,12 @@ class AuthController extends BaseController {
 
   Future<void> scanQRCode() async {
     try {
-      qrCodeResult = await FlutterBarcodeScanner.scanBarcode(
-        '#FFFB6107',
-        'Cancel',
-        true, //show flash icon
-        ScanMode.QR,
-      );
+      // qrCodeResult = await FlutterBarcodeScanner.scanBarcode(
+      //   '#FFFB6107',
+      //   'Cancel',
+      //   true, //show flash icon
+      //   ScanMode.QR,
+      // );
     } on PlatformException {
       qrCodeResult = 'Failed to get platform version.';
     }
@@ -234,6 +241,47 @@ class AuthController extends BaseController {
       } else {
         await callDialogErrorNetwork();
       }
+    }
+  }
+
+  Future<void> savePinStorage() async {
+    if (!validatePin()) {
+      showError(content: 'Mã PIN không hợp lệ');
+      print('not valid');
+      return;
+    }
+
+    final result = await storage.setString(StorageConstants.pin, createPinController!.text);
+    if (result) {
+      await Get.offAllNamed(Routes.HOME);
+    } else {
+      showError(content: 'Không thể lưu mã PIN');
+    }
+  }
+
+  bool validatePin() {
+    return createPinController!.text.isNotEmpty && (createPinController!.text == createRePinController!.text);
+  }
+
+  void loginWithPin() {
+    final pin = storage.getString(StorageConstants.pin) ?? '';
+    if (inputPinController!.text == pin) {
+      Get.offAllNamed(Routes.HOME);
+    } else {
+      showError(content: 'Mã PIN nhập không đúng');
+    }
+  }
+
+  bool isUseBiometric() {
+    return storage.getBool(StorageConstants.use_biometric) ?? false;
+  }
+
+  Future<void> loginWithBiometric() async {
+    final authenticate = await auth.authenticate(localizedReason: 'Chạm để đăng nhập', biometricOnly: true);
+    if (authenticate) {
+      await Get.offAllNamed(Routes.HOME);
+    } else {
+      showError(content: 'Đăng nhập bằng sinh trắc học thất bại');
     }
   }
 }

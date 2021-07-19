@@ -78,6 +78,7 @@ class HomeController extends BaseController {
   void onHomeItemPressed(String item) {
     switch (item) {
       case IconConstants.goTrustLive:
+        Get.toNamed(Routes.SETTINGS_SCREEN);
         break;
       case IconConstants.goTrustCyber:
         break;

@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:go_trust/modules/auth/binding/auth_binding.dart';
 import 'package:go_trust/modules/auth/view/create_password_screen.dart';
+import 'package:go_trust/modules/auth/view/create_pin_screen.dart';
+import 'package:go_trust/modules/auth/view/login_pin_screen.dart';
 import 'package:go_trust/modules/auth/view/login_screen.dart';
 import 'package:go_trust/modules/auth/view/otp_view.dart';
 import 'package:go_trust/modules/auth/view/qr_code_screen.dart';
@@ -28,6 +30,8 @@ import 'package:go_trust/modules/payment_info/binding/payment_info_binding.dart'
 import 'package:go_trust/modules/payment_info/view/payment_info_screen.dart';
 import 'package:go_trust/modules/payment_method/binding/payment_method_binding.dart';
 import 'package:go_trust/modules/payment_method/view/payment_method_screen.dart';
+import 'package:go_trust/modules/settings/binding/settings_binding.dart';
+import 'package:go_trust/modules/settings/view/settings_screen.dart';
 import 'package:go_trust/modules/splash/binding/splash_binding.dart';
 import 'package:go_trust/modules/splash/view/splash_screen.dart';
 import 'package:go_trust/modules/voucher/binding/home_binding.dart';
@@ -54,7 +58,13 @@ final routePages = [
       GetPage(name: Routes.CREATE_PASSWORD_SCREEN, page: () => CreatePasswordScreen()),
       GetPage(name: Routes.USER_INFO_SCREEN, page: () => UserInfoScreen()),
       GetPage(name: Routes.QRCODE_SCREEN, page: () => QRCodeScreen()),
+      GetPage(name: Routes.CREATE_PIN_SCREEN, page: () => CreatePinScreen()),
     ],
+  ),
+  GetPage(
+    name: Routes.LOGIN_PIN_SCREEN,
+    page: () => LoginPinScreen(),
+    binding: AuthBinding(),
   ),
   GetPage(
     name: Routes.NOTIFICATION_SCREEN,
@@ -123,5 +133,10 @@ final routePages = [
     name: Routes.VOUCHER_SCREEN,
     page: () => VoucherScreen(),
     binding: VoucherBinding(),
+  ),
+  GetPage(
+    name: Routes.SETTINGS_SCREEN,
+    page: () => SettingsScreen(),
+    binding: SettingsBinding(),
   ),
 ];
