@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/common/define_api.dart';
 import 'package:go_trust/modules/auth/controller/auth_controller.dart';
+import 'package:go_trust/modules/qrcode/view/qr_view_screen.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
@@ -73,7 +75,11 @@ class LoginScreen extends GetView<AuthController> {
                         const Spacer(),
                         GestureDetector(
                           onTap: () {
-                            controller.scanQRCode();
+                            Get.to(QRViewScreen())!.then((value) {
+                              if (value != null) {
+                                print('Barcode Type: ${describeEnum(value!.format)}   Data: ${value!.code}');
+                              }
+                            });
                           },
                           child: const FCoreImage(IconConstants.qr),
                         ),
@@ -93,8 +99,7 @@ class LoginScreen extends GetView<AuthController> {
                         ),
                         const SizedBox(width: 23),
                         !Platform.isAndroid
-                            ?
-                        GestureDetector(
+                            ? GestureDetector(
                                 onTap: () {
                                   controller.loginWithSocial(context, LoginType.Apple);
                                 },

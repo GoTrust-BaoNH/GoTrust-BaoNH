@@ -5,7 +5,6 @@ import 'package:go_trust/modules/auth/view/create_pin_screen.dart';
 import 'package:go_trust/modules/auth/view/login_pin_screen.dart';
 import 'package:go_trust/modules/auth/view/login_screen.dart';
 import 'package:go_trust/modules/auth/view/otp_view.dart';
-import 'package:go_trust/modules/auth/view/qr_code_screen.dart';
 import 'package:go_trust/modules/auth/view/user_info_screen.dart';
 import 'package:go_trust/modules/bank/binding/bank_binding.dart';
 import 'package:go_trust/modules/bank/view/bank_screen.dart';
@@ -57,7 +56,6 @@ final routePages = [
       GetPage(name: Routes.OTP_SCREEN, page: () => OtpScreen()),
       GetPage(name: Routes.CREATE_PASSWORD_SCREEN, page: () => CreatePasswordScreen()),
       GetPage(name: Routes.USER_INFO_SCREEN, page: () => UserInfoScreen()),
-      GetPage(name: Routes.QRCODE_SCREEN, page: () => QRCodeScreen()),
       GetPage(name: Routes.CREATE_PIN_SCREEN, page: () => CreatePinScreen()),
     ],
   ),

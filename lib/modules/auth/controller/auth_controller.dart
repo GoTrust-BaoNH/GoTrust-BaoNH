@@ -5,8 +5,6 @@ import 'dart:math';
 import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
@@ -18,6 +16,7 @@ import 'package:go_trust/shared/dialog_manager/data_models/request/common_dialog
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -34,6 +33,9 @@ class AuthController extends BaseController {
   final TextEditingController? createPinController = TextEditingController();
   final TextEditingController? createRePinController = TextEditingController();
   final TextEditingController? inputPinController = TextEditingController();
+
+  Barcode? result;
+  QRViewController? controller;
 
   @override
   Future<void> onInit() async {
@@ -193,19 +195,6 @@ class AuthController extends BaseController {
 
   void goToVerifyOTP() {
     Get.offAllNamed(Routes.AUTH + Routes.OTP_SCREEN);
-  }
-
-  Future<void> scanQRCode() async {
-    try {
-      // qrCodeResult = await FlutterBarcodeScanner.scanBarcode(
-      //   '#FFFB6107',
-      //   'Cancel',
-      //   true, //show flash icon
-      //   ScanMode.QR,
-      // );
-    } on PlatformException {
-      qrCodeResult = 'Failed to get platform version.';
-    }
   }
 
   // ignore: unused_element
