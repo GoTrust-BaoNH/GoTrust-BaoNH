@@ -23,10 +23,13 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>GoTrust</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb276040026598018</string>
 				<string>com.googleusercontent.apps.789977948269-5gj8vcmajf0r7b9jv0b84va511qc0i73</string>
+                <string>GoTrust</string>
 			</array>
 		</dict>
 	</array>
@@ -56,6 +59,10 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs camera access to scan QR codes</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>GoTrust authenticating using face id</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -75,7 +82,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSFaceIDUsageDescription</key>
+    <key>NSFaceIDUsageDescription</key>
     <string>GoTrust authenticating using face id</string>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
 </dict>
 </plist>

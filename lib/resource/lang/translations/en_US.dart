@@ -98,16 +98,14 @@ const Map<String, String> en_US = {
   'buy_now': 'Buy now',
   'note_insurance_vehicle':
       'Motor vehicle owner\'s liability insurance is a document that is obligatory for drivers of cars and motorcycles to carry when participating in traffic',
-  'example_insurance_vehicle':
-      'Civil liability insurance is responsible for indemnifying the “third party” when an accident occurs.',
+  'example_insurance_vehicle': 'Civil liability insurance is responsible for indemnifying the “third party” when an accident occurs.',
   'has_insurance': 'When you have insurance',
   'no_insurance': 'When there is no insurance',
   'cost': 'Cost',
   'year': 'year',
   'legal_e_certificates': 'Legal e-certificates, no need to carry paper cards',
   'compensation_property': 'Compensation for the victim\'s property due to the accident up to @value million VND/case',
-  'compensation_medical_expenses':
-      'Compensation for medical expenses and death for victims due to accidents is up to @value million VND/person/casẹ',
+  'compensation_medical_expenses': 'Compensation for medical expenses and death for victims due to accidents is up to @value million VND/person/casẹ',
   'disadvantages_no_insurance': 'Disadvantages of not having credit insurance',
   'fined_up_insurance': 'Being fined up to @value VND for not having insurance when being checked',
   'self_compensation_victim_insurance': 'Self-compensation for the victim\'s property due to the accident',
@@ -152,4 +150,8 @@ const Map<String, String> en_US = {
   'extension': 'Extension',
   'contract_code': 'Contract Code',
   'value': 'Value',
+  'settings_biometrics': 'Login with biometrics',
+  'settings_change_language': 'Change languages',
+  'settings_invite_app': 'Share app',
+  'settings_logout': 'Logout',
 };

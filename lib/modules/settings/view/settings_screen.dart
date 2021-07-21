@@ -17,7 +17,15 @@ class SettingsScreen extends GetView<SettingsController> {
             Obx(() {
               return _buildBiometricSettingWidget(context);
             }),
-            _buildLogoutSettingWidget(context),
+            _buildCardItem(context, Icons.language, 'settings_change_language'.tr, () async {
+              await controller.changeLanguage();
+            }),
+            _buildCardItem(context, Icons.share, 'settings_invite_app'.tr, () async {
+              await controller.shareApp();
+            }),
+            _buildCardItem(context, Icons.power_settings_new, 'settings_logout'.tr, () async {
+              await controller.confirmLogout();
+            }),
           ],
         ),
       ),
@@ -47,8 +55,8 @@ class SettingsScreen extends GetView<SettingsController> {
               ),
               const SizedBox(width: 12),
               Text(
-                'Đăng nhập vân tay',
-                style: Theme.of(context).textTheme.headline1,
+                'settings_biometrics'.tr,
+                style: Theme.of(context).textTheme.subtitle1,
               ),
               const Spacer(),
               // Icon(Icons.navigate_next, color: context.theme.primaryColor),
@@ -65,13 +73,13 @@ class SettingsScreen extends GetView<SettingsController> {
     );
   }
 
-  Widget _buildLogoutSettingWidget(BuildContext context) {
+  Widget _buildCardItem(BuildContext context, IconData icon, String title, Function onTap) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(left: 12, right: 12, bottom: 20),
       child: GestureDetector(
-        onTap: () async {
-          await controller.confirmLogout();
+        onTap: () {
+          onTap();
         },
         child: Card(
           child: Container(
@@ -84,16 +92,16 @@ class SettingsScreen extends GetView<SettingsController> {
                   child: CircleAvatar(
                     backgroundColor: Get.theme.primaryColor,
                     radius: 66,
-                    child: const Icon(
-                      Icons.power_settings_new,
+                    child: Icon(
+                      icon,
                       size: 24,
                     ),
                   ),
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'Đăng xuất',
-                  style: Theme.of(context).textTheme.headline1,
+                  title,
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
                 const Spacer(),
                 Icon(Icons.navigate_next, color: Get.theme.primaryColor),

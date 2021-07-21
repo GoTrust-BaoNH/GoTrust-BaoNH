@@ -27,3 +27,7 @@ const GraphQLServiceUrl = 'GraphQLServiceUrl';
 const WebSocketGraphQLUrl = 'WebSocketGraphQLUrl';
 const MediaApiEnvironment = 'MediaApiEnvironment';
 const DefaultLanguageCode = 'DefaultLanguageCode';
+
+// URL DOWNLOAD APP
+const URL_ANDROID = 'https://play.google.com/store/apps/details?id=com.zhiliaoapp.musically&hl=vi&gl=US';
+const URL_IOS = 'https://apps.apple.com/vn/app/tiktok/id1235601864?l=vi';

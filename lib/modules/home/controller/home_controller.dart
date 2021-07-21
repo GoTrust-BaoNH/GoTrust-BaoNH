@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
@@ -9,6 +10,7 @@ import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uni_links/uni_links.dart';
 
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/constants/storage.dart';
@@ -68,6 +70,7 @@ class HomeController extends BaseController {
   @override
   Future<void> onInit() async {
     await super.onInit();
+    receiveFromAnotherApp();
   }
 
   @override
@@ -160,6 +163,28 @@ class HomeController extends BaseController {
     }
 
     await prefs.setString(StorageConstants.language, dialogResult.language);
+  }
+
+  Future<void> receiveFromAnotherApp() async {
+    try {
+      final initialInfo = await getInitialLink();
+      if (initialInfo != null) {
+        // TODO: receive infomation
+        showError(content: initialInfo);
+      }
+    } on PlatformException {
+      print('error');
+    }
+  }
+
+  void showError({required String content}) {
+    Get.snackbar(
+      'error'.tr,
+      content,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
   }
 
   @override

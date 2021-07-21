@@ -106,8 +106,7 @@ const Map<String, String> vi_VN = {
   'year': 'năm',
   'legal_e_certificates': 'Giấy chứng nhận điện tử hợp pháp, không cần mang theo thẻ giấy',
   'compensation_property': 'Bồi thường cho tài sản của nạn nhân do gây tai nạn đến @value triệu đồng/vụ',
-  'compensation_medical_expenses':
-      'Bồi thường chi phí y tế, tử vong cho nạn nhân do gây tai nạn đến @value triệu đồng/người/vụ',
+  'compensation_medical_expenses': 'Bồi thường chi phí y tế, tử vong cho nạn nhân do gây tai nạn đến @value triệu đồng/người/vụ',
   'disadvantages_no_insurance': 'Bất lợi khi không có bảo hiểm TNDSBB',
   'fined_up_insurance': 'Bị phạt tiền đến @value do không có bảo hiểm khi bị kiểm tra',
   'self_compensation_victim_insurance': 'Tự bồi thường tài sản của nạn nhân do gây tai nạn',
@@ -152,4 +151,8 @@ const Map<String, String> vi_VN = {
   'extension': 'Gia hạn',
   'contract_code': 'Mã hợp đồng',
   'value': 'Giá trị',
+  'settings_biometrics': 'Đăng nhập bằng sinh trắc học',
+  'settings_change_language': 'Thay đổi ngôn ngữ',
+  'settings_invite_app': 'Chia sẻ ứng dụng',
+  'settings_logout': 'Đăng xuất',
 };
