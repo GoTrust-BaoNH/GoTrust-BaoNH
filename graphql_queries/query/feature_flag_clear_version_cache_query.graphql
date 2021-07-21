@@ -1,0 +1,6 @@
+query featureFlagClearVersionCache {
+    featureFlagClearVersionCache {
+        code
+        message
+    }
+}

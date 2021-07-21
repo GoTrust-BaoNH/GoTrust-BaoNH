@@ -34,10 +34,34 @@ targets:
               queries_glob: graphql_queries/mutation/verify_otp_mutation.graphql
               output: lib/data/graphql/mutation/verify_otp_mutation_graphql.dart
 
-            ##### Query ####
-#            - schema: graphql_schema/schema.graphql
-#              queries_glob: graphql_queries/query/demo_query.graphql
-#              output: lib/data/graphql/query/demo_query_graphql.dart
+            #### Query ####
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/app_notification_item_query.graphql
+              output: lib/data/graphql/query/app_notification_item_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/app_notification_list_query.graphql
+              output: lib/data/graphql/query/app_notification_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/feature_flag_clear_feature_cache_query.graphql
+              output: lib/data/graphql/query/feature_flag_clear_feature_cache_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/feature_flag_clear_version_cache_query.graphql
+              output: lib/data/graphql/query/feature_flag_clear_version_cache_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/feature_flag_get_user_version_query.graphql
+              output: lib/data/graphql/query/feature_flag_get_user_version_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/feature_flag_list_feature_query.graphql
+              output: lib/data/graphql/query/feature_flag_list_feature_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/payment_get_bank_list_query.graphql
+              output: lib/data/graphql/query/payment_get_bank_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/payment_get_payment_type_list_query.graphql
+              output: lib/data/graphql/query/payment_get_payment_type_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/refresh_token_query.graphql
+              output: lib/data/graphql/query/refresh_token_query_graphql.dart
 
             #### Subscription ####
 #            - schema: graphql_schema/schema.graphql

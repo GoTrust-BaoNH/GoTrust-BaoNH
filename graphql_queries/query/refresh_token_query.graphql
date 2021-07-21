@@ -1,0 +1,5 @@
+query refreshToken {
+    refreshToken {
+        token
+    }
+}

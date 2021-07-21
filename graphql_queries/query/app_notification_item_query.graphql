@@ -1,0 +1,10 @@
+query appNotification($id: String) {
+    appNotification(id: $id) {
+        htmlContent
+        icon
+        id
+        isRead
+        time
+        type
+    }
+}

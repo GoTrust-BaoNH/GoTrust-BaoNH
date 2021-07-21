@@ -1,0 +1,7 @@
+query paymentGetBankList($paymentType: String) {
+    paymentGetBankList(request: {paymentType: $paymentType}) {
+        code
+        id
+        title
+    }
+}

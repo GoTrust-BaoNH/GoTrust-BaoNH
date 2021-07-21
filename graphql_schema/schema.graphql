@@ -6,14 +6,12 @@ directive @specifiedBy(
 # Scalar for BigInteger
 scalar BigInteger
 
-type LoginResponse {
-    token: String
-    user: UserLogin
-    registed: Boolean!
-}
-
 # Mutation root
 type Mutation {
+    ### Service Schema Mutation
+
+
+    ### Authen Schema Mutation
     # Login
     login(phoneNumber: String, password: String): LoginResponse
     # Update Profile
@@ -35,8 +33,89 @@ type OtpResponse {
 
 # Query root
 type Query {
+    ### Service Schema Query
+    # Get feature list
+    featureFlagListFeature(request: FeatureRequestInput): [FeatureResponse]
+    # Clear features cache
+    featureFlagClearFeatureCache: CommonResponse
+    # Get bank list for payment
+    paymentGetBankList(request: BankRequestInput): [BankResponse]
+    # Get notification detail by ID
+    appNotification(id: String): AppNotificationListResponse
+    # Get list notification by user ID
+    appNotificationList(userId: BigInteger): [AppNotificationListResponse]
+    # Clear versions cache
+    featureFlagClearVersionCache: CommonResponse
+    # Get version app of user
+    featureFlagGetUserVersion(
+        request: UserVersionRequestInput
+    ): UserVersionResponse
+    # Get payment type list for payment
+    paymentGetPaymentTypeList: [PaymentTypeResponse]
+
+    ### Service Schema Query
     # Refresh Token
     refreshToken: TokenResponse
+}
+
+### Service Schema
+type AppNotificationListResponse {
+    htmlContent: String
+    icon: String
+    id: String
+    isRead: Boolean
+    time: String
+    type: Int
+}
+
+input BankRequestInput {
+    paymentType: String
+}
+
+type BankResponse {
+    code: String
+    id: Int
+    title: String
+}
+
+type CommonResponse {
+    code: Int
+    message: String
+}
+
+input FeatureRequestInput {
+    os: String
+    platform: String
+}
+
+type FeatureResponse {
+    code: String
+    status: Int
+}
+
+type PaymentTypeResponse {
+    id: Int
+    title: String
+    type: String
+}
+
+input UserVersionRequestInput {
+    os: String
+    platform: String
+}
+
+type UserVersionResponse {
+    versionCode: String
+    versionName: String
+}
+
+
+
+### Authen Schema
+type LoginResponse {
+    token: String
+    user: UserLogin
+    registed: Boolean!
 }
 
 type TokenResponse {

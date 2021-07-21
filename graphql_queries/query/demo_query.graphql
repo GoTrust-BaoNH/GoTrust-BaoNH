@@ -1,7 +1,0 @@
-query getActiveTodos($limit: Int, $offset: Int) {
-    todos(limit: $limit, offset: $offset) {
-        is_completed
-        title
-        id
-    }
-}

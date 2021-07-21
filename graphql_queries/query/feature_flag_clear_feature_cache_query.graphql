@@ -1,0 +1,6 @@
+query featureFlagClearFeatureCache {
+    featureFlagClearFeatureCache {
+        code
+        message
+    }
+}

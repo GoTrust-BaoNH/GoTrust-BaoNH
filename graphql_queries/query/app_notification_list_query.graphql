@@ -1,0 +1,10 @@
+query appNotificationList($userId: BigInteger) {
+    appNotificationList(userId: $userId) {
+        htmlContent
+        icon
+        id
+        isRead
+        time
+        type
+    }
+}
