@@ -4,7 +4,6 @@ mutation ($email: String, $fullName: String, $privateId: String){
         fullName: $fullName,
         privateId: $privateId,
     }) {
-
         oauthId
         oauthProvider
         qrcodeSecret
@@ -18,6 +17,5 @@ mutation ($email: String, $fullName: String, $privateId: String){
         status
         updatedDate
         username
-
     }
 }
