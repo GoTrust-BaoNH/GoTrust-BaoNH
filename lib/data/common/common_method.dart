@@ -1,6 +1,9 @@
 import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/notification/notification_item_model.dart';
 import 'package:go_trust/shared/models/payment_model/payment_type_model.dart';
+import 'package:go_trust/data/graphql/query/app_notification_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/payment_get_bank_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/payment_get_payment_type_list_query_graphql.dart';
 import 'package:go_trust/shared/models/response/common_response.dart';
 import 'package:go_trust/shared/models/users/login_model.dart';
 import 'package:go_trust/shared/models/users/user_model.dart';
@@ -69,7 +72,7 @@ List<NotificationItemModel> convertListNotificationModel(listNotification) {
   }
 
   final tempList = <NotificationItemModel>[];
-  for (final item in listNotification as List<NotificationItemModel>) {
+  for (final item in listNotification as List<AppNotificationList$Query$AppNotificationListResponse?>) {
     tempList.add(convertItemNotificationModel(item));
   }
 
@@ -96,7 +99,7 @@ List<PaymentType> convertListPaymentTypeModel(listPaymentType) {
   }
 
   final tempList = <PaymentType>[];
-  for (final item in listPaymentType as List<PaymentType>) {
+  for (final item in listPaymentType as List<PaymentGetPaymentTypeList$Query$PaymentTypeResponse?>) {
     tempList.add(convertItemPaymentTypeModel(item));
   }
 
@@ -120,7 +123,7 @@ List<BankModel> convertListPaymentBankModel(listPaymentBank) {
   }
 
   final tempList = <BankModel>[];
-  for (final item in listPaymentBank as List<BankModel>) {
+  for (final item in listPaymentBank as List<PaymentGetBankList$Query$BankResponse?>) {
     tempList.add(convertItemPaymentBankModel(item));
   }
 
