@@ -1,0 +1,12 @@
+query($pageNumber: Int, $pageSize: Int) {
+    getEmergencyList(request: { pageNumber: $pageNumber, pageSize: $pageSize }) {
+        data {
+            address
+            createdDate
+            id
+            phone
+            serviceName
+            updatedDate
+        }
+    }
+}

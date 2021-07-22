@@ -1,0 +1,14 @@
+query {
+    getRecuseMotoProduct {
+        data{
+            categoryId
+            code
+            createdDate
+            description
+            id
+            name
+            price
+            updatedDate
+        }
+    }
+}

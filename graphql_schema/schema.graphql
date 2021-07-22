@@ -9,7 +9,34 @@ scalar BigInteger
 # Mutation root
 type Mutation {
     ### Service Schema Mutation
-
+    # Create New Emergency
+    createEmergency(
+        request: GraphCreateEmergencyRequestInput
+    ): GraphCreateEmergencyResponse
+    # Create New Policy
+    createPolicy(
+        request: GraphCreatePolicyRequestInput
+    ): GraphCreatePolicyResponse
+    # create payment
+    paymentCreatePayment(request: PaymentRequestInput): PaymentResponse
+    # Create motor insurance order
+    motorInsCreateOrder(
+        request: GraphMotorOrderRequestInput
+    ): GraphMotorOrderResponse
+    # Create New Customer
+    createCustomer(
+        request: GraphCreateCustomerRequestInput
+    ): GraphCreateCustomerResponse
+    # Create New Promotion
+    createPromotion(
+        request: GraphCreatePromotionRequestInput
+    ): GraphCreatePromotionResponse
+    # Create New Faq
+    createFaq(request: GraphCreateFaqRequestInput): GraphCreateFaqResponse
+    # Create New Product
+    createProductList(
+        request: GraphCreateProductRequestInput
+    ): GraphCreateProductResponse
 
     ### Authen Schema Mutation
     # Login
@@ -26,39 +53,82 @@ type Mutation {
     updatePassword(oldPassword: String, newPassword: String): UserLogin
 }
 
-type OtpResponse {
-    message: String
-    status: Boolean!
-}
-
 # Query root
 type Query {
     ### Service Schema Query
-    # Get feature list
-    featureFlagListFeature(request: FeatureRequestInput): [FeatureResponse]
-    # Clear features cache
-    featureFlagClearFeatureCache: CommonResponse
-    # Get bank list for payment
-    paymentGetBankList(request: BankRequestInput): [BankResponse]
     # Get notification detail by ID
-    appNotification(id: String): AppNotificationListResponse
+    appNotification(id: String): GraphNotificationListResponse
+    # Get category list
+    getCategoryList(
+        request: GraphGetCategoryListRequestInput
+    ): GraphGetCategoryListResponse
     # Get list notification by user ID
-    appNotificationList(userId: BigInteger): [AppNotificationListResponse]
+    appNotificationList(userId: BigInteger): [GraphNotificationListResponse]
+    # Get recuse moto model data
+    getRecuseMotoModel(brandId: String): GraphRecuseMotoModelResponse
     # Clear versions cache
     featureFlagClearVersionCache: CommonResponse
+    # Get Emergency List
+    getEmergencyList(
+        request: GraphGetEmergencyListRequestInput
+    ): GraphGetEmergencyListResponse
+    # Get feature list
+    featureFlagListFeature(
+        request: GraphFeatureRequestInput
+    ): [GraphFeatureResponse]
+    # Get payment type list for payment
+    getPaymentTypeList: [PaymentTypeResponse]
+    # Get Product List
+    getProductList(
+        request: GraphGetProductListRequestInput
+    ): GraphGetProductListResponse
+    # Get Promotion List
+    getPromotionList(
+        request: GraphGetPromotionListRequestInput
+    ): GraphGetPromotionListResponse
+    # Create New Category
+    createCategory(
+        request: GraphCreateCategoryRequestInput
+    ): GraphCreateCategoryResponse
+    # Get Customer List
+    getCustomerList(
+        request: GraphGetCustomerListRequestInput
+    ): GraphGetCustomerListResponse
+    # Clear features cache
+    featureFlagClearFeatureCache: CommonResponse
     # Get version app of user
     featureFlagGetUserVersion(
         request: UserVersionRequestInput
     ): UserVersionResponse
-    # Get payment type list for payment
-    paymentGetPaymentTypeList: [PaymentTypeResponse]
+    # Get metadata of motor insurance
+    motorInsGetMetadata(
+        request: GraphMotorMetadataRequestInput
+    ): GraphMotorMetadataResponse
+    # Get recuse moto product data
+    getRecuseMotoProduct: GraphRecuseMotoProductResponse
+    # Get Policy List
+    getPolicyList(
+        request: GraphGetPolicyListRequestInput
+    ): GraphGetPolicyListResponse
+    # Get recuse moto brand data
+    getRecuseMotoBrand: GraphRecuseMotoBrandResponse
+    # Get bank list for payment
+    getBankList(request: BankRequestInput): [BankResponse]
+    # Get Faq List
+    getFaqList(request: GraphGetFaqListRequestInput): GraphGetFaqListResponse
 
-    ### Service Schema Query
+
+    ### Authen Schema Query
     # Refresh Token
     refreshToken: TokenResponse
 }
 
 ### Service Schema
+type OtpResponse {
+    message: String
+    status: Boolean!
+}
+
 type AppNotificationListResponse {
     htmlContent: String
     icon: String
@@ -109,6 +179,289 @@ type UserVersionResponse {
     versionName: String
 }
 
+type Brand {
+    bikeId: String
+    bikeName: String
+}
+
+type Category {
+    code: String
+    createdDate: String
+    id: BigInteger!
+    name: String
+    updatedDate: String
+}
+
+
+type Customer {
+    createdDate: String
+    dateOfBirth: String
+    email: String
+    firstName: String
+    id: BigInteger!
+    lastName: String
+    phone: String
+    updatedDate: String
+}
+
+type Emergency {
+    address: String
+    createdDate: String
+    id: BigInteger!
+    phone: String
+    serviceName: String
+    updatedDate: String
+}
+
+type Faq {
+    answer: String
+    id: BigInteger!
+    question: String
+}
+
+input GraphCreateCategoryRequestInput {
+    code: String
+    name: String
+}
+
+type GraphCreateCategoryResponse {
+    data: Category
+}
+
+input GraphCreateCustomerRequestInput {
+    dateOfBirth: String
+    email: String
+    firstName: String
+    lastName: String
+    phone: String
+}
+
+type GraphCreateCustomerResponse {
+    data: Customer
+}
+
+input GraphCreateEmergencyRequestInput {
+    address: String
+    phone: String
+    serviceName: String
+}
+
+type GraphCreateEmergencyResponse {
+    data: Emergency
+}
+
+input GraphCreateFaqRequestInput {
+    answer: String
+    question: String
+}
+
+type GraphCreateFaqResponse {
+    data: Faq
+}
+
+input GraphCreatePolicyRequestInput {
+    description: String
+    name: String
+}
+
+type GraphCreatePolicyResponse {
+    data: Policy
+}
+
+input GraphCreateProductRequestInput {
+    categoryId: BigInteger!
+    code: String
+    description: String
+    name: String
+    price: Float!
+}
+
+type GraphCreateProductResponse {
+    data: Product
+}
+
+input GraphCreatePromotionRequestInput {
+    code: String
+    description: String
+    name: String
+}
+
+type GraphCreatePromotionResponse {
+    data: Promotion
+}
+
+input GraphFeatureRequestInput {
+    os: String
+    platform: String
+}
+
+type GraphFeatureResponse {
+    code: String
+    status: Int
+}
+
+input GraphGetCategoryListRequestInput {
+    pageNumber: Int
+    pageSize: Int
+}
+
+type GraphGetCategoryListResponse {
+    data: [Category]
+    pageNumber: Int!
+    pageSize: Int!
+}
+
+input GraphGetCustomerListRequestInput {
+    pageNumber: Int
+    pageSize: Int
+}
+
+type GraphGetCustomerListResponse {
+    data: [Customer]
+    pageNumber: Int!
+    pageSize: Int!
+}
+
+input GraphGetEmergencyListRequestInput {
+    pageNumber: Int
+    pageSize: Int
+}
+
+type GraphGetEmergencyListResponse {
+    data: [Emergency]
+}
+
+input GraphGetFaqListRequestInput {
+    pageNumber: Int
+    pageSize: Int
+}
+
+type GraphGetFaqListResponse {
+    data: [Faq]
+    pageNumber: Int!
+    pageSize: Int!
+}
+
+input GraphGetPolicyListRequestInput {
+    pageNumber: Int
+    pageSize: Int
+}
+
+type GraphGetPolicyListResponse {
+    data: [Policy]
+    pageNumber: Int!
+    pageSize: Int!
+}
+
+input GraphGetProductListRequestInput {
+    pageNumber: Int
+    pageSize: Int
+}
+
+type GraphGetProductListResponse {
+    data: [Product]
+    pageNumber: Int!
+    pageSize: Int!
+}
+
+input GraphGetPromotionListRequestInput {
+    pageNumber: Int
+    pageSize: Int
+}
+
+type GraphGetPromotionListResponse {
+    data: [Promotion]
+    pageNumber: Int!
+    pageSize: Int!
+}
+
+input GraphMotorMetadataRequestInput {
+    partner: String
+}
+
+type GraphMotorMetadataResponse {
+    data: String
+}
+
+input GraphMotorOrderRequestInput {
+    amount: BigInteger
+    expDate: String
+    partner: String
+    productId: String
+    startDate: String
+}
+
+type GraphMotorOrderResponse {
+    message: String
+    orderId: String
+    status: Int
+}
+
+type GraphNotificationListResponse {
+    htmlContent: String
+    icon: String
+    id: String
+    isRead: Boolean
+    time: String
+    type: Int
+}
+
+type GraphRecuseMotoBrandResponse {
+    data: [Brand]
+}
+
+type GraphRecuseMotoModelResponse {
+    data: [Model]
+}
+
+type GraphRecuseMotoProductResponse {
+    data: [Product]
+}
+
+type Model {
+    bikeId: String
+    bikeName: String
+}
+
+input PaymentRequestInput {
+    ipAddr: String
+    orderId: String
+    paymentType: String
+}
+
+type PaymentResponse {
+    code: String
+    data: String
+}
+
+
+type Policy {
+    createdDate: String
+    description: String
+    id: BigInteger!
+    name: String
+    updatedDate: String
+}
+
+type Product {
+    categoryId: BigInteger!
+    code: String
+    createdDate: String
+    description: String
+    id: BigInteger!
+    name: String
+    price: Float!
+    updatedDate: String
+}
+
+type Promotion {
+    code: String
+    createdDate: String
+    description: String
+    id: BigInteger!
+    name: String
+    updatedDate: String
+}
 
 
 ### Authen Schema

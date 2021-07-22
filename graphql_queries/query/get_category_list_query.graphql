@@ -1,0 +1,13 @@
+query($pageNumber: Int, $pageSize: Int) {
+    getCategoryList(request: { pageNumber: $pageNumber, pageSize: $pageSize }) {
+        data {
+            code
+            createdDate
+            id
+            name
+            updatedDate
+        }
+        pageNumber
+        pageSize
+    }
+}

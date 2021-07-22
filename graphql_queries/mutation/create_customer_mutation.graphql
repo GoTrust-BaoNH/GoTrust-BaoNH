@@ -1,0 +1,28 @@
+mutation(
+    $dateOfBirth: String
+    $email: String
+    $firstName: String
+    $lastName: String
+    $phone: String
+) {
+    createCustomer(
+        request: {
+            dateOfBirth: $dateOfBirth
+            email: $email
+            firstName: $firstName
+            lastName: $lastName
+            phone: $phone
+        }
+    ) {
+        data {
+            createdDate
+            dateOfBirth
+            email
+            firstName
+            id
+            lastName
+            phone
+            updatedDate
+        }
+    }
+}

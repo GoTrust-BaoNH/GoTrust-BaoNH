@@ -1,0 +1,14 @@
+mutation($address: String, $phone: String, $serviceName: String) {
+    createEmergency(
+        request: { address: $address, phone: $phone, serviceName: $serviceName }
+    ) {
+        data {
+            address
+            createdDate
+            id
+            phone
+            serviceName
+            updatedDate
+        }
+    }
+}

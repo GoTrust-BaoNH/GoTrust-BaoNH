@@ -1,4 +1,4 @@
-query appNotification($id: String) {
+query($id: String) {
     appNotification(id: $id) {
         htmlContent
         icon

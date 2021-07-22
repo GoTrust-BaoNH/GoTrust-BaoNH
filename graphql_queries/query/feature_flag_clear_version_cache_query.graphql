@@ -1,4 +1,4 @@
-query featureFlagClearVersionCache {
+query {
     featureFlagClearVersionCache {
         code
         message

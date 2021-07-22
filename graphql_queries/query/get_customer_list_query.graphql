@@ -1,0 +1,16 @@
+query($pageNumber: Int, $pageSize: Int) {
+    getCustomerList(request: { pageNumber: $pageNumber, pageSize: $pageSize }) {
+        data {
+            createdDate
+            dateOfBirth
+            email
+            firstName
+            id
+            lastName
+            phone
+            updatedDate
+        }
+        pageNumber
+        pageSize
+    }
+}

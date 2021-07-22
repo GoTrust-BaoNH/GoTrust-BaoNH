@@ -1,7 +1,0 @@
-query paymentGetPaymentTypeList {
-    paymentGetPaymentTypeList {
-        id
-        title
-        type
-    }
-}

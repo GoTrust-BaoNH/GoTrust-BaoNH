@@ -1,0 +1,8 @@
+query {
+    getRecuseMotoBrand {
+        data{
+            bikeId
+            bikeName
+        }
+    }
+}

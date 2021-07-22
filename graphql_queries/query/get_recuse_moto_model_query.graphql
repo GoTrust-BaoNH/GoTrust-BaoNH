@@ -1,0 +1,8 @@
+query ($brandId: String){
+    getRecuseMotoModel(brandId: $brandId) {
+        data{
+            bikeId
+            bikeName
+        }
+    }
+}

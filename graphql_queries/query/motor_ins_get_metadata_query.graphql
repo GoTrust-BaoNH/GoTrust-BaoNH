@@ -1,0 +1,5 @@
+query ($partner: String){
+    motorInsGetMetadata(request: {partner: $partner}) {
+        data
+    }
+}

@@ -1,0 +1,21 @@
+mutation(
+    $amount: BigInteger
+    $expDate: String
+    $partner: String
+    $productId: String
+    $startDate: String
+) {
+    motorInsCreateOrder(
+        request: {
+            amount: $amount
+            expDate: $expDate
+            partner: $partner
+            productId: $productId
+            startDate: $startDate
+        }
+    ) {
+        message
+        orderId
+        status
+    }
+}

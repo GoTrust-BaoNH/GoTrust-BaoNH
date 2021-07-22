@@ -8,11 +8,31 @@ import 'package:go_trust/data/graphql/mutation/verify_otp_mutation_graphql.dart'
 import 'package:go_trust/data/graphql/mutation/update_profile_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/update_password_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/login_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_customer_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_emergency_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_faq_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_policy_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_product_list_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_promotion_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/motor_ins_create_order_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/payment_create_payment_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/query/app_notification_item_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/app_notification_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/payment_get_bank_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/payment_get_payment_type_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_bank_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/refresh_token_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/create_category_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_category_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_emergency_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_faq_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_policy_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_product_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_promotion_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_recuse_moto_product_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/motor_ins_get_metadata_query_graphql.dart';
 import 'package:go_trust/shared/models/request/login_request.dart';
 import 'package:go_trust/shared/models/request/register_request.dart';
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql;
@@ -149,10 +169,10 @@ class ApiProvider extends BaseProvider {
     return BaseServiceGraphQLProvider.instance.value
         .query(
       graphql.QueryOptions(
-        document: AppNotificationQuery(
-          variables: AppNotificationArguments(id: id),
+        document: AppNotificationItemQueryGraphqlQuery(
+          variables: AppNotificationItemQueryGraphqlArguments(id: id),
         ).document,
-        variables: AppNotificationArguments(id: id).toJson(),
+        variables: AppNotificationItemQueryGraphqlArguments(id: id).toJson(),
       ),
     )
         .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
@@ -165,10 +185,10 @@ class ApiProvider extends BaseProvider {
     return BaseServiceGraphQLProvider.instance.value
         .query(
       graphql.QueryOptions(
-        document: AppNotificationListQuery(
-          variables: AppNotificationListArguments(userId: userId),
+        document: AppNotificationListQueryGraphqlQuery(
+          variables: AppNotificationListQueryGraphqlArguments(userId: userId),
         ).document,
-        variables: AppNotificationListArguments(userId: userId).toJson(),
+        variables: AppNotificationListQueryGraphqlArguments(userId: userId).toJson(),
       ),
     )
         .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
@@ -181,7 +201,7 @@ class ApiProvider extends BaseProvider {
     return BaseServiceGraphQLProvider.instance.value
         .query(
       graphql.QueryOptions(
-        document: PaymentGetPaymentTypeListQuery().document,
+        document: GetPaymentTypeListQueryGraphqlQuery().document,
       ),
     )
         .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
@@ -194,10 +214,474 @@ class ApiProvider extends BaseProvider {
     return BaseServiceGraphQLProvider.instance.value
         .query(
       graphql.QueryOptions(
-        document: PaymentGetBankListQuery(
-          variables: PaymentGetBankListArguments(paymentType: paymentType),
+        document: GetBankListQueryGraphqlQuery(
+          variables: GetBankListQueryGraphqlArguments(paymentType: paymentType),
         ).document,
-        variables: PaymentGetBankListArguments(paymentType: paymentType).toJson(),
+        variables: GetBankListQueryGraphqlArguments(paymentType: paymentType).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> createCustomer({
+    required String dateOfBirth,
+    required String email,
+    required String firstName,
+    required String lastName,
+    required String phone,
+  }) {
+    print('Request createCustomer mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: CreateCustomerMutationGraphqlMutation(
+          variables: CreateCustomerMutationGraphqlArguments(
+            dateOfBirth: dateOfBirth,
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone,
+          ),
+        ).document,
+        variables: CreateCustomerMutationGraphqlArguments(
+          dateOfBirth: dateOfBirth,
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          phone: phone,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> createEmergency({required String address, required String phone, required String serviceName}) {
+    print('Request createEmergency mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: CreateEmergencyMutationGraphqlMutation(
+          variables: CreateEmergencyMutationGraphqlArguments(
+            address: address,
+            phone: phone,
+            serviceName: serviceName,
+          ),
+        ).document,
+        variables: CreateEmergencyMutationGraphqlArguments(
+          address: address,
+          phone: phone,
+          serviceName: serviceName,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> createFaq({required String answer, required String question}) {
+    print('Request createFaq mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: CreateFaqMutationGraphqlMutation(
+          variables: CreateFaqMutationGraphqlArguments(
+            answer: answer,
+            question: question,
+          ),
+        ).document,
+        variables: CreateFaqMutationGraphqlArguments(
+          answer: answer,
+          question: question,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> createPolicy({required String description, required String name}) {
+    print('Request createPolicy mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: CreatePolicyMutationGraphqlMutation(
+          variables: CreatePolicyMutationGraphqlArguments(
+            description: description,
+            name: name,
+          ),
+        ).document,
+        variables: CreatePolicyMutationGraphqlArguments(
+          description: description,
+          name: name,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> createProductList({
+    required int categoryId,
+    required double price,
+    String? code,
+    String? description,
+    String? name,
+  }) {
+    print('Request createProductList mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: CreateProductListMutationGraphqlMutation(
+          variables: CreateProductListMutationGraphqlArguments(
+            categoryId: categoryId,
+            price: price,
+            code: code,
+            description: description,
+            name: name,
+          ),
+        ).document,
+        variables: CreateProductListMutationGraphqlArguments(
+          categoryId: categoryId,
+          price: price,
+          code: code,
+          description: description,
+          name: name,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> createPromotion({String? code, String? description, String? name}) {
+    print('Request createPromotion mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: CreatePromotionMutationGraphqlMutation(
+          variables: CreatePromotionMutationGraphqlArguments(
+            code: code,
+            description: description,
+            name: name,
+          ),
+        ).document,
+        variables: CreatePromotionMutationGraphqlArguments(
+          code: code,
+          description: description,
+          name: name,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> motorInsCreateOrder({
+    int? amount,
+    String? expDate,
+    String? partner,
+    String? productId,
+    String? startDate,
+  }) {
+    print('Request motorInsCreateOrder mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: MotorInsCreateOrderMutationGraphqlMutation(
+          variables: MotorInsCreateOrderMutationGraphqlArguments(
+            amount: amount,
+            expDate: expDate,
+            partner: partner,
+            productId: productId,
+            startDate: startDate,
+          ),
+        ).document,
+        variables: MotorInsCreateOrderMutationGraphqlArguments(
+          amount: amount,
+          expDate: expDate,
+          partner: partner,
+          productId: productId,
+          startDate: startDate,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> paymentCreatePayment({
+    String? ipAddr,
+    String? orderId,
+    String? paymentType,
+  }) {
+    print('Request paymentCreatePayment mutation');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: PaymentCreatePaymentMutationGraphqlMutation(
+          variables: PaymentCreatePaymentMutationGraphqlArguments(
+            ipAddr: ipAddr,
+            orderId: orderId,
+            paymentType: paymentType,
+          ),
+        ).document,
+        variables: PaymentCreatePaymentMutationGraphqlArguments(
+          ipAddr: ipAddr,
+          orderId: orderId,
+          paymentType: paymentType,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> createCategory({String? code, String? name}) {
+    print('Request createCategory query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: CreateCategoryQueryGraphqlQuery(
+          variables: CreateCategoryQueryGraphqlArguments(
+            code: code,
+            name: name,
+          ),
+        ).document,
+        variables: CreateCategoryQueryGraphqlArguments(
+          code: code,
+          name: name,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getCategoryList({int? pageNumber, int? pageSize}) {
+    print('Request getCategoryList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetCategoryListQueryGraphqlQuery(
+          variables: GetCategoryListQueryGraphqlArguments(
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          ),
+        ).document,
+        variables: GetCategoryListQueryGraphqlArguments(
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getCustomerList({int? pageNumber, int? pageSize}) {
+    print('Request getCustomerList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetCustomerListQueryGraphqlQuery(
+          variables: GetCustomerListQueryGraphqlArguments(
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          ),
+        ).document,
+        variables: GetCustomerListQueryGraphqlArguments(
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getEmergencyList({int? pageNumber, int? pageSize}) {
+    print('Request getEmergencyList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetEmergencyListQueryGraphqlQuery(
+          variables: GetEmergencyListQueryGraphqlArguments(
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          ),
+        ).document,
+        variables: GetEmergencyListQueryGraphqlArguments(
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getFaqList({int? pageNumber, int? pageSize}) {
+    print('Request getFaqList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetFaqListQueryGraphqlQuery(
+          variables: GetFaqListQueryGraphqlArguments(
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          ),
+        ).document,
+        variables: GetFaqListQueryGraphqlArguments(
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getPolicyList({int? pageNumber, int? pageSize}) {
+    print('Request getPolicyList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetPolicyListQueryGraphqlQuery(
+          variables: GetPolicyListQueryGraphqlArguments(
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          ),
+        ).document,
+        variables: GetPolicyListQueryGraphqlArguments(
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getProductList({int? pageNumber, int? pageSize}) {
+    print('Request getProductList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetProductListQueryGraphqlQuery(
+          variables: GetProductListQueryGraphqlArguments(
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          ),
+        ).document,
+        variables: GetProductListQueryGraphqlArguments(
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getPromotionList({int? pageNumber, int? pageSize}) {
+    print('Request getPromotionList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetPromotionListQueryGraphqlQuery(
+          variables: GetPromotionListQueryGraphqlArguments(
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          ),
+        ).document,
+        variables: GetPromotionListQueryGraphqlArguments(
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getRecuseMotoBrand() {
+    print('Request getRecuseMotoBrand query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetRecuseMotoBrandQueryGraphqlQuery().document,
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getRecuseMoto({String? brandId}) {
+    print('Request getRecuseMoto query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetRecuseMotoModelQueryGraphqlQuery(
+          variables: GetRecuseMotoModelQueryGraphqlArguments(
+            brandId: brandId,
+          ),
+        ).document,
+        variables: GetRecuseMotoModelQueryGraphqlArguments(
+          brandId: brandId,
+        ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getRecuseMotoProduct() {
+    print('Request getRecuseMotoProduct query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetRecuseMotoProductQueryGraphqlQuery().document,
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> motoInsGetMetaData({String? partner}) {
+    print('Request motoInsGetMetaData query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: MotorInsGetMetadataQueryGraphqlQuery(
+          variables: MotorInsGetMetadataQueryGraphqlArguments(
+            partner: partner,
+          ),
+        ).document,
+        variables: MotorInsGetMetadataQueryGraphqlArguments(
+          partner: partner,
+        ).toJson(),
       ),
     )
         .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {

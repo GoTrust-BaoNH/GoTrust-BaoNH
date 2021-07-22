@@ -1,9 +1,17 @@
 class EmergencyModel {
   EmergencyModel({
-    required this.serviceName,
-    required this.servicePhoneNumber,
+    required this.id,
+    this.address,
+    this.createdDate,
+    this.phone,
+    this.serviceName,
+    this.updatedDate,
   });
 
-  String serviceName;
-  String servicePhoneNumber;
+  String? address;
+  String? createdDate;
+  int id;
+  String? phone;
+  String? serviceName;
+  String? updatedDate;
 }

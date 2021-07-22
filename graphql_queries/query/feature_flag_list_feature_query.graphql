@@ -1,4 +1,4 @@
-query featureFlagListFeature($os: String, $platform: String) {
+query($os: String, $platform: String) {
     featureFlagListFeature(request: { os: $os, platform: $platform }) {
         code
         status

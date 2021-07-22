@@ -16,11 +16,35 @@ targets:
 
             ##### Mutation ####
             - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_customer_mutation.graphql
+              output: lib/data/graphql/mutation/create_customer_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_emergency_mutation.graphql
+              output: lib/data/graphql/mutation/create_emergency_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_faq_mutation.graphql
+              output: lib/data/graphql/mutation/create_faq_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_policy_mutation.graphql
+              output: lib/data/graphql/mutation/create_policy_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_product_list_mutation.graphql
+              output: lib/data/graphql/mutation/create_product_list_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_promotion_mutation.graphql
+              output: lib/data/graphql/mutation/create_promotion_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/login_mutation.graphql
               output: lib/data/graphql/mutation/login_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/login_with_auth_mutation.graphql
               output: lib/data/graphql/mutation/login_with_auth_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/motor_ins_create_order_mutation.graphql
+              output: lib/data/graphql/mutation/motor_ins_create_order_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/payment_create_payment_mutation.graphql
+              output: lib/data/graphql/mutation/payment_create_payment_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/register_otp_mutation.graphql
               output: lib/data/graphql/mutation/register_otp_mutation_graphql.dart
@@ -42,6 +66,9 @@ targets:
               queries_glob: graphql_queries/query/app_notification_list_query.graphql
               output: lib/data/graphql/query/app_notification_list_query_graphql.dart
             - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/create_category_query.graphql
+              output: lib/data/graphql/query/create_category_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/query/feature_flag_clear_feature_cache_query.graphql
               output: lib/data/graphql/query/feature_flag_clear_feature_cache_query_graphql.dart
             - schema: graphql_schema/schema.graphql
@@ -54,11 +81,44 @@ targets:
               queries_glob: graphql_queries/query/feature_flag_list_feature_query.graphql
               output: lib/data/graphql/query/feature_flag_list_feature_query_graphql.dart
             - schema: graphql_schema/schema.graphql
-              queries_glob: graphql_queries/query/payment_get_bank_list_query.graphql
-              output: lib/data/graphql/query/payment_get_bank_list_query_graphql.dart
+              queries_glob: graphql_queries/query/get_bank_list_query.graphql
+              output: lib/data/graphql/query/get_bank_list_query_graphql.dart
             - schema: graphql_schema/schema.graphql
-              queries_glob: graphql_queries/query/payment_get_payment_type_list_query.graphql
-              output: lib/data/graphql/query/payment_get_payment_type_list_query_graphql.dart
+              queries_glob: graphql_queries/query/get_category_list_query.graphql
+              output: lib/data/graphql/query/get_category_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_customer_list_query.graphql
+              output: lib/data/graphql/query/get_customer_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_emergency_list_query.graphql
+              output: lib/data/graphql/query/get_emergency_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_faq_list_query.graphql
+              output: lib/data/graphql/query/get_faq_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_payment_type_list_query.graphql
+              output: lib/data/graphql/query/get_payment_type_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_policy_list_query.graphql
+              output: lib/data/graphql/query/get_policy_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_product_list_query.graphql
+              output: lib/data/graphql/query/get_product_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_promotion_list_query.graphql
+              output: lib/data/graphql/query/get_promotion_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_recuse_moto_brand_query.graphql
+              output: lib/data/graphql/query/get_recuse_moto_brand_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_recuse_moto_model_query.graphql
+              output: lib/data/graphql/query/get_recuse_moto_model_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_recuse_moto_product_query.graphql
+              output: lib/data/graphql/query/get_recuse_moto_product_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/motor_ins_get_metadata_query.graphql
+              output: lib/data/graphql/query/motor_ins_get_metadata_query_graphql.dart
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/query/refresh_token_query.graphql
               output: lib/data/graphql/query/refresh_token_query_graphql.dart

@@ -1,0 +1,16 @@
+query ($pageNumber: Int, $pageSize: Int){
+    getProductList(request: { pageNumber: $pageNumber, pageSize: $pageSize }) {
+        data{
+            categoryId
+            code
+            createdDate
+            description
+            id
+            name
+            price
+            updatedDate
+        }
+        pageNumber
+        pageSize
+    }
+}

@@ -1,0 +1,11 @@
+mutation($description: String, $name: String) {
+    createPolicy(request: { description: $description, name: $name }) {
+        data {
+            createdDate
+            description
+            id
+            name
+            updatedDate
+        }
+    }
+}

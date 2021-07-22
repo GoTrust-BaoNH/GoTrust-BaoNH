@@ -1,0 +1,13 @@
+query ($pageNumber: Int, $pageSize: Int){
+    getPolicyList(request: { pageNumber: $pageNumber, pageSize: $pageSize }) {
+        data{
+            createdDate
+            description
+            id
+            name
+            updatedDate
+        }
+        pageNumber
+        pageSize
+    }
+}

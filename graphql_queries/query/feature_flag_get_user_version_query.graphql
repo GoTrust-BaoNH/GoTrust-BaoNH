@@ -1,6 +1,5 @@
-query featureFlagGetUserVersion( $os: String
-    $platform: String) {
-    featureFlagGetUserVersion(request: {os: $os, platform: $platform}) {
+query($os: String, $platform: String) {
+    featureFlagGetUserVersion(request: { os: $os, platform: $platform }) {
         versionCode
         versionName
     }

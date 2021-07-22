@@ -13,18 +13,18 @@ class EmergencyController extends BaseController {
   final ApiRepository apiRepository;
 
   List<EmergencyModel> list = [
-    EmergencyModel(serviceName: 'Service 1', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 2', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 3', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 4', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 1', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 2', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 3', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 4', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 1', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 2', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 3', servicePhoneNumber: '1800xxxx'),
-    EmergencyModel(serviceName: 'Service 4', servicePhoneNumber: '1800xxxx'),
+    EmergencyModel(id: 0, serviceName: 'Service 1', phone: '1800xxxx'),
+    EmergencyModel(id: 1, serviceName: 'Service 2', phone: '1800xxxx'),
+    EmergencyModel(id: 2, serviceName: 'Service 3', phone: '1800xxxx'),
+    EmergencyModel(id: 3, serviceName: 'Service 4', phone: '1800xxxx'),
+    EmergencyModel(id: 4, serviceName: 'Service 1', phone: '1800xxxx'),
+    EmergencyModel(id: 5, serviceName: 'Service 2', phone: '1800xxxx'),
+    EmergencyModel(id: 6, serviceName: 'Service 3', phone: '1800xxxx'),
+    EmergencyModel(id: 7, serviceName: 'Service 4', phone: '1800xxxx'),
+    EmergencyModel(id: 8, serviceName: 'Service 1', phone: '1800xxxx'),
+    EmergencyModel(id: 9, serviceName: 'Service 2', phone: '1800xxxx'),
+    EmergencyModel(id: 10, serviceName: 'Service 3', phone: '1800xxxx'),
+    EmergencyModel(id: 11, serviceName: 'Service 4', phone: '1800xxxx'),
   ];
 
   @override

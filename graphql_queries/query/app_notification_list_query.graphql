@@ -1,4 +1,4 @@
-query appNotificationList($userId: BigInteger) {
+query($userId: BigInteger) {
     appNotificationList(userId: $userId) {
         htmlContent
         icon
