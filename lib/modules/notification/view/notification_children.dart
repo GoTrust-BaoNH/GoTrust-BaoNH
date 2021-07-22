@@ -7,16 +7,25 @@ extension NotificaitonsExtension on NotificationScreen {
       child: Wrap(
         runSpacing: 4,
         children: List<Widget>.generate(
-          controller.list.length,
+          controller.list.value.length,
           (index) {
-            final item = controller.list[index];
-            return _notificationItem(
-              notificationType: item.notificationType,
-              isExpired: item.isExpired,
-              status: item.status,
-              description: item.description,
-              createTime: item.createTime,
-              onItemPressed: () => onItemPressed(item),
+            //final item = controller.list[index];
+            // return _notificationItem(
+            //   notificationType: item.notificationType,
+            //   isExpired: item.isExpired,
+            //   status: item.status,
+            //   description: item.description,
+            //   createTime: item.createTime,
+            //   onItemPressed: () => onItemPressed(item),
+            // );
+
+            // Widget html = Html(data: controller.list[index].htmlContent);
+            Widget html = Html(data: dataNotificationMock);
+            return GestureDetector(
+              onTap: () {
+                controller.onTapItemNotification(controller.list[index]);
+              },
+              child: html,
             );
           },
         ),
