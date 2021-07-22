@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/notification/controller/notification_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
+import 'package:go_trust/shared/models/notification/notification_item_model.dart';
 import 'package:go_trust/shared/models/notification/notifications_model.dart';
 import 'package:go_trust/shared/models/product/product_enum.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
@@ -31,8 +33,10 @@ class NotificationScreen extends GetView<NotificationController> {
               ),
             ),
           ),
-          Expanded(
-            child: _listNotifications(onItemPressed: (item) {}),
+          Obx(
+            () => Expanded(
+              child: _listNotifications(onItemPressed: (item) {}),
+            ),
           ),
           TextButton(
             onPressed: () {},
