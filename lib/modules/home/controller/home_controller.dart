@@ -88,6 +88,7 @@ class HomeController extends BaseController {
       case IconConstants.onlineShopping:
         break;
       case IconConstants.bhXeMay:
+        Get.toNamed(Routes.MOTO_INSURANCE_SCREEN);
         break;
       case IconConstants.bhOto:
         break;

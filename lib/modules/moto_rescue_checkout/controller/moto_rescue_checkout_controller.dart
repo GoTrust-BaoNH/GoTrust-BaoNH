@@ -24,7 +24,7 @@ class MotoRescueCheckoutController extends BaseController {
   }
 
   void onBuyNowButtonPressed() {
-    Get.toNamed(Routes.MOTO_INSURANCE_SCREEN);
+    Get.toNamed(Routes.PAYMENT_METHOD_SCREEN);
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

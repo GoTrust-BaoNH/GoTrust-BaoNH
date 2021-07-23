@@ -1,6 +1,10 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/routes/app_pages.dart';
+import 'package:go_trust/shared/constants/common.dart';
+import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 
@@ -21,6 +25,32 @@ class PaymentInfoController extends BaseController {
   Future<void> onInit() async {
     paymentDescription = paymentDescriptionMock;
     await super.onInit();
+  }
+
+  Future<void> onConfirmButtonPressed() async {
+    await EasyLoading.show();
+    await apiRepository.paymentCreatePayment(paymentType: "VNPAY", orderId: CommonConstants.orderID).then(
+      (result) async {
+        await EasyLoading.dismiss();
+        if (result.code != null) {
+          print(result.code);
+          print(result.data);
+          await Get.toNamed(Routes.MOTO_RESCUE_SCREEN);
+        } else {
+          final dialogRequest = CommonDialogRequest(
+            title: 'error'.tr,
+            description: 'unknown_error'.tr,
+            typeDialog: DIALOG_ONE_BUTTON,
+            defineEvent: 'unknown_error',
+          );
+          await _doShowDialog(dialogRequest);
+        }
+      },
+      onError: (e) async {
+        await EasyLoading.dismiss();
+        await _doShowDialog(handleErrorResponse(e));
+      },
+    );
   }
 
   @override

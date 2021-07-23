@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/moto_insurance/controller/moto_insurance_controller.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
@@ -36,7 +37,11 @@ class MotoInsuranceScreen extends GetView<MotoInsuranceController> {
             child: StepWidget(currentStepIndex: 2),
           ),
           const SizedBox(height: 24),
-          Expanded(child: _buildContentInsurance),
+          Obx(
+            () => Expanded(
+              child: Html(data: controller.motoInsInfo.value),
+            ),
+          ),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),

@@ -62,7 +62,7 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
             AppGradientButton(
               onPressed: controller.onBuyNowButtonPressed,
               child: Text(
-                'buy_now'.tr,
+                'payment'.tr,
                 style: Theme.of(context).accentTextTheme.headline6,
               ),
             ),

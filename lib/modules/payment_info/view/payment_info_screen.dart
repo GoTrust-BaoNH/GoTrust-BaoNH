@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/payment_info/controller/payment_info_controller.dart';
-import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/methods/common_method.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
@@ -113,7 +112,7 @@ class PaymentInfoScreen extends GetView<PaymentInfoController> {
               const SizedBox(height: 16),
               AppGradientButton(
                 onPressed: () {
-                  Get.toNamed(Routes.MOTO_RESCUE_SCREEN);
+                  controller.onConfirmButtonPressed();
                 },
                 child: Text(
                   'confirm'.tr,
