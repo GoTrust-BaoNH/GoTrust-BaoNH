@@ -146,6 +146,7 @@ type BankResponse {
     code: String
     id: Int
     title: String
+    imageUrl: String
 }
 
 type CommonResponse {
@@ -165,6 +166,7 @@ type FeatureResponse {
 
 type PaymentTypeResponse {
     id: Int
+    imageUrl: String
     title: String
     type: String
 }

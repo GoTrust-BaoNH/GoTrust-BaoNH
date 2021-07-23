@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_trust/shared/constants/colors.dart';
-import 'package:go_trust/shared/models/payment_model/payment_method_model.dart';
+import 'package:go_trust/shared/models/payment_model/payment_type_model.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 
@@ -11,7 +11,7 @@ class PaymentMethodItem extends StatefulWidget {
     required this.onChange,
     Key? key,
   }) : super(key: key);
-  final PaymentMethodModel viewModel;
+  final PaymentType viewModel;
   final bool isSelected;
   final Function() onChange;
 
@@ -56,7 +56,7 @@ class _PaymentMethodItemState extends State<PaymentMethodItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 FCoreImage(
-                  widget.viewModel.image,
+                  widget.viewModel.imageUrl!,
                   height: 40,
                   width: 120,
                 ),
@@ -64,7 +64,7 @@ class _PaymentMethodItemState extends State<PaymentMethodItem> {
                   height: 14,
                 ),
                 Text(
-                  widget.viewModel.title,
+                  '${widget.viewModel.title ?? ''} ${widget.viewModel.type ?? ''}',
                   style: TextAppStyle().textTitleItemPaymentStyle(),
                 )
               ],

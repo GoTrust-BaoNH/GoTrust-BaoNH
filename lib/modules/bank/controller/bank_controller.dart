@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
-import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/routes/app_pages.dart';
+import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
+import 'package:go_trust/shared/models/bank_model/bank_model.dart';
+import 'package:go_trust/shared/models/payment_model/payment_type_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 
 import '../../../data/repository/api_repository.dart';
@@ -16,31 +19,47 @@ class BankController extends BaseController {
   final ApiRepository apiRepository;
 
   late TextEditingController searchController;
-  late List<dynamic> listBank;
-
-  final listBankMock = [
-    {'icon': ImageConstants.tpBank, 'title': 'TP bank'},
-    {'icon': ImageConstants.tpBank, 'title': 'VP bank'},
-    {'icon': ImageConstants.tpBank, 'title': 'Agribank'},
-    {'icon': ImageConstants.tpBank, 'title': 'Techcom bank'},
-    {'icon': ImageConstants.tpBank, 'title': 'BIDV'},
-    {'icon': ImageConstants.tpBank, 'title': 'Vietcombank'},
-    {'icon': ImageConstants.tpBank, 'title': 'DongA bank'},
-    {'icon': ImageConstants.tpBank, 'title': 'Viettin bank'},
-  ];
+  var listBank = <BankModel>[].obs;
+  var listBankDisplay = <BankModel>[].obs;
+  late PaymentType paymentType;
 
   @override
   Future<void> onInit() async {
     searchController = TextEditingController();
-    listBank = listBankMock;
+    paymentType = Get.arguments[0];
+    await getListPaymentBank();
     await super.onInit();
-
     searchController.addListener(() {
-      listBank = listBankMock.where((element) {
-        final _bankTitle = element['title']!.toString().toLowerCase();
+      listBankDisplay.value = listBank.value.where((element) {
+        final _bankTitle = element.title!.toString().toLowerCase();
         return _bankTitle.contains(searchController.text.toLowerCase());
       }).toList();
     });
+  }
+
+  Future<void> getListPaymentBank() async {
+    await EasyLoading.show();
+    await apiRepository.getListPaymentBank(paymentType: paymentType.type!).then(
+      (result) async {
+        await EasyLoading.dismiss();
+        if (result.isNotEmpty) {
+          listBank.value = result;
+          listBankDisplay.value = result;
+        } else {
+          final dialogRequest = CommonDialogRequest(
+            title: 'error'.tr,
+            description: 'unknown_error'.tr,
+            typeDialog: DIALOG_ONE_BUTTON,
+            defineEvent: 'unknown_error',
+          );
+          await _doShowDialog(dialogRequest);
+        }
+      },
+      onError: (e) async {
+        await EasyLoading.dismiss();
+        await _doShowDialog(handleErrorResponse(e));
+      },
+    );
   }
 
   @override

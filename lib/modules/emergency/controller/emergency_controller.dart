@@ -1,9 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/models/emergency/emergency_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
@@ -12,24 +16,46 @@ class EmergencyController extends BaseController {
 
   final ApiRepository apiRepository;
 
-  List<EmergencyModel> list = [
-    EmergencyModel(id: 0, serviceName: 'Service 1', phone: '1800xxxx'),
-    EmergencyModel(id: 1, serviceName: 'Service 2', phone: '1800xxxx'),
-    EmergencyModel(id: 2, serviceName: 'Service 3', phone: '1800xxxx'),
-    EmergencyModel(id: 3, serviceName: 'Service 4', phone: '1800xxxx'),
-    EmergencyModel(id: 4, serviceName: 'Service 1', phone: '1800xxxx'),
-    EmergencyModel(id: 5, serviceName: 'Service 2', phone: '1800xxxx'),
-    EmergencyModel(id: 6, serviceName: 'Service 3', phone: '1800xxxx'),
-    EmergencyModel(id: 7, serviceName: 'Service 4', phone: '1800xxxx'),
-    EmergencyModel(id: 8, serviceName: 'Service 1', phone: '1800xxxx'),
-    EmergencyModel(id: 9, serviceName: 'Service 2', phone: '1800xxxx'),
-    EmergencyModel(id: 10, serviceName: 'Service 3', phone: '1800xxxx'),
-    EmergencyModel(id: 11, serviceName: 'Service 4', phone: '1800xxxx'),
-  ];
+  var emergencyList = <EmergencyModel>[].obs;
+
+  final int pageSize = 10;
+  var pageNumber = 0.obs;
+
+  final ScrollController scrollController = ScrollController();
+  bool canLoadingMore = true;
 
   @override
   Future<void> onInit() async {
+    await getListEmergency();
     await super.onInit();
+  }
+
+  Future<void> getListEmergency() async {
+    await EasyLoading.show();
+    await apiRepository.getEmergencyList(pageNumber: pageNumber.value, pageSize: pageSize).then(
+      (result) async {
+        await EasyLoading.dismiss();
+        if (result.data != null) {
+          if (result.data!.length < pageSize) {
+            canLoadingMore = false;
+          }
+          emergencyList.value.addAll(result.data!);
+          emergencyList.refresh();
+        } else {
+          final dialogRequest = CommonDialogRequest(
+            title: 'error'.tr,
+            description: 'unknown_error'.tr,
+            typeDialog: DIALOG_ONE_BUTTON,
+            defineEvent: 'unknown_error',
+          );
+          await _doShowDialog(dialogRequest);
+        }
+      },
+      onError: (e) async {
+        await EasyLoading.dismiss();
+        await _doShowDialog(handleErrorResponse(e));
+      },
+    );
   }
 
   @override

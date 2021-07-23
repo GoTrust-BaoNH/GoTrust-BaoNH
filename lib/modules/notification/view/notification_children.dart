@@ -20,7 +20,7 @@ extension NotificaitonsExtension on NotificationScreen {
             // );
 
             // Widget html = Html(data: controller.list[index].htmlContent);
-            Widget html = Html(data: dataNotificationMock);
+            final Widget html = Html(data: dataNotificationMock);
             return GestureDetector(
               onTap: () {
                 controller.onTapItemNotification(controller.list[index]);

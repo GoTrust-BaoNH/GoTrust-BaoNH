@@ -2,6 +2,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/models/notification/notification_item_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
@@ -24,9 +25,23 @@ class NotificationController extends BaseController {
 
   Future<void> getListNotification() async {
     await EasyLoading.show();
-    list.value = await apiRepository.getListNotification(userId: 1);
-    list.refresh();
-    await EasyLoading.dismiss();
+    await apiRepository.getListNotification(userId: 1).then((result) async {
+      await EasyLoading.dismiss();
+      if (result.isNotEmpty) {
+        list.value = result;
+      } else {
+        final dialogRequest = CommonDialogRequest(
+          title: 'error'.tr,
+          description: 'unknown_error'.tr,
+          typeDialog: DIALOG_ONE_BUTTON,
+          defineEvent: 'unknown_error',
+        );
+        await _doShowDialog(dialogRequest);
+      }
+    }, onError: (e) async {
+      await EasyLoading.dismiss();
+      await _doShowDialog(handleErrorResponse(e));
+    });
   }
 
   Future<void> onTapItemNotification(NotificationItemModel item) async {

@@ -27,10 +27,12 @@ class EmergencyScreen extends GetView<EmergencyController> {
               vertical: 20,
             ),
           ),
-          Expanded(
-            child: _listHotline(onItemPressed: (item) {
-              controller.onItemListServicePressed(item);
-            }),
+          Obx(
+            () => Expanded(
+              child: _listHotline(onItemPressed: (item) {
+                controller.onItemListServicePressed(item);
+              }),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),

@@ -1,9 +1,11 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/routes/app_pages.dart';
+import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
-import 'package:go_trust/shared/models/payment_model/payment_method_model.dart';
+import 'package:go_trust/shared/models/payment_model/payment_type_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 
 import '../../../data/repository/api_repository.dart';
@@ -14,15 +16,37 @@ class PaymentMethodController extends BaseController {
 
   final ApiRepository apiRepository;
 
-  List<PaymentMethodModel> viewModel = [];
+  var listMethod = <PaymentType>[].obs;
   int currentMethod = 0;
 
   @override
   Future<void> onInit() async {
-    for (var i = 0; i < 4; i++) {
-      viewModel.add(PaymentMethodModel.fromMock());
-    }
+    await getListMethod();
     await super.onInit();
+  }
+
+  Future<void> getListMethod() async {
+    await EasyLoading.show();
+    await apiRepository.getListPaymentType().then(
+      (result) async {
+        await EasyLoading.dismiss();
+        if (result.isNotEmpty) {
+          listMethod.value = result;
+        } else {
+          final dialogRequest = CommonDialogRequest(
+            title: 'error'.tr,
+            description: 'unknown_error'.tr,
+            typeDialog: DIALOG_ONE_BUTTON,
+            defineEvent: 'unknown_error',
+          );
+          await _doShowDialog(dialogRequest);
+        }
+      },
+      onError: (e) async {
+        await EasyLoading.dismiss();
+        await _doShowDialog(handleErrorResponse(e));
+      },
+    );
   }
 
   @override
@@ -31,7 +55,7 @@ class PaymentMethodController extends BaseController {
   }
 
   void onNextButtonPressed() {
-    Get.toNamed(Routes.BANK_SCREEN);
+    Get.toNamed(Routes.BANK_SCREEN, arguments: [listMethod[currentMethod]]);
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

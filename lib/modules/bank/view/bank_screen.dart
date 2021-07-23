@@ -19,22 +19,24 @@ class BankScreen extends GetView<BankController> {
               controller: controller.searchController,
             ),
             const SizedBox(height: 16),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: Colors.white,
-                ),
-                child: ListView.separated(
-                  itemBuilder: (context, index) => BankItem(
-                    icon: FCoreImage(controller.listBank[index]['icon']!),
-                    title: controller.listBank[index]['title']!,
-                    onTap: controller.onBankItemPressed,
+            Obx(
+              () => Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white,
                   ),
-                  separatorBuilder: (context, index) => const Divider(
-                    height: 1,
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => BankItem(
+                      icon: FCoreImage(controller.listBankDisplay[index].imageUrl!),
+                      title: controller.listBankDisplay[index].title!,
+                      onTap: controller.onBankItemPressed,
+                    ),
+                    separatorBuilder: (context, index) => const Divider(
+                      height: 1,
+                    ),
+                    itemCount: controller.listBankDisplay.length,
                   ),
-                  itemCount: controller.listBank.length,
                 ),
               ),
             ),

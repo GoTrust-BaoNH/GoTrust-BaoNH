@@ -28,9 +28,11 @@ class BankItem extends StatelessWidget {
             ),
             child: icon,
           ),
-          Text(
-            title,
-            style: TextAppStyle().textBankNamePaymentStyle(),
+          Flexible(
+            child: Text(
+              title,
+              style: TextAppStyle().textBankNamePaymentStyle(),
+            ),
           )
         ],
       ),

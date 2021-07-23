@@ -2,6 +2,7 @@ query($paymentType: String) {
     getBankList(request: {paymentType: $paymentType}) {
         code
         id
+        imageUrl
         title
     }
 }

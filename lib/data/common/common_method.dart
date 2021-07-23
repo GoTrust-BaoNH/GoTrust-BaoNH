@@ -1,3 +1,13 @@
+import 'package:go_trust/data/graphql/query/app_notification_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_category_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_faq_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_policy_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_product_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_promotion_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
 import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/brand_model/brand_model.dart';
 import 'package:go_trust/shared/models/category_model/category_list_model.dart';
@@ -13,18 +23,6 @@ import 'package:go_trust/shared/models/moto_order_model/moto_order_model.dart';
 import 'package:go_trust/shared/models/notification/notification_item_model.dart';
 import 'package:go_trust/shared/models/payment_model/payment_response.dart';
 import 'package:go_trust/shared/models/payment_model/payment_type_model.dart';
-import 'package:go_trust/data/graphql/query/app_notification_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_bank_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_category_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_emergency_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_faq_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_policy_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_product_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_promotion_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
 import 'package:go_trust/shared/models/policy_model/policy_list_model.dart';
 import 'package:go_trust/shared/models/policy_model/policy_model.dart';
 import 'package:go_trust/shared/models/product/product_list_model.dart';
@@ -139,6 +137,7 @@ PaymentType convertItemPaymentTypeModel(itemPaymentType) {
   }
   return PaymentType(
     id: itemPaymentType.id,
+    imageUrl: itemPaymentType.imageUrl,
     title: itemPaymentType.title,
     type: itemPaymentType.type,
   );
@@ -150,7 +149,7 @@ List<BankModel> convertListPaymentBankModel(listPaymentBank) {
   }
 
   final tempList = <BankModel>[];
-  for (final item in listPaymentBank as List<GetBankListQueryGraphql$Query$BankResponse?>) {
+  for (final item in listPaymentBank) {
     tempList.add(convertItemPaymentBankModel(item));
   }
 
@@ -164,6 +163,7 @@ BankModel convertItemPaymentBankModel(itemPaymentBank) {
   return BankModel(
     code: itemPaymentBank.code,
     id: itemPaymentBank.id,
+    imageUrl: itemPaymentBank.imageUrl,
     title: itemPaymentBank.title,
   );
 }
@@ -338,23 +338,21 @@ List<CustomerModel?> convertCustomerListModel(listCustomerModel) {
 
 EmergencyListModel convertListEmergencyModel(listEmergencyModel) {
   if (listEmergencyModel == null) {
-    return EmergencyListModel(pageNumber: 0, pageSize: 0, data: <EmergencyModel?>[]);
+    return EmergencyListModel(data: <EmergencyModel>[]);
   }
 
   return EmergencyListModel(
-    pageSize: listEmergencyModel.pageSize,
-    pageNumber: listEmergencyModel.pageNumber,
     data: convertEmergencyListModel(listEmergencyModel.data),
   );
 }
 
-List<EmergencyModel?> convertEmergencyListModel(listEmergencyModel) {
+List<EmergencyModel> convertEmergencyListModel(listEmergencyModel) {
   if (listEmergencyModel == null || (listEmergencyModel as List).isEmpty) {
-    return <EmergencyModel?>[];
+    return <EmergencyModel>[];
   }
 
-  final tempList = <EmergencyModel?>[];
-  for (final item in listEmergencyModel as List<GetEmergencyListQueryGraphql$Query$GraphGetEmergencyListResponse?>) {
+  final tempList = <EmergencyModel>[];
+  for (final item in listEmergencyModel) {
     tempList.add(convertEmergencyModel(item));
   }
 

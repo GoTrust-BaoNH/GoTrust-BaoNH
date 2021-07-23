@@ -32,21 +32,21 @@ class PaymentMethodScreen extends GetView<PaymentMethodController> {
                 style: TextAppStyle().textTitlePagePaymentStyle(),
               ),
             ),
-            Expanded(
-              child: ListView.separated(
-                itemCount: controller.viewModel.length,
-                itemBuilder: (context, index) => PaymentMethodItem(
-                  viewModel: controller.viewModel[index],
-                  isSelected: controller.currentMethod == index,
-                  onChange: () {
-                    // setState(() {
-                    //   _currentMethod = index;
-                    // });
-                  },
-                ),
-                separatorBuilder: (context, index) => const SizedBox(height: 16),
-              ),
-            ),
+            Obx(() => Expanded(
+                  child: ListView.separated(
+                    itemCount: controller.listMethod.length,
+                    itemBuilder: (context, index) => PaymentMethodItem(
+                      viewModel: controller.listMethod[index],
+                      isSelected: controller.currentMethod == index,
+                      onChange: () {
+                        // setState(() {
+                        //   _currentMethod = index;
+                        // });
+                      },
+                    ),
+                    separatorBuilder: (context, index) => const SizedBox(height: 16),
+                  ),
+                )),
             const SizedBox(height: 16),
             AppGradientButton(
               onPressed: controller.onNextButtonPressed,
