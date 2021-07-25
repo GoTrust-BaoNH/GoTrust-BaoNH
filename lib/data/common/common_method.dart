@@ -460,12 +460,12 @@ List<PromotionModel?> convertPromotionListModel(listPromotionModel) {
 }
 
 List<BrandModel> convertBrandListModel(listBrandModel) {
-  if (listBrandModel == null || (listBrandModel as List).isEmpty) {
+  if (listBrandModel == null || listBrandModel.data == null) {
     return <BrandModel>[];
   }
 
   final tempList = <BrandModel>[];
-  for (final item in listBrandModel as List<GetRecuseMotoBrandQueryGraphql$Query$GraphRecuseMotoBrandResponse$Brand?>) {
+  for (final item in listBrandModel.data as List<GetRecuseMotoBrandQueryGraphql$Query$GraphRecuseMotoBrandResponse$Brand?>) {
     tempList.add(convertBrandModel(item));
   }
 
@@ -483,12 +483,12 @@ BrandModel convertBrandModel(brandModel) {
 }
 
 List<ModelBikeModel> convertModelBikeListModel(listModelBike) {
-  if (listModelBike == null || (listModelBike as List).isEmpty) {
+  if (listModelBike == null || listModelBike.data == null) {
     return <ModelBikeModel>[];
   }
 
   final tempList = <ModelBikeModel>[];
-  for (final item in listModelBike as List<GetRecuseMotoModelQueryGraphql$Query$GraphRecuseMotoModelResponse$Model?>) {
+  for (final item in listModelBike.data as List<GetRecuseMotoModelQueryGraphql$Query$GraphRecuseMotoModelResponse$Model?>) {
     tempList.add(convertModelBikeModel(item));
   }
 
