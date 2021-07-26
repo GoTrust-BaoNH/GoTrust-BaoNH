@@ -15,8 +15,6 @@ import 'package:go_trust/data/graphql/mutation/create_faq_mutation_graphql.dart'
 import 'package:go_trust/data/graphql/mutation/create_policy_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/create_product_list_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/create_promotion_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/login_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/login_with_auth_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/motor_ins_create_order_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/create_payment_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/create_recuse_car_order_mutation_graphql.dart';
@@ -25,13 +23,8 @@ import 'package:go_trust/data/graphql/mutation/create_category_mutation_graphql.
 import 'package:go_trust/data/graphql/mutation/delete_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/update_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/create_repairing_order_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/register_otp_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/update_password_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/update_profile_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/verify_otp_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/query/app_notification_item_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/app_notification_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/create_category_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_bank_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/refresh_token_query_graphql.dart';
@@ -39,14 +32,12 @@ import 'package:go_trust/data/graphql/query/get_category_list_query_graphql.dart
 import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_emergency_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_faq_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_policy_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_product_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_product_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/motor_ins_get_metadata_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/refresh_token_query_graphql.dart';
 import 'package:go_trust/data/interceptors/graphql_interceptor.dart';
 import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/brand_model/brand_model.dart';
