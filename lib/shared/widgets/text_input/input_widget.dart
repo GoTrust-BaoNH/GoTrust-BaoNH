@@ -9,12 +9,14 @@ class InputWidget extends StatelessWidget {
     Key? key,
     this.controller,
     this.inputType = TextInputType.text,
+    this.obscureText = false,
   }) : super(key: key);
 
   final String lable;
   final String hint;
   final TextInputType inputType;
   final TextEditingController? controller;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class InputWidget extends StatelessWidget {
             child: TextField(
               controller: controller,
               keyboardType: inputType,
+              obscureText: obscureText,
               decoration: ThemeDecoration.inputNoneBorder.copyWith(
                 hintText: hint,
                 hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(color: AppColor.gray1),

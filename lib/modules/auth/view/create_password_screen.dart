@@ -40,6 +40,7 @@ class CreatePasswordScreen extends GetView<AuthController> {
                 InputWidget(
                   hint: 'input_new_password'.tr,
                   lable: 'password'.tr,
+                  obscureText: true,
                 ),
                 const SizedBox(height: 32),
                 AppGradientButton(

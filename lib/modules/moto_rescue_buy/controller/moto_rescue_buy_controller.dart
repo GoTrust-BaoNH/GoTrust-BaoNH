@@ -1,9 +1,11 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/routes/app_pages.dart';
+import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
-import 'package:go_trust/shared/models/moto_resue/moto_rescue_model.dart';
+import 'package:go_trust/shared/models/product/product_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 
 import '../../../data/repository/api_repository.dart';
@@ -14,16 +16,51 @@ class MotoRescueBuyController extends BaseController {
 
   final ApiRepository apiRepository;
 
-  BuyMotoRescueViewModel viewModel = BuyMotoRescueViewModel.fromMock();
+  late List<ProductModel> listProduct;
+  var listProductDisplay = <ProductModel>[].obs;
 
   @override
   Future<void> onInit() async {
+    await getRecuseMotoProduct();
+    onTapProductChange(0);
     await super.onInit();
   }
 
   @override
   Future<void> onReady() async {
     await super.onReady();
+  }
+
+  void onTapProductChange(int index) {
+    if (index == 0) {
+      listProductDisplay.value = listProduct.where((element) => element.categoryId == 18).toList();
+    } else {
+      listProductDisplay.value = listProduct.where((element) => element.categoryId == 19).toList();
+    }
+  }
+
+  Future<void> getRecuseMotoProduct() async {
+    await EasyLoading.show();
+    await apiRepository.getRecuseMotoProduct().then(
+      (result) async {
+        await EasyLoading.dismiss();
+        if (result.isNotEmpty) {
+          listProduct = result;
+        } else {
+          final dialogRequest = CommonDialogRequest(
+            title: 'error'.tr,
+            description: 'unknown_error'.tr,
+            typeDialog: DIALOG_ONE_BUTTON,
+            defineEvent: 'unknown_error',
+          );
+          await _doShowDialog(dialogRequest);
+        }
+      },
+      onError: (e) async {
+        await EasyLoading.dismiss();
+        await _doShowDialog(handleErrorResponse(e));
+      },
+    );
   }
 
   void onBuyNowButtonPressed() {

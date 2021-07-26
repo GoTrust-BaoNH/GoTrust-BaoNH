@@ -4,7 +4,6 @@ import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart
 import 'package:go_trust/data/graphql/query/get_faq_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_policy_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_product_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_promotion_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
@@ -421,13 +420,13 @@ ProductListModel convertListProductModel(listProductModel) {
   );
 }
 
-List<ProductModel?> convertProductListModel(listProductModel) {
-  if (listProductModel == null || (listProductModel as List).isEmpty) {
-    return <ProductModel?>[];
+List<ProductModel> convertProductListModel(listProductModel) {
+  if (listProductModel == null || listProductModel.data == null) {
+    return <ProductModel>[];
   }
 
-  final tempList = <ProductModel?>[];
-  for (final item in listProductModel as List<GetProductListQueryGraphql$Query$GraphGetProductListResponse$Product?>) {
+  final tempList = <ProductModel>[];
+  for (final item in listProductModel.data) {
     tempList.add(convertProductModel(item));
   }
 

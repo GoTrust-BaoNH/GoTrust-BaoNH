@@ -8,7 +8,6 @@ import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
-import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 import 'package:go_trust/shared/widgets/step_widget/step_widget.dart';
 import 'package:go_trust/shared/widgets/tabs/custom_tab.dart';
 
@@ -39,6 +38,9 @@ class MotoRescueBuyScreen extends GetView<MotoRescueBuyController> {
                     bottom: 16,
                   ),
                   child: CustomTab(
+                    onTabChanged: (selectedTab) {
+                      controller.onTapProductChange(selectedTab);
+                    },
                     items: [
                       'motorcycle_below'.trParams({'value': '175'})!,
                       'motorcycle_on'.trParams({'value': '175'})!,
@@ -50,50 +52,10 @@ class MotoRescueBuyScreen extends GetView<MotoRescueBuyController> {
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  width: Get.width,
-                  decoration: ThemeDecoration.textFieldWithShadow,
+              Obx(
+                () => Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      const SizedBox(height: 8),
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '${'membership_fee'.tr}: ',
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                            TextSpan(
-                              text: formatVnd(controller.viewModel.price.toString()),
-                              style: TextAppStyle().textPricePageMotoStyle(),
-                            ),
-                            TextSpan(
-                              text: ' / ${'year'.tr}',
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: List<Widget>.generate(
-                              controller.viewModel.items.length,
-                              (index) => rescueDetailItem(
-                                  icon: FCoreImage(controller.viewModel.items[index].icon),
-                                  title: controller.viewModel.items[index].title,
-                                  value: controller.viewModel.items[index].value,
-                                  type: controller.viewModel.items[index].type),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    children: buildListProduct(context),
                   ),
                 ),
               ),
@@ -109,5 +71,49 @@ class MotoRescueBuyScreen extends GetView<MotoRescueBuyController> {
             ],
           )),
     );
+  }
+
+  List<Widget> buildListProduct(BuildContext context) {
+    final list = <Widget>[];
+    for (int i = 0; i < controller.listProductDisplay.value.length; i++) {
+      list.add(
+        Container(
+          padding: const EdgeInsets.all(12),
+          margin: const EdgeInsets.only(bottom: 20),
+          width: Get.width,
+          decoration: ThemeDecoration.textFieldWithShadow,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(height: 8),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '${'membership_fee'.tr}: ',
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    TextSpan(
+                      text: formatVnd(controller.listProductDisplay.value[i].price.toString()),
+                      style: TextAppStyle().textPricePageMotoStyle(),
+                    ),
+                    TextSpan(
+                      text: ' / ${'year'.tr}',
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 30),
+              Text(
+                '${controller.listProductDisplay.value[i].name ?? ''} - ${controller.listProductDisplay.value[i].description ?? ''}',
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    return list;
   }
 }
