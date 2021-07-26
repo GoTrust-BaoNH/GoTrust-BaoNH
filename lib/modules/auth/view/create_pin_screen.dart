@@ -41,6 +41,7 @@ class CreatePinScreen extends GetView<AuthController> {
                   lable: 'Mã PIN',
                   inputType: TextInputType.number,
                   controller: controller.createPinController,
+                  obscureText: true,
                 ),
                 const SizedBox(height: 24),
                 InputWidget(
@@ -48,6 +49,7 @@ class CreatePinScreen extends GetView<AuthController> {
                   lable: 'Mã PIN',
                   inputType: TextInputType.number,
                   controller: controller.createRePinController,
+                  obscureText: true,
                 ),
                 const SizedBox(height: 32),
                 AppGradientButton(

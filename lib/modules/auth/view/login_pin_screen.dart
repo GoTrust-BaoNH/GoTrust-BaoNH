@@ -40,6 +40,7 @@ class LoginPinScreen extends GetView<AuthController> {
                   hint: 'Nhập mã PIN',
                   lable: 'Mã PIN',
                   controller: controller.inputPinController,
+                  obscureText: true,
                 ),
                 const SizedBox(height: 32),
                 AppGradientButton(

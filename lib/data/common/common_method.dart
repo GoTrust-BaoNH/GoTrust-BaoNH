@@ -4,7 +4,6 @@ import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart
 import 'package:go_trust/data/graphql/query/get_faq_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_policy_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/get_product_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_promotion_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
@@ -440,13 +439,13 @@ ProductListModel convertListProductModel(listProductModel) {
   );
 }
 
-List<ProductModel?> convertProductListModel(listProductModel) {
-  if (listProductModel == null || (listProductModel as List).isEmpty) {
-    return <ProductModel?>[];
+List<ProductModel> convertProductListModel(listProductModel) {
+  if (listProductModel == null || listProductModel.data == null) {
+    return <ProductModel>[];
   }
 
-  final tempList = <ProductModel?>[];
-  for (final item in listProductModel as List<GetProductListQueryGraphql$Query$GraphGetProductListResponse$Product?>) {
+  final tempList = <ProductModel>[];
+  for (final item in listProductModel.data) {
     tempList.add(convertProductModel(item));
   }
 
@@ -479,12 +478,12 @@ List<PromotionModel?> convertPromotionListModel(listPromotionModel) {
 }
 
 List<BrandModel> convertBrandListModel(listBrandModel) {
-  if (listBrandModel == null || (listBrandModel as List).isEmpty) {
+  if (listBrandModel == null || listBrandModel.data == null) {
     return <BrandModel>[];
   }
 
   final tempList = <BrandModel>[];
-  for (final item in listBrandModel as List<GetRecuseMotoBrandQueryGraphql$Query$GraphRecuseMotoBrandResponse$Brand?>) {
+  for (final item in listBrandModel.data as List<GetRecuseMotoBrandQueryGraphql$Query$GraphRecuseMotoBrandResponse$Brand?>) {
     tempList.add(convertBrandModel(item));
   }
 
@@ -502,12 +501,12 @@ BrandModel convertBrandModel(brandModel) {
 }
 
 List<ModelBikeModel> convertModelBikeListModel(listModelBike) {
-  if (listModelBike == null || (listModelBike as List).isEmpty) {
+  if (listModelBike == null || listModelBike.data == null) {
     return <ModelBikeModel>[];
   }
 
   final tempList = <ModelBikeModel>[];
-  for (final item in listModelBike as List<GetRecuseMotoModelQueryGraphql$Query$GraphRecuseMotoModelResponse$Model?>) {
+  for (final item in listModelBike.data as List<GetRecuseMotoModelQueryGraphql$Query$GraphRecuseMotoModelResponse$Model?>) {
     tempList.add(convertModelBikeModel(item));
   }
 

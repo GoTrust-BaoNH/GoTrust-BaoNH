@@ -6,4 +6,9 @@ class BrandModel {
 
   String? bikeId;
   String? bikeName;
+
+  @override
+  String toString() {
+    return '$bikeName';
+  }
 }
