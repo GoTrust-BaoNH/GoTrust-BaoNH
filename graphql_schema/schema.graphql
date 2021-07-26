@@ -9,34 +9,58 @@ scalar BigInteger
 # Mutation root
 type Mutation {
     ### Service Schema Mutation
-    # Create New Emergency
-    createEmergency(
-        request: GraphCreateEmergencyRequestInput
-    ): GraphCreateEmergencyResponse
-    # Create New Policy
-    createPolicy(
-        request: GraphCreatePolicyRequestInput
-    ): GraphCreatePolicyResponse
-    # create payment
-    paymentCreatePayment(request: PaymentRequestInput): PaymentResponse
-    # Create motor insurance order
-    motorInsCreateOrder(
-        request: GraphMotorOrderRequestInput
-    ): GraphMotorOrderResponse
-    # Create New Customer
-    createCustomer(
-        request: GraphCreateCustomerRequestInput
-    ): GraphCreateCustomerResponse
     # Create New Promotion
     createPromotion(
         request: GraphCreatePromotionRequestInput
     ): GraphCreatePromotionResponse
+    # Update Repairing Order
+    updateRepairingOrder(
+        request: GraphUpdateOrderRequestInput
+    ): GraphUpdateOrderResponse
+    # Create New Category
+    createCategory(
+        request: GraphCreateCategoryRequestInput
+    ): GraphCreateCategoryResponse
+    # Create motor insurance order
+    motorInsCreateOrder(
+        request: GraphMotorOrderRequestInput
+    ): GraphMotorOrderResponse
+    # Create recuse car order
+    createRecuseCarOrder(
+        request: GraphRecuseCarOrderRequestInput
+    ): GraphRecuseOrderResponse
+    # Create New Customer
+    createCustomer(
+        request: GraphCreateCustomerRequestInput
+    ): GraphCreateCustomerResponse
     # Create New Faq
     createFaq(request: GraphCreateFaqRequestInput): GraphCreateFaqResponse
+    # Create recuse moto order
+    createRecuseMotoOrder(
+        request: GraphRecuseMotoOrderRequestInput
+    ): GraphRecuseOrderResponse
+    # Create Repairing Order
+    createRepairingOrder(
+        request: GraphCreateOrderRequestInput
+    ): GraphCreateOrderResponse
+    # Delete Repairing Order
+    deleteRepairingOrder(
+        request: GraphDeleteOrderRequestInput
+    ): GraphDeleteOrderResponse
     # Create New Product
     createProductList(
         request: GraphCreateProductRequestInput
     ): GraphCreateProductResponse
+    # Create New Policy
+    createPolicy(
+        request: GraphCreatePolicyRequestInput
+    ): GraphCreatePolicyResponse
+    # Create New Emergency
+    createEmergency(
+        request: GraphCreateEmergencyRequestInput
+    ): GraphCreateEmergencyResponse
+    # create payment
+    createPayment(request: PaymentRequestInput): PaymentResponse
 
     ### Authen Schema Mutation
     # Login
@@ -55,67 +79,74 @@ type Mutation {
 
 # Query root
 type Query {
-    ### Service Schema Query
-    # Get notification detail by ID
-    appNotification(id: String): GraphNotificationListResponse
-    # Get category list
-    getCategoryList(
-        request: GraphGetCategoryListRequestInput
-    ): GraphGetCategoryListResponse
-    # Get list notification by user ID
-    appNotificationList(userId: BigInteger): [GraphNotificationListResponse]
-    # Get recuse moto model data
-    getRecuseMotoModel(brandId: String): GraphRecuseMotoModelResponse
-    # Clear versions cache
-    featureFlagClearVersionCache: CommonResponse
-    # Get Emergency List
-    getEmergencyList(
-        request: GraphGetEmergencyListRequestInput
-    ): GraphGetEmergencyListResponse
+    # Get Repairing Service list
+    getRepairingServiceList: GraphGetServiceListResponse
+    # Get bank list for payment
+    getBankList(request: BankRequestInput): [BankResponse]
     # Get feature list
     featureFlagListFeature(
         request: GraphFeatureRequestInput
     ): [GraphFeatureResponse]
-    # Get payment type list for payment
-    getPaymentTypeList: [PaymentTypeResponse]
-    # Get Product List
-    getProductList(
-        request: GraphGetProductListRequestInput
-    ): GraphGetProductListResponse
-    # Get Promotion List
-    getPromotionList(
-        request: GraphGetPromotionListRequestInput
-    ): GraphGetPromotionListResponse
-    # Create New Category
-    createCategory(
-        request: GraphCreateCategoryRequestInput
-    ): GraphCreateCategoryResponse
+    # Get notification detail by ID
+    appNotification(id: String): GraphNotificationListResponse
     # Get Customer List
     getCustomerList(
         request: GraphGetCustomerListRequestInput
     ): GraphGetCustomerListResponse
-    # Clear features cache
-    featureFlagClearFeatureCache: CommonResponse
-    # Get version app of user
-    featureFlagGetUserVersion(
-        request: UserVersionRequestInput
-    ): UserVersionResponse
+    # Get recuse moto model data
+    getRecuseMotoModel(brandId: String): GraphRecuseMotoModelResponse
+    # Get recuse moto brand data
+    getRecuseMotoBrand: GraphRecuseMotoBrandResponse
+    # Get list notification by user ID
+    appNotificationList(userId: BigInteger): [GraphNotificationListResponse]
+    # Get Product List
+    getProductList(
+        request: GraphGetProductListRequestInput
+    ): GraphGetProductListResponse
+    # Get Emergency List
+    getEmergencyList(
+        request: GraphGetEmergencyListRequestInput
+    ): GraphGetEmergencyListResponse
+    # Get recuse moto product data
+    getRecuseMotoProduct: GraphRecuseMotoProductResponse
+    # Get Faq List
+    getFaqList(request: GraphGetFaqListRequestInput): GraphGetFaqListResponse
+    # Get Promotion List
+    getPromotionList(
+        request: GraphGetPromotionListRequestInput
+    ): GraphGetPromotionListResponse
     # Get metadata of motor insurance
     motorInsGetMetadata(
         request: GraphMotorMetadataRequestInput
     ): GraphMotorMetadataResponse
-    # Get recuse moto product data
-    getRecuseMotoProduct: GraphRecuseMotoProductResponse
+    # Clear versions cache
+    featureFlagClearVersionCache: CommonResponse
+    # Get payment type list for payment
+    getPaymentTypeList: [PaymentTypeResponse]
+    # Get version app of user
+    featureFlagGetUserVersion(
+        request: UserVersionRequestInput
+    ): UserVersionResponse
+    # Get recuse car product data
+    getRecuseCarProduct: GraphRecuseCarProductResponse
+    # Get Repairing Order Detail
+    getRepairingOrderDetail(
+        request: GraphGetOrderDetailRequestInput
+    ): GraphGetOrderDetailResponse
     # Get Policy List
     getPolicyList(
         request: GraphGetPolicyListRequestInput
     ): GraphGetPolicyListResponse
-    # Get recuse moto brand data
-    getRecuseMotoBrand: GraphRecuseMotoBrandResponse
-    # Get bank list for payment
-    getBankList(request: BankRequestInput): [BankResponse]
-    # Get Faq List
-    getFaqList(request: GraphGetFaqListRequestInput): GraphGetFaqListResponse
+    # Clear features cache
+    featureFlagClearFeatureCache: CommonResponse
+    # Get Repairing Order List
+    getRepairingOrderList(
+        request: GraphGetOrderListRequestInput
+    ): GraphGetOrderListResponse
+    # Get category list
+    getCategoryList(
+        request: GraphGetCategoryListRequestInput
+    ): GraphGetCategoryListResponse
 
 
     ### Authen Schema Query
@@ -194,6 +225,15 @@ type Category {
     updatedDate: String
 }
 
+type City {
+    label: String
+    value: String
+}
+
+input CityInput {
+    label: String
+    value: String
+}
 
 type Customer {
     createdDate: String
@@ -204,6 +244,16 @@ type Customer {
     lastName: String
     phone: String
     updatedDate: String
+}
+
+type District {
+    label: String
+    value: String
+}
+
+input DistrictInput {
+    label: String
+    value: String
 }
 
 type Emergency {
@@ -261,6 +311,33 @@ type GraphCreateFaqResponse {
     data: Faq
 }
 
+input GraphCreateOrderRequestInput {
+    city: CityInput
+    countryCode: String
+    customerAddress: String
+    customerName: String
+    customerPhone: String
+    description: String
+    district: DistrictInput
+    endTime: String
+    externalId: String
+    images: [RepairingImageInput]
+    isPaid: Boolean!
+    name: String
+    priority: String
+    service: String
+    status: String
+    ward: WardInput
+}
+
+type GraphCreateOrderResponse {
+    code: BigInteger!
+    data: RepairingOrder
+    error: String
+    message: String
+}
+
+
 input GraphCreatePolicyRequestInput {
     description: String
     name: String
@@ -290,6 +367,17 @@ input GraphCreatePromotionRequestInput {
 
 type GraphCreatePromotionResponse {
     data: Promotion
+}
+
+input GraphDeleteOrderRequestInput {
+    uuid: String
+}
+
+type GraphDeleteOrderResponse {
+    code: BigInteger!
+    data: RepairingOrder
+    error: String
+    message: String
 }
 
 input GraphFeatureRequestInput {
@@ -344,6 +432,29 @@ type GraphGetFaqListResponse {
     pageSize: Int!
 }
 
+input GraphGetOrderDetailRequestInput {
+    uuid: String
+}
+
+type GraphGetOrderDetailResponse {
+    code: BigInteger!
+    data: RepairingOrderDetail
+    error: String
+    message: String
+}
+
+input GraphGetOrderListRequestInput {
+    start: Int
+}
+
+type GraphGetOrderListResponse {
+    code: BigInteger!
+    data: PageRepairingOrder
+    error: String
+    message: String
+}
+
+
 input GraphGetPolicyListRequestInput {
     pageNumber: Int
     pageSize: Int
@@ -377,6 +488,14 @@ type GraphGetPromotionListResponse {
     pageSize: Int!
 }
 
+type GraphGetServiceListResponse {
+    code: BigInteger!
+    data: [RepairingService]
+    error: String
+    message: String
+}
+
+
 input GraphMotorMetadataRequestInput {
     partner: String
 }
@@ -408,6 +527,20 @@ type GraphNotificationListResponse {
     type: Int
 }
 
+input GraphRecuseCarOrderRequestInput {
+    brand: String
+    fullName: String
+    model: String
+    numberPlate: String
+    phoneNumber: String
+    productId: String
+    startDate: String
+}
+
+type GraphRecuseCarProductResponse {
+    data: [Product]
+}
+
 type GraphRecuseMotoBrandResponse {
     data: [Brand]
 }
@@ -416,8 +549,54 @@ type GraphRecuseMotoModelResponse {
     data: [Model]
 }
 
+input GraphRecuseMotoOrderRequestInput {
+    brand: String
+    brandId: String
+    capacity: String
+    fullName: String
+    model: String
+    modelId: String
+    numberPlate: String
+    phoneNumber: String
+    productId: String
+    startDate: String
+}
+
 type GraphRecuseMotoProductResponse {
     data: [Product]
+}
+
+
+type GraphRecuseOrderResponse {
+    message: String
+    orderId: String
+    status: Int!
+}
+
+input GraphUpdateOrderRequestInput {
+    city: CityInput
+    customerAddress: String
+    customerName: String
+    customerPhone: String
+    description: String
+    district: DistrictInput
+    endTime: String
+    externalId: String
+    images: [RepairingImageInput]
+    name: String
+    paid: Boolean!
+    priority: String
+    service: String
+    status: String
+    uuid: String
+    ward: WardInput
+}
+
+type GraphUpdateOrderResponse {
+    code: BigInteger!
+    data: RepairingOrder
+    error: String
+    message: String
 }
 
 type Model {
@@ -426,7 +605,7 @@ type Model {
 }
 
 input PaymentRequestInput {
-    ipAddr: String
+    bankCode: String
     orderId: String
     paymentType: String
 }
@@ -435,7 +614,6 @@ type PaymentResponse {
     code: String
     data: String
 }
-
 
 type Policy {
     createdDate: String
@@ -463,6 +641,179 @@ type Promotion {
     id: BigInteger!
     name: String
     updatedDate: String
+}
+
+type PageRepairingOrder {
+    limit: BigInteger!
+    list: [RepairingOrder]
+    start: BigInteger!
+    total: BigInteger!
+}
+
+
+type RepairingCustomerInfo {
+    address: String
+    avatar: String
+    city: City
+    countryCode: String
+    createdAt: String
+    district: District
+    email: String
+    id: BigInteger!
+    name: String
+    phone: String
+    publishedAt: String
+    referralCode: String
+    referralId: String
+    updatedAt: String
+    uuid: String
+    ward: Ward
+}
+
+type RepairingCustomerOrder {
+    address: String
+    avatar: String
+    city: City
+    countryCode: String
+    createdAt: String
+    district: District
+    email: String
+    id: BigInteger!
+    name: String
+    phone: String
+    publishedAt: String
+    referralCode: String
+    referralId: String
+    updatedAt: String
+    uuid: String
+    ward: Ward
+}
+
+type RepairingImage {
+    medium: String
+    small: String
+    thumbnail: String
+    url: String
+}
+
+input RepairingImageInput {
+    medium: String
+    small: String
+    thumbnail: String
+    url: String
+}
+
+type RepairingOrder {
+    city: City
+    created_at: String
+    customerAddress: String
+    customerInfo: RepairingCustomerInfo
+    customerName: String
+    customerOrder: RepairingCustomerOrder
+    customerPhone: String
+    description: String
+    district: District
+    external_id: String
+    id: BigInteger!
+    images: [RepairingImage]
+    imagesAfterWork: String
+    name: String
+    orderCosts: [String]
+    partnerCustomerCompany: RepairingPartnerCustomerCompany
+    partnerWorkerCompany: RepairingPartnerWorkerCompany
+    published_at: String
+    service: RepairingService
+    status: String
+    updated_at: String
+    uuid: String
+    ward: Ward
+}
+
+type RepairingOrderDetail {
+    city: City
+    created_at: String
+    customerAddress: String
+    customerInfo: RepairingCustomerInfo
+    customerName: String
+    customerOrder: RepairingCustomerOrder
+    customerPhone: String
+    description: String
+    district: District
+    external_id: String
+    id: BigInteger!
+    images: [RepairingImage]
+    name: String
+    orderCosts: [String]
+    partnerCustomerCompany: RepairingPartnerCustomerCompany
+    partnerWorkerCompany: RepairingPartnerWorkerCompany
+    published_at: String
+    service: Int!
+    status: String
+    updated_at: String
+    uuid: String
+    ward: Ward
+}
+
+type RepairingPartnerCustomerCompany {
+    address: String
+    album: [String]
+    avatar: [String]
+    companyCode: String
+    createdAt: String
+    id: BigInteger!
+    name: String
+    phone: String
+    publishedAt: String
+    updatedAt: String
+    uuid: String
+    customerCompany: Boolean!
+    workerCompany: Boolean!
+}
+
+type RepairingPartnerWorkerCompany {
+    address: String
+    album: [String]
+    avatar: [String]
+    companyCode: String
+    createdAt: String
+    id: BigInteger!
+    name: String
+    phone: String
+    publishedAt: String
+    updatedAt: String
+    uuid: String
+    customerCompany: Boolean!
+    workerCompany: Boolean!
+}
+
+type RepairingService {
+    code: String
+    createdAt: String
+    createdBy: String
+    id: BigInteger!
+    name: String
+    publishedAt: String
+    service: RepairingService
+    title: RepairingServiceTitle
+    updatedAt: String
+    updatedBy: String
+    uuid: String
+}
+
+type RepairingServiceTitle {
+    en: String
+    id: BigInteger!
+    vi: String
+}
+
+type Ward {
+    label: String
+    value: String
+}
+
+input WardInput {
+    label: String
+    value: String
 }
 
 

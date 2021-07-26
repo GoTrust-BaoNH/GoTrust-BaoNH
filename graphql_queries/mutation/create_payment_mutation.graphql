@@ -1,0 +1,8 @@
+mutation($bankCode: String, $orderId: String, $paymentType: String) {
+    createPayment(
+        request: { bankCode: $bankCode, orderId: $orderId, paymentType: $paymentType }
+    ) {
+        code
+        data
+    }
+}

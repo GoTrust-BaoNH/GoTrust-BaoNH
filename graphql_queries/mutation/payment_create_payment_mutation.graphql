@@ -1,8 +1,0 @@
-mutation($ipAddr: String, $orderId: String, $paymentType: String) {
-    paymentCreatePayment(
-        request: { ipAddr: $ipAddr, orderId: $orderId, paymentType: $paymentType }
-    ) {
-        code
-        data
-    }
-}

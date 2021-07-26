@@ -16,13 +16,18 @@ import 'package:go_trust/data/graphql/mutation/create_policy_mutation_graphql.da
 import 'package:go_trust/data/graphql/mutation/create_product_list_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/create_promotion_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/motor_ins_create_order_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/payment_create_payment_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_payment_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_recuse_car_order_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_recuse_moto_order_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_category_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/delete_repairing_order_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/update_repairing_order_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/query/app_notification_item_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/app_notification_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_bank_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_payment_type_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/refresh_token_query_graphql.dart';
-import 'package:go_trust/data/graphql/query/create_category_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_category_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_emergency_list_query_graphql.dart';
@@ -38,8 +43,10 @@ import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/brand_model/brand_model.dart';
 import 'package:go_trust/shared/models/category_model/category_list_model.dart';
 import 'package:go_trust/shared/models/category_model/category_model.dart';
+import 'package:go_trust/shared/models/city_model/city_input_model.dart';
 import 'package:go_trust/shared/models/customer_model/customer_list_model.dart';
 import 'package:go_trust/shared/models/customer_model/customer_model.dart';
+import 'package:go_trust/shared/models/district_model/district_input_model.dart';
 import 'package:go_trust/shared/models/emergency/emergency_list_model.dart';
 import 'package:go_trust/shared/models/emergency/emergency_model.dart';
 import 'package:go_trust/shared/models/faq_model/faq_list_model.dart';
@@ -54,11 +61,15 @@ import 'package:go_trust/shared/models/policy_model/policy_model.dart';
 import 'package:go_trust/shared/models/product/product_list_model.dart';
 import 'package:go_trust/shared/models/product/product_model.dart';
 import 'package:go_trust/shared/models/promotion_model/promotion_model.dart';
+import 'package:go_trust/shared/models/recuse_order_model/recuse_order_response.dart';
+import 'package:go_trust/shared/models/repairing_order/repairing_order_response_model.dart';
+import 'package:go_trust/shared/models/repairing_service_model/repairing_image_input_model.dart';
 import 'package:go_trust/shared/models/request/register_request.dart';
 import 'package:go_trust/shared/models/response/common_response.dart';
 import 'package:go_trust/shared/models/response/register_response.dart';
 import 'package:go_trust/shared/models/users/login_model.dart';
 import 'package:go_trust/shared/models/users/user_model.dart';
+import 'package:go_trust/shared/models/ward_model/ward_input_model.dart';
 
 import '../../data/service/api_provider.dart';
 
@@ -460,10 +471,9 @@ class ApiRepository {
   Future<PaymentResponse> paymentCreatePayment({String? ipAddr, String? orderId, String? paymentType}) async {
     final c = Completer<PaymentResponse>();
     try {
-      final results = await apiProvider.paymentCreatePayment(ipAddr: ipAddr, orderId: orderId, paymentType: paymentType);
+      final results = await apiProvider.paymentCreatePayment(bankCode: ipAddr, orderId: orderId, paymentType: paymentType);
       if (!results.hasException) {
-        final payment = convertPaymentResponseModel(
-            PaymentCreatePaymentMutationGraphql$Mutation.fromJson(results.data!).paymentCreatePayment!);
+        final payment = convertPaymentResponseModel(CreatePaymentMutationGraphql$Mutation.fromJson(results.data!).createPayment!);
         c.complete(payment);
       } else {
         print('Exception: ${results.exception}');
@@ -482,7 +492,7 @@ class ApiRepository {
     try {
       final results = await apiProvider.createCategory(code: code, name: name);
       if (!results.hasException) {
-        final category = convertCategoryModel(CreateCategoryQueryGraphql$Query.fromJson(results.data!).createCategory!);
+        final category = convertCategoryModel(CreateCategoryMutationGraphql$Mutation.fromJson(results.data!).createCategory!);
         c.complete(category);
       } else {
         print('Exception: ${results.exception}');
@@ -678,6 +688,213 @@ class ApiRepository {
       if (!results.hasException) {
         final motoInsMetaData = MotorInsGetMetadataQueryGraphql$Query.fromJson(results.data!).motorInsGetMetadata!.data;
         c.complete(motoInsMetaData);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<RecuseOrderModel> createRecuseCarOrder({
+    String? brand,
+    String? fullName,
+    String? model,
+    String? numberPlate,
+    String? phoneNumber,
+    String? productId,
+    String? startDate,
+  }) async {
+    final c = Completer<RecuseOrderModel>();
+    try {
+      final results = await apiProvider.createRecuseCarOrder(
+        brand: brand,
+        fullName: fullName,
+        model: model,
+        numberPlate: numberPlate,
+        phoneNumber: phoneNumber,
+        productId: productId,
+        startDate: startDate,
+      );
+      if (!results.hasException) {
+        final recuseCar =
+            convertRecuseOrderModel(CreateRecuseCarOrderMutationGraphql$Mutation.fromJson(results.data!).createRecuseCarOrder);
+        c.complete(recuseCar);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<RecuseOrderModel> createRecuseMotoOrder({
+    String? brand,
+    String? brandId,
+    String? capacity,
+    String? fullName,
+    String? modelId,
+    String? model,
+    String? numberPlate,
+    String? phoneNumber,
+    String? productId,
+    String? startDate,
+  }) async {
+    final c = Completer<RecuseOrderModel>();
+    try {
+      final results = await apiProvider.createRecuseMotoOrder(
+        brand: brand,
+        brandId: brandId,
+        capacity: capacity,
+        fullName: fullName,
+        modelId: modelId,
+        model: model,
+        numberPlate: numberPlate,
+        phoneNumber: phoneNumber,
+        productId: productId,
+        startDate: startDate,
+      );
+      if (!results.hasException) {
+        final recuseMoto =
+            convertRecuseOrderModel(CreateRecuseMotoOrderMutationGraphql$Mutation.fromJson(results.data!).createRecuseMotoOrder);
+        c.complete(recuseMoto);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<RepairingOrderResponseModel> deleteRepairingOrder({String? uuid}) async {
+    final c = Completer<RepairingOrderResponseModel>();
+    try {
+      final results = await apiProvider.deleteRepairingOrder(uuid: uuid);
+      if (!results.hasException) {
+        final repairingOrder = convertRepairingOrderResponseModel(
+            DeleteRepairingOrderMutationGraphql$Mutation.fromJson(results.data!).deleteRepairingOrder);
+        c.complete(repairingOrder);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<RepairingOrderResponseModel> createRepairingOrder({
+    required bool isPaid,
+    CityInputModel? city,
+    String? countryCode,
+    String? customerAddress,
+    String? customerName,
+    String? customerPhone,
+    String? description,
+    DistrictInputModel? district,
+    String? endTime,
+    String? externalId,
+    List<RepairingImageInputModel?>? images,
+    String? name,
+    String? priority,
+    String? service,
+    String? status,
+    WardInputModel? ward,
+  }) async {
+    final c = Completer<RepairingOrderResponseModel>();
+    try {
+      final results = await apiProvider.createRepairingOrder(
+        city: city,
+        countryCode: countryCode,
+        customerAddress: customerAddress,
+        customerName: customerName,
+        customerPhone: customerPhone,
+        description: description,
+        district: district,
+        endTime: endTime,
+        externalId: externalId,
+        images: images,
+        isPaid: isPaid,
+        name: name,
+        priority: priority,
+        service: service,
+        status: status,
+        ward: ward,
+      );
+      if (!results.hasException) {
+        final repairingOrder = convertRepairingOrderResponseModel(
+            CreateRepairingOrderMutationGraphql$Mutation.fromJson(results.data!).createRepairingOrder);
+        c.complete(repairingOrder);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<RepairingOrderResponseModel> updateRepairingOrder({
+    required bool paid,
+    required String uuid,
+    CityInputModel? city,
+    String? countryCode,
+    String? customerAddress,
+    String? customerName,
+    String? customerPhone,
+    String? description,
+    DistrictInputModel? district,
+    String? endTime,
+    String? externalId,
+    List<RepairingImageInputModel?>? images,
+    String? name,
+    String? priority,
+    String? service,
+    String? status,
+    WardInputModel? ward,
+  }) async {
+    final c = Completer<RepairingOrderResponseModel>();
+    try {
+      final results = await apiProvider.updateRepairingOrder(
+        city: city,
+        customerAddress: customerAddress,
+        customerName: customerName,
+        customerPhone: customerPhone,
+        description: description,
+        district: district,
+        endTime: endTime,
+        externalId: externalId,
+        images: images,
+        paid: paid,
+        name: name,
+        priority: priority,
+        service: service,
+        status: status,
+        uuid: uuid,
+        ward: ward,
+      );
+      if (!results.hasException) {
+        final repairingOrder = convertRepairingOrderResponseModel(
+            UpdateRepairingOrderMutationGraphql$Mutation.fromJson(results.data!).updateRepairingOrder);
+        c.complete(repairingOrder);
       } else {
         print('Exception: ${results.exception}');
         c.completeError(handleErrorGraphQL(results.exception!));

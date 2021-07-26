@@ -1,0 +1,25 @@
+mutation(
+    $brand: String
+    $fullName: String
+    $model: String
+    $numberPlate: String
+    $phoneNumber: String
+    $productId: String
+    $startDate: String
+) {
+    createRecuseCarOrder(
+        request: {
+            brand: $brand
+            fullName: $fullName
+            model: $model
+            numberPlate: $numberPlate
+            phoneNumber: $phoneNumber
+            productId: $productId
+            startDate: $startDate
+        }
+    ) {
+        message
+        orderId
+        status
+    }
+}

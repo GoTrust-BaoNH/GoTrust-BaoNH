@@ -16,6 +16,9 @@ targets:
 
             ##### Mutation ####
             - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_category_mutation.graphql
+              output: lib/data/graphql/mutation/create_category_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/create_customer_mutation.graphql
               output: lib/data/graphql/mutation/create_customer_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
@@ -24,6 +27,9 @@ targets:
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/create_faq_mutation.graphql
               output: lib/data/graphql/mutation/create_faq_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_payment_mutation.graphql
+              output: lib/data/graphql/mutation/create_payment_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/create_policy_mutation.graphql
               output: lib/data/graphql/mutation/create_policy_mutation_graphql.dart
@@ -34,6 +40,18 @@ targets:
               queries_glob: graphql_queries/mutation/create_promotion_mutation.graphql
               output: lib/data/graphql/mutation/create_promotion_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_recuse_car_order_mutation.graphql
+              output: lib/data/graphql/mutation/create_recuse_car_order_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_recuse_moto_order_mutation.graphql
+              output: lib/data/graphql/mutation/create_recuse_moto_order_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/create_repairing_order_mutation.graphql
+              output: lib/data/graphql/mutation/create_repairing_order_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/delete_repairing_order_mutation.graphql
+              output: lib/data/graphql/mutation/delete_repairing_order_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/login_mutation.graphql
               output: lib/data/graphql/mutation/login_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
@@ -43,9 +61,6 @@ targets:
               queries_glob: graphql_queries/mutation/motor_ins_create_order_mutation.graphql
               output: lib/data/graphql/mutation/motor_ins_create_order_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
-              queries_glob: graphql_queries/mutation/payment_create_payment_mutation.graphql
-              output: lib/data/graphql/mutation/payment_create_payment_mutation_graphql.dart
-            - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/register_otp_mutation.graphql
               output: lib/data/graphql/mutation/register_otp_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
@@ -54,6 +69,9 @@ targets:
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/update_profile_mutation.graphql
               output: lib/data/graphql/mutation/update_profile_mutation_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/mutation/update_repairing_order_mutation.graphql
+              output: lib/data/graphql/mutation/update_repairing_order_mutation_graphql.dart
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/mutation/verify_otp_mutation.graphql
               output: lib/data/graphql/mutation/verify_otp_mutation_graphql.dart
@@ -65,9 +83,6 @@ targets:
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/query/app_notification_list_query.graphql
               output: lib/data/graphql/query/app_notification_list_query_graphql.dart
-            - schema: graphql_schema/schema.graphql
-              queries_glob: graphql_queries/query/create_category_query.graphql
-              output: lib/data/graphql/query/create_category_query_graphql.dart
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/query/feature_flag_clear_feature_cache_query.graphql
               output: lib/data/graphql/query/feature_flag_clear_feature_cache_query_graphql.dart

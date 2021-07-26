@@ -1,4 +1,4 @@
-query($code: String, $name: String) {
+mutation($code: String, $name: String) {
     createCategory(request: { code: $code, name: $name }) {
         data {
             code

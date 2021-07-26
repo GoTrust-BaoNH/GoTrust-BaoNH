@@ -8,12 +8,18 @@ import 'package:go_trust/data/graphql/query/get_product_list_query_graphql.dart'
 import 'package:go_trust/data/graphql/query/get_promotion_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/delete_repairing_order_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/create_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/brand_model/brand_model.dart';
 import 'package:go_trust/shared/models/category_model/category_list_model.dart';
 import 'package:go_trust/shared/models/category_model/category_model.dart';
+import 'package:go_trust/shared/models/city_model/city_input_model.dart';
+import 'package:go_trust/shared/models/city_model/city_model.dart';
 import 'package:go_trust/shared/models/customer_model/customer_list_model.dart';
 import 'package:go_trust/shared/models/customer_model/customer_model.dart';
+import 'package:go_trust/shared/models/district_model/district_input_model.dart';
+import 'package:go_trust/shared/models/district_model/district_model.dart';
 import 'package:go_trust/shared/models/emergency/emergency_list_model.dart';
 import 'package:go_trust/shared/models/emergency/emergency_model.dart';
 import 'package:go_trust/shared/models/faq_model/faq_list_model.dart';
@@ -29,9 +35,22 @@ import 'package:go_trust/shared/models/product/product_list_model.dart';
 import 'package:go_trust/shared/models/product/product_model.dart';
 import 'package:go_trust/shared/models/promotion_model/promotion_list_model.dart';
 import 'package:go_trust/shared/models/promotion_model/promotion_model.dart';
+import 'package:go_trust/shared/models/recuse_order_model/recuse_order_response.dart';
+import 'package:go_trust/shared/models/repairing_customer_model/repairing_customer_info_model.dart';
+import 'package:go_trust/shared/models/repairing_customer_model/repairing_customer_order_model.dart';
+import 'package:go_trust/shared/models/repairing_customer_model/repairing_partner_customer_company_model.dart';
+import 'package:go_trust/shared/models/repairing_customer_model/repairing_partner_worker_company_model.dart';
+import 'package:go_trust/shared/models/repairing_order/repairing_order_model.dart';
+import 'package:go_trust/shared/models/repairing_order/repairing_order_response_model.dart';
+import 'package:go_trust/shared/models/repairing_service_model/repairing_image_input_model.dart';
+import 'package:go_trust/shared/models/repairing_service_model/repairing_image_model.dart';
+import 'package:go_trust/shared/models/repairing_service_model/repairing_service_model.dart';
+import 'package:go_trust/shared/models/repairing_service_model/repairing_service_title_model.dart';
 import 'package:go_trust/shared/models/response/common_response.dart';
 import 'package:go_trust/shared/models/users/login_model.dart';
 import 'package:go_trust/shared/models/users/user_model.dart';
+import 'package:go_trust/shared/models/ward_model/ward_input_model.dart';
+import 'package:go_trust/shared/models/ward_model/ward_model.dart';
 
 Error createError(String errorStr) {
   final Error error = ArgumentError(errorStr);
@@ -502,5 +521,321 @@ ModelBikeModel convertModelBikeModel(modelBike) {
   return ModelBikeModel(
     bikeId: modelBike.bikeId,
     bikeName: modelBike.bikeName,
+  );
+}
+
+RecuseOrderModel convertRecuseOrderModel(recuseOrder) {
+  if (recuseOrder == null) {
+    return RecuseOrderModel(status: 0);
+  }
+
+  return RecuseOrderModel(
+    message: recuseOrder.message,
+    orderId: recuseOrder.orderId,
+    status: recuseOrder.status,
+  );
+}
+
+RepairingOrderResponseModel convertRepairingOrderResponseModel(repairingOrderResponse) {
+  if (repairingOrderResponse == null) {
+    return RepairingOrderResponseModel(code: 0);
+  }
+
+  return RepairingOrderResponseModel(
+    code: repairingOrderResponse.code,
+    data: convertRepairingOrderModel(repairingOrderResponse.data),
+    error: repairingOrderResponse.error,
+    message: repairingOrderResponse.message,
+  );
+}
+
+RepairingOrderModel convertRepairingOrderModel(repairingOrder) {
+  if (repairingOrder == null) {
+    return RepairingOrderModel(id: 0);
+  }
+
+  return RepairingOrderModel(
+    city: convertCityModel(repairingOrder.city),
+    createdAt: repairingOrder.createdAt,
+    customerAddress: repairingOrder.customerAddress,
+    customerInfo: convertRepairingCustomerInfoModel(repairingOrder.customerInfo),
+    customerName: repairingOrder.customerName,
+    customerOrder: convertRepairingCustomerOrderModel(repairingOrder.customerOrder),
+    customerPhone: repairingOrder.customerPhone,
+    description: repairingOrder.description,
+    district: convertDistrictModel(repairingOrder.district),
+    externalId: repairingOrder.externalId,
+    id: repairingOrder.id,
+    images: convertListRepairingImageModel(repairingOrder.images),
+    imagesAfterWork: repairingOrder.imagesAfterWork,
+    name: repairingOrder.name,
+    orderCosts: convertListStringModel(repairingOrder.orderCosts),
+    partnerCustomerCompany: convertRepairingPartnerCustomerCompanyModel(repairingOrder.partnerCustomerCompany),
+    partnerWorkerCompany: convertRepairingPartnerWorkerCompanyModel(repairingOrder.partnerWorkerCompany),
+    publishedAt: repairingOrder.publishedAt,
+    service: convertRepairingServiceModel(repairingOrder.service),
+    status: repairingOrder.status,
+    updatedAt: repairingOrder.updatedAt,
+    uuid: repairingOrder.uuid,
+    ward: convertWardModel(repairingOrder.ward),
+  );
+}
+
+RepairingCustomerInfoModel convertRepairingCustomerInfoModel(repairingCustomerInfoModelModel) {
+  if (repairingCustomerInfoModelModel == null) {
+    return RepairingCustomerInfoModel(id: 0);
+  }
+
+  return RepairingCustomerInfoModel(
+    id: repairingCustomerInfoModelModel.id,
+    address: repairingCustomerInfoModelModel.address,
+    avatar: repairingCustomerInfoModelModel.avatar,
+    city: convertCityModel(repairingCustomerInfoModelModel.city),
+    countryCode: repairingCustomerInfoModelModel.countryCode,
+    createdAt: repairingCustomerInfoModelModel.createdAt,
+    district: convertDistrictModel(repairingCustomerInfoModelModel.district),
+    email: repairingCustomerInfoModelModel.email,
+    name: repairingCustomerInfoModelModel.name,
+    phone: repairingCustomerInfoModelModel.phone,
+    publishedAt: repairingCustomerInfoModelModel.publishedAt,
+    referralCode: repairingCustomerInfoModelModel.referralCode,
+    referralId: repairingCustomerInfoModelModel.referralId,
+    updatedAt: repairingCustomerInfoModelModel.updatedAt,
+    uuid: repairingCustomerInfoModelModel.uuid,
+    ward: convertWardModel(repairingCustomerInfoModelModel.ward),
+  );
+}
+
+RepairingCustomerOrderModel convertRepairingCustomerOrderModel(repairingCustomerInfo) {
+  if (repairingCustomerInfo == null) {
+    return RepairingCustomerOrderModel(id: 0);
+  }
+
+  return RepairingCustomerOrderModel(
+    id: repairingCustomerInfo.id,
+    address: repairingCustomerInfo.address,
+    avatar: repairingCustomerInfo.avatar,
+    city: convertCityModel(repairingCustomerInfo.city),
+    countryCode: repairingCustomerInfo.countryCode,
+    createdAt: repairingCustomerInfo.createdAt,
+    district: convertDistrictModel(repairingCustomerInfo.district),
+    email: repairingCustomerInfo.email,
+    name: repairingCustomerInfo.name,
+    phone: repairingCustomerInfo.phone,
+    publishedAt: repairingCustomerInfo.publishedAt,
+    referralCode: repairingCustomerInfo.referralCode,
+    referralId: repairingCustomerInfo.referralId,
+    updatedAt: repairingCustomerInfo.updatedAt,
+    uuid: repairingCustomerInfo.uuid,
+    ward: convertWardModel(repairingCustomerInfo.ward),
+  );
+}
+
+List<RepairingImageModel> convertListRepairingImageModel(listRepairingImage) {
+  if (listRepairingImage == null || (listRepairingImage as List).isEmpty) {
+    return <RepairingImageModel>[];
+  }
+
+  final tempList = <RepairingImageModel>[];
+  for (final item in listRepairingImage
+      as List<DeleteRepairingOrderMutationGraphql$Mutation$GraphDeleteOrderResponse$RepairingOrder$RepairingImage?>) {
+    tempList.add(convertRepairingImageModel(item));
+  }
+
+  return tempList;
+}
+
+RepairingImageModel convertRepairingImageModel(repairingImageModel) {
+  if (repairingImageModel == null) {
+    return RepairingImageModel(url: '');
+  }
+
+  return RepairingImageModel(
+    url: repairingImageModel.url,
+    medium: repairingImageModel.medium,
+    small: repairingImageModel.small,
+    thumbnail: repairingImageModel.thumbnail,
+  );
+}
+
+dynamic convertListRepairingImageInputModel(listRepairingImageInput) {
+  if (listRepairingImageInput == null || (listRepairingImageInput as List).isEmpty) {
+    return <RepairingImageInput>[];
+  }
+
+  final tempList = <RepairingImageInput>[];
+  for (final item in listRepairingImageInput as List<RepairingImageInputModel?>) {
+    tempList.add(convertRepairingImageInputModel(item));
+  }
+
+  return tempList;
+}
+
+RepairingImageInput convertRepairingImageInputModel(repairingImageInputModel) {
+  if (repairingImageInputModel == null) {
+    return RepairingImageInput();
+  }
+
+  return RepairingImageInput(
+    url: repairingImageInputModel.url,
+    medium: repairingImageInputModel.medium,
+    small: repairingImageInputModel.small,
+    thumbnail: repairingImageInputModel.thumbnail,
+  );
+}
+
+List<String?> convertListStringModel(listString) {
+  if (listString == null || (listString as List).isEmpty) {
+    return <String?>[];
+  }
+
+  final tempList = <String?>[];
+  // ignore: prefer_foreach
+  for (final item in listString) {
+    tempList.add(item);
+  }
+
+  return tempList;
+}
+
+RepairingPartnerCustomerCompanyModel convertRepairingPartnerCustomerCompanyModel(repairingPartnerCustomerCompanyModel) {
+  if (repairingPartnerCustomerCompanyModel == null) {
+    return RepairingPartnerCustomerCompanyModel(id: 0);
+  }
+
+  return RepairingPartnerCustomerCompanyModel(
+    id: repairingPartnerCustomerCompanyModel.id,
+    address: repairingPartnerCustomerCompanyModel.address,
+    album: convertListStringModel(repairingPartnerCustomerCompanyModel.album),
+    avatar: convertListStringModel(repairingPartnerCustomerCompanyModel.avatar),
+    companyCode: repairingPartnerCustomerCompanyModel.companyCode,
+    createdAt: repairingPartnerCustomerCompanyModel.createdAt,
+    name: repairingPartnerCustomerCompanyModel.name,
+    phone: repairingPartnerCustomerCompanyModel.phone,
+    publishedAt: repairingPartnerCustomerCompanyModel.publishedAt,
+    updatedAt: repairingPartnerCustomerCompanyModel.updatedAt,
+    uuid: repairingPartnerCustomerCompanyModel.uuid,
+    customerCompany: repairingPartnerCustomerCompanyModel.customerCompany,
+    workerCompany: repairingPartnerCustomerCompanyModel.workerCompany,
+  );
+}
+
+RepairingPartnerWorkerCompanyModel convertRepairingPartnerWorkerCompanyModel(partnerWorkerCompany) {
+  if (partnerWorkerCompany == null) {
+    return RepairingPartnerWorkerCompanyModel(id: 0);
+  }
+
+  return RepairingPartnerWorkerCompanyModel(
+    id: partnerWorkerCompany.id,
+    address: partnerWorkerCompany.address,
+    album: convertListStringModel(partnerWorkerCompany.album),
+    avatar: convertListStringModel(partnerWorkerCompany.avatar),
+    companyCode: partnerWorkerCompany.companyCode,
+    createdAt: partnerWorkerCompany.createdAt,
+    name: partnerWorkerCompany.name,
+    phone: partnerWorkerCompany.phone,
+    publishedAt: partnerWorkerCompany.publishedAt,
+    updatedAt: partnerWorkerCompany.updatedAt,
+    uuid: partnerWorkerCompany.uuid,
+    customerCompany: partnerWorkerCompany.customerCompany,
+    workerCompany: partnerWorkerCompany.workerCompany,
+  );
+}
+
+RepairingServiceModel convertRepairingServiceModel(repairingServiceModel) {
+  if (repairingServiceModel == null) {
+    return RepairingServiceModel(id: 0);
+  }
+
+  return RepairingServiceModel(
+    id: repairingServiceModel.id,
+    code: repairingServiceModel.code,
+    createdAt: repairingServiceModel.createdAt,
+    createdBy: repairingServiceModel.createdBy,
+    name: repairingServiceModel.name,
+    publishedAt: repairingServiceModel.publishedAt,
+    service: convertRepairingServiceModel(repairingServiceModel.service),
+    title: convertRepairingServiceTitleModel(repairingServiceModel.title),
+    updatedAt: repairingServiceModel.updatedAt,
+    updatedBy: repairingServiceModel.updatedBy,
+    uuid: repairingServiceModel.uuid,
+  );
+}
+
+RepairingServiceTitleModel convertRepairingServiceTitleModel(repairingServiceTitleModel) {
+  if (repairingServiceTitleModel == null) {
+    return RepairingServiceTitleModel(id: 0);
+  }
+
+  return RepairingServiceTitleModel(
+    id: repairingServiceTitleModel.id,
+    en: repairingServiceTitleModel.en,
+    vi: repairingServiceTitleModel.vi,
+  );
+}
+
+CityModel convertCityModel(cityModel) {
+  if (cityModel == null) {
+    return CityModel();
+  }
+
+  return CityModel(
+    label: cityModel.label,
+    value: cityModel.value,
+  );
+}
+
+dynamic convertCityInputModel(cityInputModel) {
+  if (cityInputModel == null) {
+    return CityInput();
+  }
+
+  return CityInput(
+    label: cityInputModel.label,
+    value: cityInputModel.value,
+  );
+}
+
+DistrictModel convertDistrictModel(districtModel) {
+  if (districtModel == null) {
+    return DistrictModel();
+  }
+
+  return DistrictModel(
+    label: districtModel.label,
+    value: districtModel.value,
+  );
+}
+
+dynamic convertDistrictInputModel(districtInputModel) {
+  if (districtInputModel == null) {
+    return DistrictInput();
+  }
+
+  return DistrictInput(
+    label: districtInputModel.label,
+    value: districtInputModel.value,
+  );
+}
+
+WardModel convertWardModel(wardModel) {
+  if (wardModel == null) {
+    return WardModel();
+  }
+
+  return WardModel(
+    label: wardModel.label,
+    value: wardModel.value,
+  );
+}
+
+dynamic convertWardInputModel(wardInputModel) {
+  if (wardInputModel == null) {
+    return WardInput();
+  }
+
+  return WardInput(
+    label: wardInputModel.label,
+    value: wardInputModel.value,
   );
 }
