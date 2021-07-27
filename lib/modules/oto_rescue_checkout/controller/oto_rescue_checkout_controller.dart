@@ -16,8 +16,8 @@ import 'package:intl/intl.dart';
 import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
-class MotoRescueCheckoutController extends BaseController {
-  MotoRescueCheckoutController({required this.apiRepository});
+class OtoRescueCheckoutController extends BaseController {
+  OtoRescueCheckoutController({required this.apiRepository});
 
   final ApiRepository apiRepository;
   late List<BrandModel> listBrand;
