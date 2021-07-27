@@ -7,7 +7,7 @@ class ProductListModel {
     this.data,
   });
 
-  List<ProductModel?>? data;
+  List<ProductModel>? data;
   int pageNumber;
   int pageSize;
 }

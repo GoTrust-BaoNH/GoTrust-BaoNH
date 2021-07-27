@@ -2,23 +2,42 @@ part of 'your_product_screen.dart';
 
 extension YourProductChildrenExtension on YourProductScreen {
   Widget _listProduct({
-    required void Function(YourProductModel) onItemPressed,
+    required void Function(ProductModel) onItemPressed,
   }) {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      itemCount: controller.list.length,
-      itemBuilder: (context, index) {
-        final item = controller.list[index];
-        return ProductItem(
-            productType: item.productType,
-            productName: item.productName,
-            contractCode: item.contractCode,
-            expiredDate: item.expiredDate,
-            price: item.price,
-            isContractProcessing: item.isContractProcessing,
-            onRenewButtonPressed: () {},
-            onItemPressed: () => onItemPressed(item));
-      },
+    return Scrollbar(
+      controller: controller.scrollController,
+      child: NotificationListener<ScrollEndNotification>(
+        onNotification: (scrollEnd) {
+          final metrics = scrollEnd.metrics;
+          if (metrics.atEdge) {
+            if (metrics.pixels == 0) {
+              print('At top ListView');
+            } else {
+              if (controller.canLoadingMore) {
+                controller.pageNumber.value = controller.pageNumber.value + 1;
+                controller.getListProduct();
+              }
+            }
+          }
+          return true;
+        },
+        child: ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          itemCount: controller.listProduct.value.length,
+          itemBuilder: (context, index) {
+            final item = controller.listProduct.value[index];
+            return ProductItem(
+                productType: ProductEnum.MotoInsurance,
+                productName: item.name ?? '',
+                contractCode: item.createdDate,
+                expiredDate: item.updatedDate,
+                price: item.price.toString(),
+                isContractProcessing: index % 2 == 0,
+                onRenewButtonPressed: () {},
+                onItemPressed: () => onItemPressed(item));
+          },
+        ),
+      ),
     );
   }
 

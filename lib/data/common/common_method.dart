@@ -438,7 +438,7 @@ ProductListModel convertListProductModel(listProductModel) {
   return ProductListModel(
     pageSize: listProductModel.pageSize,
     pageNumber: listProductModel.pageNumber,
-    data: convertProductListModel(listProductModel.data),
+    data: convertProductListModel(listProductModel),
   );
 }
 
