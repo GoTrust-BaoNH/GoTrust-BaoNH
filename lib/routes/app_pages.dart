@@ -25,6 +25,12 @@ import 'package:go_trust/modules/moto_rescue_checkout/binding/moto_rescue_checko
 import 'package:go_trust/modules/moto_rescue_checkout/view/moto_rescue_checkout_screen.dart';
 import 'package:go_trust/modules/notification/binding/notification_binding.dart';
 import 'package:go_trust/modules/notification/view/notification_screen.dart';
+import 'package:go_trust/modules/oto_rescue/binding/oto_rescue_binding.dart';
+import 'package:go_trust/modules/oto_rescue/view/oto_rescue_screen.dart';
+import 'package:go_trust/modules/oto_rescue_buy/binding/oto_rescue_buy_binding.dart';
+import 'package:go_trust/modules/oto_rescue_buy/view/oto_rescue_buy_screen.dart';
+import 'package:go_trust/modules/oto_rescue_checkout/binding/oto_rescue_checkout_binding.dart';
+import 'package:go_trust/modules/oto_rescue_checkout/view/oto_rescue_checkout_screen.dart';
 import 'package:go_trust/modules/payment_info/binding/payment_info_binding.dart';
 import 'package:go_trust/modules/payment_info/view/payment_info_screen.dart';
 import 'package:go_trust/modules/payment_method/binding/payment_method_binding.dart';
@@ -106,6 +112,21 @@ final routePages = [
     name: Routes.MOTO_RESCUE_CHECKOUT_SCREEN,
     page: () => MotoRescueCheckoutScreen(),
     binding: MotoRescueCheckoutBinding(),
+  ),
+  GetPage(
+    name: Routes.OTO_RESCUE_SCREEN,
+    page: () => OtoRescueScreen(),
+    binding: OtoRescueBinding(),
+  ),
+  GetPage(
+    name: Routes.OTO_RESCUE_BUY_SCREEN,
+    page: () => OtoRescueBuyScreen(),
+    binding: OtoRescueBuyBinding(),
+  ),
+  GetPage(
+    name: Routes.OTO_RESCUE_CHECKOUT_SCREEN,
+    page: () => OtoRescueCheckoutScreen(),
+    binding: OtoRescueCheckoutBinding(),
   ),
   GetPage(
     name: Routes.PAYMENT_METHOD_SCREEN,

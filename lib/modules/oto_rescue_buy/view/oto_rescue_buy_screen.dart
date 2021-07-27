@@ -9,7 +9,6 @@ import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/step_widget/step_widget.dart';
-import 'package:go_trust/shared/widgets/tabs/custom_tab.dart';
 
 part 'oto_rescue_buy.children.dart';
 
@@ -26,31 +25,13 @@ class OtoRescueBuyScreen extends GetView<OtoRescueBuyController> {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  'motorbike_rescue'.tr,
+                  'oto_rescue'.tr,
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               const StepWidget(currentStepIndex: 0),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    bottom: 16,
-                  ),
-                  child: CustomTab(
-                    onTabChanged: (selectedTab) {
-                      controller.onTapProductChange(selectedTab);
-                    },
-                    items: [
-                      'motorcycle_below'.trParams({'value': '175'})!,
-                      'motorcycle_on'.trParams({'value': '175'})!,
-                    ],
-                    activeItemDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: const Color(0xff83DCA7).withOpacity(0.2),
-                    ),
-                  ),
-                ),
+              SizedBox(
+                height: 16,
               ),
               Obx(
                 () => Expanded(

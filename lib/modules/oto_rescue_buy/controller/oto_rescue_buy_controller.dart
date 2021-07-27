@@ -21,8 +21,7 @@ class OtoRescueBuyController extends BaseController {
 
   @override
   Future<void> onInit() async {
-    await getRecuseMotoProduct();
-    onTapProductChange(0);
+    await getRecuseOtoProduct();
     await super.onInit();
   }
 
@@ -31,21 +30,14 @@ class OtoRescueBuyController extends BaseController {
     await super.onReady();
   }
 
-  void onTapProductChange(int index) {
-    if (index == 0) {
-      listProductDisplay.value = listProduct.where((element) => element.categoryId == 18).toList();
-    } else {
-      listProductDisplay.value = listProduct.where((element) => element.categoryId == 19).toList();
-    }
-  }
-
-  Future<void> getRecuseMotoProduct() async {
+  Future<void> getRecuseOtoProduct() async {
     await EasyLoading.show();
-    await apiRepository.getRecuseMotoProduct().then(
+    await apiRepository.getRecuseCarProduct().then(
       (result) async {
         await EasyLoading.dismiss();
         if (result.isNotEmpty) {
           listProduct = result;
+          listProductDisplay.value = listProduct;
         } else {
           final dialogRequest = CommonDialogRequest(
             title: 'error'.tr,
@@ -64,7 +56,7 @@ class OtoRescueBuyController extends BaseController {
   }
 
   void onBuyNowButtonPressed() {
-    Get.toNamed(Routes.MOTO_RESCUE_CHECKOUT_SCREEN);
+    Get.toNamed(Routes.OTO_RESCUE_CHECKOUT_SCREEN);
   }
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {

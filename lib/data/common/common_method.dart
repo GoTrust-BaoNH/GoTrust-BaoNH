@@ -1,3 +1,5 @@
+import 'package:go_trust/data/graphql/mutation/create_repairing_order_mutation_graphql.dart';
+import 'package:go_trust/data/graphql/mutation/delete_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/query/app_notification_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_category_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_customer_list_query_graphql.dart';
@@ -9,8 +11,6 @@ import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_repairing_order_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_repairing_service_list_query_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/delete_repairing_order_mutation_graphql.dart';
-import 'package:go_trust/data/graphql/mutation/create_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/brand_model/brand_model.dart';
 import 'package:go_trust/shared/models/category_model/category_list_model.dart';
@@ -432,7 +432,7 @@ List<PolicyModel?> convertPolicyListModel(listPolicyModel) {
 
 ProductListModel convertListProductModel(listProductModel) {
   if (listProductModel == null) {
-    return ProductListModel(pageNumber: 0, pageSize: 0, data: <ProductModel?>[]);
+    return ProductListModel(pageNumber: 0, pageSize: 0, data: <ProductModel>[]);
   }
 
   return ProductListModel(
@@ -683,8 +683,7 @@ List<RepairingImageModel> convertListRepairingImageModel(listRepairingImage) {
   }
 
   final tempList = <RepairingImageModel>[];
-  for (final item in listRepairingImage
-      as List<DeleteRepairingOrderMutationGraphql$Mutation$GraphDeleteOrderResponse$RepairingOrder$RepairingImage?>) {
+  for (final item in listRepairingImage as List<DeleteRepairingOrderMutationGraphql$Mutation$GraphDeleteOrderResponse$RepairingOrder$RepairingImage?>) {
     tempList.add(convertRepairingImageModel(item));
   }
 
@@ -905,8 +904,7 @@ List<RepairingOrderModel> convertListRepairingOrderModel(listRepairingOrder) {
   }
 
   final tempList = <RepairingOrderModel>[];
-  for (final item in listRepairingOrder
-      as List<GetRepairingOrderListQueryGraphql$Query$GraphGetOrderListResponse$PageRepairingOrder$RepairingOrder?>) {
+  for (final item in listRepairingOrder as List<GetRepairingOrderListQueryGraphql$Query$GraphGetOrderListResponse$PageRepairingOrder$RepairingOrder?>) {
     tempList.add(convertRepairingOrderModel(item));
   }
 
@@ -932,8 +930,7 @@ List<RepairingServiceModel> convertListRepairingServiceModel(listRepairingServic
   }
 
   final tempList = <RepairingServiceModel>[];
-  for (final item in listRepairingService
-      as List<GetRepairingServiceListQueryGraphql$Query$GraphGetServiceListResponse$RepairingService?>) {
+  for (final item in listRepairingService as List<GetRepairingServiceListQueryGraphql$Query$GraphGetServiceListResponse$RepairingService?>) {
     tempList.add(convertRepairingServiceModel(item));
   }
 

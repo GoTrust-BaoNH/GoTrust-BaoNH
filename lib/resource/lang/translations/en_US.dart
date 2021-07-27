@@ -160,4 +160,5 @@ const Map<String, String> en_US = {
   'moto_rescue_plate_invalid': 'License plate invalid',
   'moto_rescue_brand_invalid': 'Brand invalid',
   'moto_rescue_model_invalid': 'Model invalid',
+  'oto_rescue': '24/7 oto rescue',
 };

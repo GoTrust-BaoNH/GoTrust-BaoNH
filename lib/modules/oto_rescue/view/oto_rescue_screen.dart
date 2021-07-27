@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_trust/modules/oto_rescue/controller/moto_rescue_controller.dart';
+import 'package:go_trust/modules/oto_rescue/controller/oto_rescue_controller.dart';
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';

@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/oto_rescue_checkout/controller/oto_rescue_checkout_controller.dart';
-import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
-import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/step_widget/step_widget.dart';
@@ -61,88 +59,16 @@ class OtoRescueCheckoutScreen extends GetView<OtoRescueCheckoutController> {
                         controller: controller.plateController,
                       ),
                       const SizedBox(height: 16),
-                      GestureDetector(
-                        onTap: () {
-                          controller.pickBrand(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          decoration: ThemeDecoration.textFieldWithShadow,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10, left: 12),
-                                child: RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: 'Hãng xe',
-                                        style: Theme.of(context).textTheme.subtitle1,
-                                      ),
-                                      TextSpan(
-                                        text: '*',
-                                        style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                                              color: AppColor.accent,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                                child: Text(
-                                  controller.brandSelected.value.bikeName ?? '',
-                                  style: Theme.of(context).textTheme.subtitle1,
-                                ),
-                              ),
-                              const SizedBox(height: 12)
-                            ],
-                          ),
-                        ),
+                      InputWidget(
+                        hint: '',
+                        lable: 'Hãng xe',
+                        controller: controller.brandController,
                       ),
                       const SizedBox(height: 16),
-                      GestureDetector(
-                        onTap: () {
-                          controller.pickModelBike(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          decoration: ThemeDecoration.textFieldWithShadow,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10, left: 12),
-                                child: RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: 'Chọn xe',
-                                        style: Theme.of(context).textTheme.subtitle1,
-                                      ),
-                                      TextSpan(
-                                        text: '*',
-                                        style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                                              color: AppColor.accent,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                                child: Text(
-                                  controller.modelBikeSelected.value.bikeName ?? '',
-                                  style: Theme.of(context).textTheme.subtitle1,
-                                ),
-                              ),
-                              const SizedBox(height: 12)
-                            ],
-                          ),
-                        ),
+                      InputWidget(
+                        hint: '',
+                        lable: 'Chọn xe',
+                        controller: controller.modelController,
                       ),
                       const SizedBox(height: 16),
                     ],

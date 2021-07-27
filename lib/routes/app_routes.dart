@@ -24,4 +24,7 @@ abstract class Routes {
   static const SETTINGS_SCREEN = '/settings_screen';
   static const CREATE_PIN_SCREEN = '/create_pin_screen';
   static const LOGIN_PIN_SCREEN = '/login_pin_screen';
+  static const OTO_RESCUE_SCREEN = '/oto_rescue_screen';
+  static const OTO_RESCUE_BUY_SCREEN = '/oto_rescue_buy_screen';
+  static const OTO_RESCUE_CHECKOUT_SCREEN = '/oto_rescue_checkout_screen';
 }
