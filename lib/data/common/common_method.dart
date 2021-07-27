@@ -7,17 +7,17 @@ import 'package:go_trust/data/graphql/query/get_policy_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_promotion_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_order_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_service_list_query_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/delete_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/data/graphql/mutation/create_repairing_order_mutation_graphql.dart';
 import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/brand_model/brand_model.dart';
 import 'package:go_trust/shared/models/category_model/category_list_model.dart';
 import 'package:go_trust/shared/models/category_model/category_model.dart';
-import 'package:go_trust/shared/models/city_model/city_input_model.dart';
 import 'package:go_trust/shared/models/city_model/city_model.dart';
 import 'package:go_trust/shared/models/customer_model/customer_list_model.dart';
 import 'package:go_trust/shared/models/customer_model/customer_model.dart';
-import 'package:go_trust/shared/models/district_model/district_input_model.dart';
 import 'package:go_trust/shared/models/district_model/district_model.dart';
 import 'package:go_trust/shared/models/emergency/emergency_list_model.dart';
 import 'package:go_trust/shared/models/emergency/emergency_model.dart';
@@ -39,16 +39,19 @@ import 'package:go_trust/shared/models/repairing_customer_model/repairing_custom
 import 'package:go_trust/shared/models/repairing_customer_model/repairing_customer_order_model.dart';
 import 'package:go_trust/shared/models/repairing_customer_model/repairing_partner_customer_company_model.dart';
 import 'package:go_trust/shared/models/repairing_customer_model/repairing_partner_worker_company_model.dart';
+import 'package:go_trust/shared/models/repairing_order/page_repairing_order_model.dart';
+import 'package:go_trust/shared/models/repairing_order/repairing_order_detail_model.dart';
+import 'package:go_trust/shared/models/repairing_order/repairing_order_detail_response_model.dart';
 import 'package:go_trust/shared/models/repairing_order/repairing_order_model.dart';
 import 'package:go_trust/shared/models/repairing_order/repairing_order_response_model.dart';
 import 'package:go_trust/shared/models/repairing_service_model/repairing_image_input_model.dart';
 import 'package:go_trust/shared/models/repairing_service_model/repairing_image_model.dart';
 import 'package:go_trust/shared/models/repairing_service_model/repairing_service_model.dart';
+import 'package:go_trust/shared/models/repairing_service_model/repairing_service_response_model.dart';
 import 'package:go_trust/shared/models/repairing_service_model/repairing_service_title_model.dart';
 import 'package:go_trust/shared/models/response/common_response.dart';
 import 'package:go_trust/shared/models/users/login_model.dart';
 import 'package:go_trust/shared/models/users/user_model.dart';
-import 'package:go_trust/shared/models/ward_model/ward_input_model.dart';
 import 'package:go_trust/shared/models/ward_model/ward_model.dart';
 
 Error createError(String errorStr) {
@@ -580,6 +583,50 @@ RepairingOrderModel convertRepairingOrderModel(repairingOrder) {
   );
 }
 
+RepairingOrderDetailResponseModel convertRepairingOrderDetailResponseModel(repairingOrderDetailResponse) {
+  if (repairingOrderDetailResponse == null) {
+    return RepairingOrderDetailResponseModel(code: 0);
+  }
+
+  return RepairingOrderDetailResponseModel(
+    code: repairingOrderDetailResponse.code,
+    data: convertRepairingOrderDetailModel(repairingOrderDetailResponse.data),
+    error: repairingOrderDetailResponse.error,
+    message: repairingOrderDetailResponse.message,
+  );
+}
+
+RepairingOrderDetailModel convertRepairingOrderDetailModel(repairingOrderDetail) {
+  if (repairingOrderDetail == null) {
+    return RepairingOrderDetailModel(id: 0, service: 0);
+  }
+
+  return RepairingOrderDetailModel(
+    city: convertCityModel(repairingOrderDetail.city),
+    createdAt: repairingOrderDetail.createdAt,
+    customerAddress: repairingOrderDetail.customerAddress,
+    customerInfo: convertRepairingCustomerInfoModel(repairingOrderDetail.customerInfo),
+    customerName: repairingOrderDetail.customerName,
+    customerOrder: convertRepairingCustomerOrderModel(repairingOrderDetail.customerOrder),
+    customerPhone: repairingOrderDetail.customerPhone,
+    description: repairingOrderDetail.description,
+    district: convertDistrictModel(repairingOrderDetail.district),
+    externalId: repairingOrderDetail.externalId,
+    id: repairingOrderDetail.id,
+    images: convertListRepairingImageModel(repairingOrderDetail.images),
+    name: repairingOrderDetail.name,
+    orderCosts: convertListStringModel(repairingOrderDetail.orderCosts),
+    partnerCustomerCompany: convertRepairingPartnerCustomerCompanyModel(repairingOrderDetail.partnerCustomerCompany),
+    partnerWorkerCompany: convertRepairingPartnerWorkerCompanyModel(repairingOrderDetail.partnerWorkerCompany),
+    publishedAt: repairingOrderDetail.publishedAt,
+    service: repairingOrderDetail.service,
+    status: repairingOrderDetail.status,
+    updatedAt: repairingOrderDetail.updatedAt,
+    uuid: repairingOrderDetail.uuid,
+    ward: convertWardModel(repairingOrderDetail.ward),
+  );
+}
+
 RepairingCustomerInfoModel convertRepairingCustomerInfoModel(repairingCustomerInfoModelModel) {
   if (repairingCustomerInfoModelModel == null) {
     return RepairingCustomerInfoModel(id: 0);
@@ -837,4 +884,58 @@ dynamic convertWardInputModel(wardInputModel) {
     label: wardInputModel.label,
     value: wardInputModel.value,
   );
+}
+
+PageRepairingOrderModel convertPageRepairingOrderModel(pageRepairingOrderModel) {
+  if (pageRepairingOrderModel == null) {
+    return PageRepairingOrderModel(limit: 0, start: 0, total: 0);
+  }
+
+  return PageRepairingOrderModel(
+    limit: pageRepairingOrderModel.limit,
+    start: pageRepairingOrderModel.start,
+    total: pageRepairingOrderModel.total,
+    list: convertListRepairingOrderModel(pageRepairingOrderModel.list),
+  );
+}
+
+List<RepairingOrderModel> convertListRepairingOrderModel(listRepairingOrder) {
+  if (listRepairingOrder == null || (listRepairingOrder as List).isEmpty) {
+    return <RepairingOrderModel>[];
+  }
+
+  final tempList = <RepairingOrderModel>[];
+  for (final item in listRepairingOrder
+      as List<GetRepairingOrderListQueryGraphql$Query$GraphGetOrderListResponse$PageRepairingOrder$RepairingOrder?>) {
+    tempList.add(convertRepairingOrderModel(item));
+  }
+
+  return tempList;
+}
+
+RepairingServiceResponseModel convertRepairingServiceResponseModel(repairingServiceModel) {
+  if (repairingServiceModel == null) {
+    return RepairingServiceResponseModel(code: 0);
+  }
+
+  return RepairingServiceResponseModel(
+    code: repairingServiceModel.code,
+    error: repairingServiceModel.error,
+    message: repairingServiceModel.message,
+    data: convertListRepairingServiceModel(repairingServiceModel.data),
+  );
+}
+
+List<RepairingServiceModel> convertListRepairingServiceModel(listRepairingService) {
+  if (listRepairingService == null || (listRepairingService as List).isEmpty) {
+    return <RepairingServiceModel>[];
+  }
+
+  final tempList = <RepairingServiceModel>[];
+  for (final item in listRepairingService
+      as List<GetRepairingServiceListQueryGraphql$Query$GraphGetServiceListResponse$RepairingService?>) {
+    tempList.add(convertRepairingServiceModel(item));
+  }
+
+  return tempList;
 }

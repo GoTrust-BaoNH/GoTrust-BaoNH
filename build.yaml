@@ -123,6 +123,9 @@ targets:
               queries_glob: graphql_queries/query/get_promotion_list_query.graphql
               output: lib/data/graphql/query/get_promotion_list_query_graphql.dart
             - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_recuse_car_product_query.graphql
+              output: lib/data/graphql/query/get_recuse_car_product_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/query/get_recuse_moto_brand_query.graphql
               output: lib/data/graphql/query/get_recuse_moto_brand_query_graphql.dart
             - schema: graphql_schema/schema.graphql
@@ -131,6 +134,15 @@ targets:
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/query/get_recuse_moto_product_query.graphql
               output: lib/data/graphql/query/get_recuse_moto_product_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_repairing_order_detail_query.graphql
+              output: lib/data/graphql/query/get_repairing_order_detail_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_repairing_order_list_query.graphql
+              output: lib/data/graphql/query/get_repairing_order_list_query_graphql.dart
+            - schema: graphql_schema/schema.graphql
+              queries_glob: graphql_queries/query/get_repairing_service_list_query.graphql
+              output: lib/data/graphql/query/get_repairing_service_list_query_graphql.dart
             - schema: graphql_schema/schema.graphql
               queries_glob: graphql_queries/query/motor_ins_get_metadata_query.graphql
               output: lib/data/graphql/query/motor_ins_get_metadata_query_graphql.dart

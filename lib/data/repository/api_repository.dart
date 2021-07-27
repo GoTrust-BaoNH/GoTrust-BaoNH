@@ -38,6 +38,10 @@ import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_product_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/motor_ins_get_metadata_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_recuse_car_product_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_order_detail_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_order_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_service_list_query_graphql.dart';
 import 'package:go_trust/data/interceptors/graphql_interceptor.dart';
 import 'package:go_trust/shared/models/bank_model/bank_model.dart';
 import 'package:go_trust/shared/models/brand_model/brand_model.dart';
@@ -62,8 +66,11 @@ import 'package:go_trust/shared/models/product/product_list_model.dart';
 import 'package:go_trust/shared/models/product/product_model.dart';
 import 'package:go_trust/shared/models/promotion_model/promotion_model.dart';
 import 'package:go_trust/shared/models/recuse_order_model/recuse_order_response.dart';
+import 'package:go_trust/shared/models/repairing_order/page_repairing_order_model.dart';
+import 'package:go_trust/shared/models/repairing_order/repairing_order_detail_response_model.dart';
 import 'package:go_trust/shared/models/repairing_order/repairing_order_response_model.dart';
 import 'package:go_trust/shared/models/repairing_service_model/repairing_image_input_model.dart';
+import 'package:go_trust/shared/models/repairing_service_model/repairing_service_response_model.dart';
 import 'package:go_trust/shared/models/request/register_request.dart';
 import 'package:go_trust/shared/models/response/common_response.dart';
 import 'package:go_trust/shared/models/response/register_response.dart';
@@ -128,7 +135,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.registerOTP(phoneNumber: phoneNumber);
       if (!results.hasException) {
-        final commonResponse = convertCommonResponseModel(RegisterOtpMutationGraphql$Mutation.fromJson(results.data!).registerOtp!);
+        final commonResponse =
+            convertCommonResponseModel(RegisterOtpMutationGraphql$Mutation.fromJson(results.data!).registerOtp!);
         c.complete(commonResponse);
       } else {
         print('Exception: ${results.exception}');
@@ -223,7 +231,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.getItemNotification(id: id);
       if (!results.hasException) {
-        final itemNotification = convertItemNotificationModel(AppNotificationItemQueryGraphql$Query.fromJson(results.data!).appNotification!);
+        final itemNotification =
+            convertItemNotificationModel(AppNotificationItemQueryGraphql$Query.fromJson(results.data!).appNotification!);
         c.complete(itemNotification);
       } else {
         print('Exception: ${results.exception}');
@@ -242,7 +251,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.getListNotification(userId: userId);
       if (!results.hasException) {
-        final listNotification = convertListNotificationModel(AppNotificationListQueryGraphql$Query.fromJson(results.data!).appNotificationList!);
+        final listNotification =
+            convertListNotificationModel(AppNotificationListQueryGraphql$Query.fromJson(results.data!).appNotificationList!);
         c.complete(listNotification);
       } else {
         print('Exception: ${results.exception}');
@@ -261,7 +271,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.getListPaymentType();
       if (!results.hasException) {
-        final listPaymentType = convertListPaymentTypeModel(GetPaymentTypeListQueryGraphql$Query.fromJson(results.data!).getPaymentTypeList!);
+        final listPaymentType =
+            convertListPaymentTypeModel(GetPaymentTypeListQueryGraphql$Query.fromJson(results.data!).getPaymentTypeList!);
         c.complete(listPaymentType);
       } else {
         print('Exception: ${results.exception}');
@@ -449,7 +460,8 @@ class ApiRepository {
         startDate: startDate,
       );
       if (!results.hasException) {
-        final motoIns = convertMotoOrderModel(MotorInsCreateOrderMutationGraphql$Mutation.fromJson(results.data!).motorInsCreateOrder!);
+        final motoIns =
+            convertMotoOrderModel(MotorInsCreateOrderMutationGraphql$Mutation.fromJson(results.data!).motorInsCreateOrder!);
         c.complete(motoIns);
       } else {
         print('Exception: ${results.exception}');
@@ -544,7 +556,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.getEmergencyList(pageNumber: pageNumber, pageSize: pageSize);
       if (!results.hasException) {
-        final emergencyList = convertListEmergencyModel(GetEmergencyListQueryGraphql$Query.fromJson(results.data!).getEmergencyList!);
+        final emergencyList =
+            convertListEmergencyModel(GetEmergencyListQueryGraphql$Query.fromJson(results.data!).getEmergencyList!);
         c.complete(emergencyList);
       } else {
         print('Exception: ${results.exception}');
@@ -620,7 +633,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.getRecuseMotoBrand();
       if (!results.hasException) {
-        final recuseMotoBrandList = convertBrandListModel(GetRecuseMotoBrandQueryGraphql$Query.fromJson(results.data!).getRecuseMotoBrand!);
+        final recuseMotoBrandList =
+            convertBrandListModel(GetRecuseMotoBrandQueryGraphql$Query.fromJson(results.data!).getRecuseMotoBrand!);
         c.complete(recuseMotoBrandList);
       } else {
         print('Exception: ${results.exception}');
@@ -639,7 +653,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.getRecuseMoto(brandId: brandId);
       if (!results.hasException) {
-        final recuseMoto = convertModelBikeListModel(GetRecuseMotoModelQueryGraphql$Query.fromJson(results.data!).getRecuseMotoModel!);
+        final recuseMoto =
+            convertModelBikeListModel(GetRecuseMotoModelQueryGraphql$Query.fromJson(results.data!).getRecuseMotoModel!);
         c.complete(recuseMoto);
       } else {
         print('Exception: ${results.exception}');
@@ -658,7 +673,8 @@ class ApiRepository {
     try {
       final results = await apiProvider.getRecuseMotoProduct();
       if (!results.hasException) {
-        final recuseMotoProduct = convertProductListModel(GetRecuseMotoProductQueryGraphql$Query.fromJson(results.data!).getRecuseMotoProduct!);
+        final recuseMotoProduct =
+            convertProductListModel(GetRecuseMotoProductQueryGraphql$Query.fromJson(results.data!).getRecuseMotoProduct!);
         c.complete(recuseMotoProduct);
       } else {
         print('Exception: ${results.exception}');
@@ -886,6 +902,86 @@ class ApiRepository {
         final repairingOrder = convertRepairingOrderResponseModel(
             UpdateRepairingOrderMutationGraphql$Mutation.fromJson(results.data!).updateRepairingOrder);
         c.complete(repairingOrder);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<List<ProductModel>> getRecuseCarProduct() async {
+    final c = Completer<List<ProductModel>>();
+    try {
+      final results = await apiProvider.getRecuseCarProduct();
+      if (!results.hasException) {
+        final product =
+            convertProductListModel(GetRecuseCarProductQueryGraphql$Query.fromJson(results.data!).getRecuseCarProduct);
+        c.complete(product);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<RepairingOrderDetailResponseModel> getRepairingOrderDetail({String? uuid}) async {
+    final c = Completer<RepairingOrderDetailResponseModel>();
+    try {
+      final results = await apiProvider.getRepairingOrderDetail(uuid: uuid);
+      if (!results.hasException) {
+        final repairingOrderDetail = convertRepairingOrderDetailResponseModel(
+            GetRepairingOrderDetailQueryGraphql$Query.fromJson(results.data!).getRepairingOrderDetail);
+        c.complete(repairingOrderDetail);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<PageRepairingOrderModel> getRepairingOrderList({int? start}) async {
+    final c = Completer<PageRepairingOrderModel>();
+    try {
+      final results = await apiProvider.getRepairingOrderList(start: start);
+      if (!results.hasException) {
+        final repairingOrderList =
+            convertPageRepairingOrderModel(GetRepairingOrderListQueryGraphql$Query.fromJson(results.data!).getRepairingOrderList);
+        c.complete(repairingOrderList);
+      } else {
+        print('Exception: ${results.exception}');
+        c.completeError(handleErrorGraphQL(results.exception!));
+      }
+    } catch (ex, stackTrace) {
+      print(stackTrace.toString());
+      c.completeError(ex.toString());
+    }
+
+    return c.future;
+  }
+
+  Future<RepairingServiceResponseModel> getRepairingServiceList() async {
+    final c = Completer<RepairingServiceResponseModel>();
+    try {
+      final results = await apiProvider.getRepairingServiceList();
+      if (!results.hasException) {
+        final repairingServiceList = convertRepairingServiceResponseModel(
+            GetRepairingServiceListQueryGraphql$Query.fromJson(results.data!).getRepairingServiceList);
+        c.complete(repairingServiceList);
       } else {
         print('Exception: ${results.exception}');
         c.completeError(handleErrorGraphQL(results.exception!));

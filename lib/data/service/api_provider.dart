@@ -38,6 +38,10 @@ import 'package:go_trust/data/graphql/query/get_recuse_moto_brand_query_graphql.
 import 'package:go_trust/data/graphql/query/get_recuse_moto_model_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/get_recuse_moto_product_query_graphql.dart';
 import 'package:go_trust/data/graphql/query/motor_ins_get_metadata_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_recuse_car_product_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_order_detail_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_order_list_query_graphql.dart';
+import 'package:go_trust/data/graphql/query/get_repairing_service_list_query_graphql.dart';
 import 'package:go_trust/shared/models/city_model/city_input_model.dart';
 import 'package:go_trust/shared/models/district_model/district_input_model.dart';
 import 'package:go_trust/shared/models/repairing_service_model/repairing_image_input_model.dart';
@@ -931,6 +935,64 @@ class ApiProvider extends BaseProvider {
           uuid: uuid,
           ward: convertWardInputModel(ward) as update_repairing.WardInput?,
         ).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getRecuseCarProduct() {
+    print('Request getRecuseCarProduct query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetRecuseCarProductQueryGraphqlQuery().document,
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getRepairingOrderDetail({String? uuid}) {
+    print('Request getRepairingOrderDetail query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetRepairingOrderDetailQueryGraphqlQuery(
+          variables: GetRepairingOrderDetailQueryGraphqlArguments(uuid: uuid),
+        ).document,
+        variables: GetRepairingOrderDetailQueryGraphqlArguments(uuid: uuid).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getRepairingOrderList({int? start}) {
+    print('Request getRepairingOrderList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetRepairingOrderListQueryGraphqlQuery(
+          variables: GetRepairingOrderListQueryGraphqlArguments(start: start),
+        ).document,
+        variables: GetRepairingOrderListQueryGraphqlArguments(start: start).toJson(),
+      ),
+    )
+        .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {
+      throw createError('Timeout Error');
+    });
+  }
+
+  Future<graphql.QueryResult> getRepairingServiceList() {
+    print('Request getRepairingServiceList query');
+    return BaseServiceGraphQLProvider.instance.value
+        .query(
+      graphql.QueryOptions(
+        document: GetRepairingServiceListQueryGraphqlQuery().document,
       ),
     )
         .timeout(Duration(seconds: int.parse(TIME_OUT_SECOND)), onTimeout: () {

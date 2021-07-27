@@ -1,0 +1,55 @@
+query {
+    getRepairingServiceList {
+        code
+        data {
+            code
+            createdAt
+            createdBy
+            id
+            name
+            publishedAt
+            service {
+                code
+                createdAt
+                createdBy
+                id
+                name
+                publishedAt
+                service {
+                    code
+                    createdAt
+                    createdBy
+                    id
+                    name
+                    publishedAt
+                    title {
+                        en
+                        id
+                        vi
+                    }
+                    updatedAt
+                    updatedBy
+                    uuid
+                }
+                title {
+                    en
+                    id
+                    vi
+                }
+                updatedAt
+                updatedBy
+                uuid
+            }
+            title {
+                en
+                id
+                vi
+            }
+            updatedAt
+            updatedBy
+            uuid
+        }
+        error
+        message
+    }
+}

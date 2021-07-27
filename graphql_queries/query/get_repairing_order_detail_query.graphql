@@ -1,0 +1,124 @@
+query ($uuid: String){
+    getRepairingOrderDetail(request: {uuid: $uuid}) {
+        code
+        data {
+            city {
+                label
+                value
+            }
+            created_at
+            customerAddress
+            customerInfo {
+                address
+                avatar
+                city {
+                    label
+                    value
+                }
+                countryCode
+                createdAt
+                district {
+                    label
+                    value
+                }
+                email
+                id
+                name
+                phone
+                publishedAt
+                referralCode
+                referralId
+                updatedAt
+                uuid
+                ward {
+                    label
+                    value
+                }
+            }
+            customerName
+            customerOrder {
+                address
+                avatar
+                city {
+                    label
+                    value
+                }
+                countryCode
+                createdAt
+                district {
+                    label
+                    value
+                }
+                email
+                id
+                name
+                phone
+                publishedAt
+                referralCode
+                referralId
+                updatedAt
+                uuid
+                ward {
+                    label
+                    value
+                }
+            }
+            customerPhone
+            description
+            district {
+                label
+                value
+            }
+            external_id
+            id
+            images {
+                medium
+                small
+                thumbnail
+                url
+            }
+            name
+            orderCosts
+            partnerCustomerCompany {
+                address
+                album
+                avatar
+                companyCode
+                createdAt
+                id
+                name
+                phone
+                publishedAt
+                updatedAt
+                uuid
+                customerCompany
+                workerCompany
+            }
+            partnerWorkerCompany {
+                address
+                album
+                avatar
+                companyCode
+                createdAt
+                id
+                name
+                phone
+                publishedAt
+                updatedAt
+                uuid
+                customerCompany
+                workerCompany
+            }
+            published_at
+            status
+            updated_at
+            uuid
+            ward {
+                label
+                value
+            }
+        }
+        error
+        message
+    }
+}
