@@ -541,14 +541,19 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0+1"
+  gotrust_auth_data:
+    dependency: "direct main"
+    description:
+      path: "external_library/gotrust_auth_data"
+      relative: true
+    source: path
+    version: "0.0.1"
   gotrust_repository_data:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: "7408c841f7e2e767422a8dffa916fd316c2d0787"
-      url: "https://github.com/gotrust-vn/GoTRUST.App.Data.git"
-    source: git
+      path: "external_library/gotrust_service_data"
+      relative: true
+    source: path
     version: "0.0.1"
   gql:
     dependency: transitive
@@ -1156,14 +1161,14 @@ packages:
       name: url_launcher_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   url_launcher_macos:
     dependency: transitive
     description:
       name: url_launcher_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   url_launcher_platform_interface:
     dependency: transitive
     description:
@@ -1177,14 +1182,14 @@ packages:
       name: url_launcher_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   url_launcher_windows:
     dependency: transitive
     description:
       name: url_launcher_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   uuid:
     dependency: transitive
     description:
