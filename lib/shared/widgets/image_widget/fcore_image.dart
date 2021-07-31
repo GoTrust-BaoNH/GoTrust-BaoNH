@@ -46,7 +46,7 @@ class FCoreImage extends StatelessWidget {
           Widget widget;
           switch (state.extendedImageLoadState) {
             case LoadState.loading:
-              widget = usePlaceHolder ? const SizedBox() : Skeleton();
+              widget = usePlaceHolder ? const SizedBox() : const Skeleton();
               break;
             case LoadState.completed:
               widget = ExtendedRawImage(

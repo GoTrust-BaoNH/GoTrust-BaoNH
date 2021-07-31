@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:go_trust/shared/widgets/search_bar_widget/search_bar_widget.dart';
 
 class SearchDialogWidget extends StatefulWidget {
-  final List<dynamic> objects;
-
   const SearchDialogWidget({required this.objects});
+  
+  final List<dynamic> objects;
 
   @override
   _SearchDialogWidgetState createState() => _SearchDialogWidgetState();
@@ -32,7 +32,7 @@ class _SearchDialogWidgetState extends State<SearchDialogWidget> {
   Widget build(BuildContext context) {
     return Container(
       height: 400,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       width: Get.width * 0.85,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),

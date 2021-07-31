@@ -45,7 +45,7 @@ class NotificationController extends BaseController {
 
   Future<void> onTapItemNotification(NotificationItemModel item) async {
     await EasyLoading.show();
-    var itemDetailsModel = await apiRepository.getItemNotification(id: item.id ?? '');
+    final itemDetailsModel = await apiRepository.getItemNotification(id: item.id ?? '');
     await EasyLoading.dismiss();
     // TODO: show info
     print(itemDetailsModel.toString());

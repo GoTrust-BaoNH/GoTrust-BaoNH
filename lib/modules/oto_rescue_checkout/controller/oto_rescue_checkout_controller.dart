@@ -8,9 +8,9 @@ import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import 'package:intl/intl.dart';
 
-import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class OtoRescueCheckoutController extends BaseController {
@@ -46,7 +46,7 @@ class OtoRescueCheckoutController extends BaseController {
       fullName: nameController.text,
       phoneNumber: phoneController.text,
       numberPlate: plateController.text,
-      productId: "5",
+      productId: '5',
       startDate: DateFormat('dd/MM/yyyy').format(DateTime.now()),
     )
         .then(

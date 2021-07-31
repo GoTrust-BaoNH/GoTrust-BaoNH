@@ -25,7 +25,6 @@ extension EmergencyChildrenExtension on EmergencyScreen {
           itemBuilder: (context, index) {
             final item = controller.emergencyList.value[index];
             return _hotlineItem(serviceName: item.serviceName!, servicePhoneNumber: item.phone!, onItemPressed: () => onItemPressed(item));
-            ;
           },
         ),
       ),

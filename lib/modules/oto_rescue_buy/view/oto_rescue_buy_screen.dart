@@ -56,7 +56,7 @@ class OtoRescueBuyScreen extends GetView<OtoRescueBuyController> {
 
   List<Widget> buildListProduct(BuildContext context) {
     final list = <Widget>[];
-    for (int i = 0; i < controller.listProductDisplay.value.length; i++) {
+    for (var i = 0; i < controller.listProductDisplay.value.length; i++) {
       list.add(
         Container(
           padding: const EdgeInsets.all(12),

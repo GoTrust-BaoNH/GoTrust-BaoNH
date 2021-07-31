@@ -5,11 +5,9 @@ import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
-import 'package:go_trust/shared/models/product/product_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 import 'package:gotrust_repository_data/gotrust_repository_data.dart';
-import 'package:gotrust_repository_data/shared/models/product/product_enum.dart';
-import 'package:gotrust_repository_data/shared/models/product/your_product_model.dart';
+import 'package:gotrust_repository_data/shared/models/product/product_model.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class YourProductController extends BaseController {
@@ -22,7 +20,7 @@ class YourProductController extends BaseController {
   final ScrollController scrollController = ScrollController();
   bool canLoadingMore = true;
 
-  var listProduct = <ProductModel>[].obs;
+  var listProduct = <ProductModel?>[].obs;
 
   @override
   Future<void> onInit() async {

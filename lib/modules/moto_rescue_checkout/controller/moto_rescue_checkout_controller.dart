@@ -12,6 +12,7 @@ import 'package:go_trust/shared/widgets/search_dialog_widget/search_dialog_widge
 import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import 'package:gotrust_repository_data/shared/models/brand_model/brand_model.dart';
 import 'package:gotrust_repository_data/shared/models/model_bike_model/model_bike_model.dart';
+import 'package:intl/intl.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class MotoRescueCheckoutController extends BaseController {
@@ -81,7 +82,7 @@ class MotoRescueCheckoutController extends BaseController {
   }
 
   Future<void> pickBrand(BuildContext context) async {
-    Widget dialog = Dialog(
+    final Widget dialog = Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
       ),
@@ -92,7 +93,7 @@ class MotoRescueCheckoutController extends BaseController {
       ),
     );
 
-    BrandModel? selectBrand = await Get.dialog(dialog);
+    final selectBrand = await Get.dialog(dialog);
 
     if (selectBrand != null) {
       brandSelected.value = selectBrand;
@@ -107,7 +108,7 @@ class MotoRescueCheckoutController extends BaseController {
 
     await getRecuseMotoModel();
 
-    Widget dialog = Dialog(
+    final Widget dialog = Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
       ),
@@ -141,11 +142,11 @@ class MotoRescueCheckoutController extends BaseController {
       brandId: brandSelected.value.bikeId,
       model: modelBikeSelected.value.bikeName,
       modelId: modelBikeSelected.value.bikeId,
-      capacity: "175cc",
+      capacity: '175cc',
       fullName: nameController.text,
       phoneNumber: phoneController.text,
       numberPlate: plateController.text,
-      productId: "5",
+      productId: '5',
       startDate: DateFormat('dd/MM/yyyy').format(DateTime.now()),
     )
         .then(

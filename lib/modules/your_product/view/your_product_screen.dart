@@ -11,7 +11,7 @@ import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 import 'package:go_trust/shared/widgets/tabs/custom_tab.dart';
 import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
 import 'package:gotrust_repository_data/shared/models/product/product_enum.dart';
-import 'package:gotrust_repository_data/shared/models/product/your_product_model.dart';
+import 'package:gotrust_repository_data/shared/models/product/product_model.dart';
 import 'package:intl/intl.dart';
 
 part 'your_product_children.dart';

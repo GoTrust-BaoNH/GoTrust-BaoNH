@@ -3,8 +3,8 @@ import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 
-import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class OtoRescueController extends BaseController {

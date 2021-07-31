@@ -28,7 +28,7 @@ extension YourProductChildrenExtension on YourProductScreen {
             final item = controller.listProduct.value[index];
             return ProductItem(
                 productType: ProductEnum.MotoInsurance,
-                productName: item.name ?? '',
+                productName: item!.name ?? '',
                 contractCode: item.createdDate,
                 expiredDate: item.updatedDate,
                 price: item.price.toString(),

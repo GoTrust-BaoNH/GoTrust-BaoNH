@@ -69,7 +69,7 @@ class HomeController extends BaseController {
   @override
   Future<void> onInit() async {
     await super.onInit();
-    receiveFromAnotherApp();
+    await receiveFromAnotherApp();
   }
 
   @override
