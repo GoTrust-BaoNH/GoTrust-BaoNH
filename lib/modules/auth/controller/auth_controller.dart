@@ -15,12 +15,11 @@ import 'package:go_trust/shared/constants/storage.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/request/common_dialog_request.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-
-import '../../../data/repository/api_repository.dart';
 
 class AuthController extends BaseController {
   AuthController({required this.apiRepository});

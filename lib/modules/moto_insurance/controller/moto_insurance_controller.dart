@@ -8,8 +8,7 @@ import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
-
-import '../../../data/repository/api_repository.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class MotoInsuranceController extends BaseController {
@@ -34,7 +33,7 @@ class MotoInsuranceController extends BaseController {
 
   Future<void> getMotoInsuranceInfo() async {
     await EasyLoading.show();
-    await apiRepository.motoInsGetMetaData(partner: "hdi").then(
+    await apiRepository.motoInsGetMetaData(partner: 'hdi').then(
       (result) async {
         await EasyLoading.dismiss();
         if (result.isNotEmpty) {
@@ -58,7 +57,10 @@ class MotoInsuranceController extends BaseController {
 
   Future<void> onBuyButtonPressed() async {
     await EasyLoading.show();
-    await apiRepository.motoInsCreateOrder(amount: 1000000, startDate: "23/07/2021", expDate: "23/07/2022", partner: "hdi", productId: "baohiemxemay").then(
+    await apiRepository
+        .motoInsCreateOrder(
+            amount: 1000000, startDate: '23/07/2021', expDate: '23/07/2022', partner: 'hdi', productId: 'baohiemxemay')
+        .then(
       (result) async {
         await EasyLoading.dismiss();
         if (result.status == 1 && result.orderId != null) {

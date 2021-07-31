@@ -125,14 +125,14 @@ extension MotoInsurranceChildren on MotoInsuranceScreen {
                     leading: _buildIcon(
                       IconConstants.bhMotoBoiThuongTaiSan,
                     ),
-                    title: _insuranceDescription('compensation_property'.trParams({'value': '50'})!),
+                    title: _insuranceDescription('compensation_property'.trParams({'value': '50'})),
                   ),
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: _buildIcon(
                         IconConstants.bhMotoBoiThuongYte,
                       ),
-                      title: _insuranceDescription('compensation_medical_expenses'.trParams({'value': '150'})!)),
+                      title: _insuranceDescription('compensation_medical_expenses'.trParams({'value': '150'}))),
                 ],
               ),
             ],
@@ -171,7 +171,7 @@ extension MotoInsurranceChildren on MotoInsuranceScreen {
                     leading: _buildIcon(
                       IconConstants.bhMotoBiPhatTien,
                     ),
-                    title: _insuranceDescription('fined_up_insurance'.trParams({'value': '200.000VND'})!),
+                    title: _insuranceDescription('fined_up_insurance'.trParams({'value': '200.000VND'})),
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,

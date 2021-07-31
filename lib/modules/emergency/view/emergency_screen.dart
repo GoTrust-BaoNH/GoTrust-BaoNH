@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/modules/emergency/controller/emergency_controller.dart';
 import 'package:go_trust/shared/constants/colors.dart';
-import 'package:go_trust/shared/models/emergency/emergency_model.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
+import 'package:gotrust_repository_data/shared/models/emergency/emergency_model.dart';
 
 part 'emergency_children.dart';
 

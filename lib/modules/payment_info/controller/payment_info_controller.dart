@@ -7,8 +7,7 @@ import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
-
-import '../../../data/repository/api_repository.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class PaymentInfoController extends BaseController {
@@ -29,7 +28,7 @@ class PaymentInfoController extends BaseController {
 
   Future<void> onConfirmButtonPressed() async {
     await EasyLoading.show();
-    await apiRepository.paymentCreatePayment(paymentType: "VNPAY", orderId: CommonConstants.orderID).then(
+    await apiRepository.paymentCreatePayment(paymentType: 'VNPAY', orderId: CommonConstants.orderID).then(
       (result) async {
         await EasyLoading.dismiss();
         if (result.code != null) {

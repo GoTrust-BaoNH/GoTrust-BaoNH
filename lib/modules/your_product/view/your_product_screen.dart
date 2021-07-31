@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 import 'package:go_trust/modules/your_product/controller/your_product_controller.dart';
 import 'package:go_trust/resource/assets_constant/images_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
-import 'package:go_trust/shared/models/product/product_enum.dart';
-import 'package:go_trust/shared/models/product/your_product_model.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
 import 'package:go_trust/shared/widgets/tabs/custom_tab.dart';
 import 'package:go_trust/shared/widgets/title_widget/title_base_widget.dart';
+import 'package:gotrust_repository_data/shared/models/product/product_enum.dart';
+import 'package:gotrust_repository_data/shared/models/product/your_product_model.dart';
 import 'package:intl/intl.dart';
 
 part 'your_product_children.dart';

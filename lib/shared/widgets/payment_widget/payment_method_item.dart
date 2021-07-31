@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_trust/shared/constants/colors.dart';
-import 'package:go_trust/shared/models/payment_model/payment_type_model.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
+import 'package:gotrust_repository_data/shared/models/payment_model/payment_type_model.dart';
 
 class PaymentMethodItem extends StatefulWidget {
   const PaymentMethodItem({

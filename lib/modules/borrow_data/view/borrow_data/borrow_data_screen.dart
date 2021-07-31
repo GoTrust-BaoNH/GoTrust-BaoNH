@@ -47,7 +47,7 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
               child: AppGradientButton(
                 onPressed: controller.onBorrowDataPressed,
                 child: Text(
-                  'borrow_value_data'.trParams({'value': '1'})!,
+                  'borrow_value_data'.trParams({'value': '1'}),
                   style: TextAppStyle().textEnableButtonStyle(),
                 ),
               ),
@@ -56,14 +56,14 @@ class BorrowDataScreen extends GetView<BorrowDataController> {
               margin: const EdgeInsets.only(top: 16),
               child: greyButton(
                 onPressed: () {},
-                title: 'borrow_value_call'.trParams({'value': '10'})!,
+                title: 'borrow_value_call'.trParams({'value': '10'}),
               ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 16),
               child: greyButton(
                 onPressed: () {},
-                title: 'recharge_with'.trParams({'appName': APP_NAME})!,
+                title: 'recharge_with'.trParams({'appName': APP_NAME}),
               ),
             ),
           ],

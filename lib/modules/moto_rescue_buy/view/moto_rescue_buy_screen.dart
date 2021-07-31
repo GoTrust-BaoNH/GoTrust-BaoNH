@@ -42,8 +42,8 @@ class MotoRescueBuyScreen extends GetView<MotoRescueBuyController> {
                       controller.onTapProductChange(selectedTab);
                     },
                     items: [
-                      'motorcycle_below'.trParams({'value': '175'})!,
-                      'motorcycle_on'.trParams({'value': '175'})!,
+                      'motorcycle_below'.trParams({'value': '175'}),
+                      'motorcycle_on'.trParams({'value': '175'}),
                     ],
                     activeItemDecoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),

@@ -5,10 +5,9 @@ import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
-import 'package:go_trust/shared/models/emergency/emergency_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
-
-import '../../../data/repository/api_repository.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
+import 'package:gotrust_repository_data/shared/models/emergency/emergency_model.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class EmergencyController extends BaseController {

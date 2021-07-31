@@ -5,13 +5,13 @@ import 'package:go_trust/modules/borrow_data/controller/borrow_data_controller.d
 import 'package:go_trust/resource/assets_constant/icon_constants.dart';
 import 'package:go_trust/shared/constants/colors.dart';
 import 'package:go_trust/shared/methods/common_method.dart';
-import 'package:go_trust/shared/models/data_package/data_package_model.dart';
-import 'package:go_trust/shared/models/data_package/data_package_model_mock.dart';
 import 'package:go_trust/shared/styles/text_style/text_style.dart';
 import 'package:go_trust/shared/theme/theme_decoration.dart';
 import 'package:go_trust/shared/widgets/appbar/app_bar_widget.dart';
 import 'package:go_trust/shared/widgets/button/gradient_button.dart';
 import 'package:go_trust/shared/widgets/image_widget/fcore_image.dart';
+import 'package:gotrust_repository_data/shared/models/data_package/data_package_model.dart';
+import 'package:gotrust_repository_data/shared/models/data_package/data_package_model_mock.dart';
 
 part 'borrow_data_detail.children.dart';
 

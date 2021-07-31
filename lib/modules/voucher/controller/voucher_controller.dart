@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
-
-import '../../../data/repository/api_repository.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
 class VoucherController extends BaseController {

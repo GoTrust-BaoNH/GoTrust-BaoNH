@@ -9,10 +9,9 @@ import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_links/uni_links.dart';
-
-import '../../../data/repository/api_repository.dart';
 import '../../../shared/constants/storage.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 

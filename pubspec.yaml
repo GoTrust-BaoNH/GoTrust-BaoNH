@@ -23,12 +23,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  gotrust_repository_data:
+    git:
+      url: https://github.com/gotrust-vn/GoTRUST.App.Data.git
+      ref: main
+#      path: gotrust_repository_data
+
+#  gotrust_repository_data:
+#    path: ../go_trust/external_library/gotrust_repository_data
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   get: ^4.1.3
-  shared_preferences: ^2.0.5
+  shared_preferences: ^2.0.6
   wave: ^0.2.0
   fluttertoast: ^8.0.3
   flutter_easyloading: ^3.0.0

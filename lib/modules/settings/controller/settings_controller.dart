@@ -5,11 +5,10 @@ import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/constants/storage.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../data/repository/api_repository.dart';
 
 class SettingsController extends BaseController {
   SettingsController({required this.apiRepository});
