@@ -98,12 +98,13 @@ class HomeController extends BaseController {
       case IconConstants.goTrustCare:
         break;
       case IconConstants.treChuyenBay:
+        Get.toNamed(Routes.VOUCHER_SCREEN);
         break;
       case IconConstants.cuuHoXeMay:
         Get.toNamed(Routes.MOTO_RESCUE_BUY_SCREEN);
         break;
       case IconConstants.cuuHoOto:
-        Get.toNamed(Routes.VOUCHER_SCREEN);
+        Get.toNamed(Routes.OTO_RESCUE_BUY_SCREEN);
         break;
       case IconConstants.khamBenh:
         break;

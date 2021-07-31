@@ -155,4 +155,11 @@ const Map<String, String> vi_VN = {
   'settings_change_language': 'Thay đổi ngôn ngữ',
   'settings_invite_app': 'Chia sẻ ứng dụng',
   'settings_logout': 'Đăng xuất',
+  'emergency_notsupport': 'Thiết bị không hỗ trợ',
+  'moto_rescue_name_invalid': 'Họ và tên không hợp lệ',
+  'moto_rescue_phone_invalid': 'Số điện thoại không hợp lệ',
+  'moto_rescue_plate_invalid': 'Biển số xe không hợp lệ',
+  'moto_rescue_brand_invalid': 'Hãng xe không hợp lệ',
+  'moto_rescue_model_invalid': 'Xe không hợp lệ',
+  'oto_rescue': 'Cứu hộ ô tô 24/7',
 };

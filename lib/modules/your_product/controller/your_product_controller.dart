@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
+import 'package:go_trust/shared/models/product/product_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import 'package:gotrust_repository_data/shared/models/product/product_enum.dart';
@@ -13,64 +17,45 @@ class YourProductController extends BaseController {
 
   final ApiRepository apiRepository;
 
+  final int pageSize = 10;
+  var pageNumber = 0.obs;
+  final ScrollController scrollController = ScrollController();
+  bool canLoadingMore = true;
 
-  List<YourProductModel> list = [
-    YourProductModel(
-      productType: ProductEnum.MotoInsurance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().add(const Duration(days: 10)).toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MedicalOnline,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.OnlineShopping,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      isContractProcessing: true,
-      expiredDate: DateTime.now().add(const Duration(days: 10)).toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoRescue,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      isContractProcessing: true,
-      expiredDate: DateTime.now().toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoInsurance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoInsurance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().add(const Duration(days: 10)).toString(),
-    ),
-    YourProductModel(
-      productType: ProductEnum.MotoInsurance,
-      productName: 'Bảo hiểm TNDSBB Xe máy',
-      contractCode: 'Mã hợp đồng: HK012345',
-      price: '1.500.000',
-      expiredDate: DateTime.now().toString(),
-    ),
-  ];
+  var listProduct = <ProductModel>[].obs;
 
   @override
   Future<void> onInit() async {
+    await getListProduct();
     await super.onInit();
+  }
+
+  Future<void> getListProduct() async {
+    await EasyLoading.show();
+    await apiRepository.getProductList(pageNumber: pageNumber.value, pageSize: pageSize).then(
+      (result) async {
+        await EasyLoading.dismiss();
+        if (result.data != null) {
+          if (result.data!.length < pageSize) {
+            canLoadingMore = false;
+          }
+          listProduct.value.addAll(result.data!);
+          listProduct.refresh();
+        } else {
+          final dialogRequest = CommonDialogRequest(
+            title: 'error'.tr,
+            description: 'unknown_error'.tr,
+            typeDialog: DIALOG_ONE_BUTTON,
+            defineEvent: 'unknown_error',
+          );
+          await _doShowDialog(dialogRequest);
+        }
+      },
+      onError: (e) async {
+        await EasyLoading.dismiss();
+        await _doShowDialog(handleErrorResponse(e));
+      },
+    );
   }
 
   @override

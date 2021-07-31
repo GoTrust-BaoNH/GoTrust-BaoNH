@@ -8,121 +8,25 @@ import 'package:go_trust/shared/constants/common.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
-import 'package:go_trust/shared/widgets/search_dialog_widget/search_dialog_widget.dart';
-import 'package:gotrust_repository_data/gotrust_repository_data.dart';
-import 'package:gotrust_repository_data/shared/models/brand_model/brand_model.dart';
-import 'package:gotrust_repository_data/shared/models/model_bike_model/model_bike_model.dart';
+import 'package:intl/intl.dart';
+
+import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
-class MotoRescueCheckoutController extends BaseController {
-  MotoRescueCheckoutController({required this.apiRepository});
+class OtoRescueCheckoutController extends BaseController {
+  OtoRescueCheckoutController({required this.apiRepository});
 
   final ApiRepository apiRepository;
-  late List<BrandModel> listBrand;
-  List<ModelBikeModel> listModelBike = [];
-  var brandSelected = BrandModel().obs;
-  var modelBikeSelected = ModelBikeModel().obs;
+
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController plateController = TextEditingController();
+  TextEditingController brandController = TextEditingController();
+  TextEditingController modelController = TextEditingController();
 
   @override
   Future<void> onInit() async {
-    await getRecuseMotoBrand();
     await super.onInit();
-  }
-
-  Future<void> getRecuseMotoBrand() async {
-    await EasyLoading.show();
-    await apiRepository.getRecuseMotoBrand().then(
-      (result) async {
-        await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listBrand = result;
-        } else {
-          final dialogRequest = CommonDialogRequest(
-            title: 'error'.tr,
-            description: 'unknown_error'.tr,
-            typeDialog: DIALOG_ONE_BUTTON,
-            defineEvent: 'unknown_error',
-          );
-          await _doShowDialog(dialogRequest);
-        }
-      },
-      onError: (e) async {
-        await EasyLoading.dismiss();
-        await _doShowDialog(handleErrorResponse(e));
-      },
-    );
-  }
-
-  Future<void> getRecuseMotoModel() async {
-    await EasyLoading.show();
-    await apiRepository.getRecuseMoto(brandId: brandSelected.value.bikeId).then(
-      (result) async {
-        await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listModelBike = result;
-        } else {
-          final dialogRequest = CommonDialogRequest(
-            title: 'error'.tr,
-            description: 'unknown_error'.tr,
-            typeDialog: DIALOG_ONE_BUTTON,
-            defineEvent: 'unknown_error',
-          );
-          await _doShowDialog(dialogRequest);
-        }
-      },
-      onError: (e) async {
-        await EasyLoading.dismiss();
-        await _doShowDialog(handleErrorResponse(e));
-      },
-    );
-  }
-
-  Future<void> pickBrand(BuildContext context) async {
-    Widget dialog = Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-      ),
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      child: SearchDialogWidget(
-        objects: listBrand,
-      ),
-    );
-
-    BrandModel? selectBrand = await Get.dialog(dialog);
-
-    if (selectBrand != null) {
-      brandSelected.value = selectBrand;
-    }
-  }
-
-  Future<void> pickModelBike(BuildContext context) async {
-    if (brandSelected.value.bikeId == null) {
-      showError(content: 'Vui lòng chọn hãng xe');
-      return;
-    }
-
-    await getRecuseMotoModel();
-
-    Widget dialog = Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-      ),
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      child: SearchDialogWidget(
-        objects: listModelBike,
-      ),
-    );
-
-    final selectModel = await Get.dialog(dialog);
-
-    if (selectModel != null) {
-      modelBikeSelected.value = selectModel;
-    }
   }
 
   @override
@@ -136,12 +40,9 @@ class MotoRescueCheckoutController extends BaseController {
     }
     await EasyLoading.show();
     await apiRepository
-        .createRecuseMotoOrder(
-      brand: brandSelected.value.bikeName,
-      brandId: brandSelected.value.bikeId,
-      model: modelBikeSelected.value.bikeName,
-      modelId: modelBikeSelected.value.bikeId,
-      capacity: "175cc",
+        .createRecuseCarOrder(
+      brand: brandController.text,
+      model: modelController.text,
       fullName: nameController.text,
       phoneNumber: phoneController.text,
       numberPlate: plateController.text,
@@ -223,11 +124,11 @@ class MotoRescueCheckoutController extends BaseController {
       showError(content: 'moto_rescue_plate_invalid'.tr);
       return false;
     }
-    if (brandSelected.value.bikeId == null) {
+    if (brandController.text.isEmpty) {
       showError(content: 'moto_rescue_brand_invalid'.tr);
       return false;
     }
-    if (modelBikeSelected.value.bikeId == null) {
+    if (modelController.text.isEmpty) {
       showError(content: 'moto_rescue_model_invalid'.tr);
       return false;
     }

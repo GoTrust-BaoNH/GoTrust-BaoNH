@@ -1,45 +1,43 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:go_trust/data/base/base_controller.dart';
 import 'package:go_trust/data/common/define_field.dart';
+import 'package:go_trust/routes/app_pages.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
+import 'package:go_trust/shared/models/product/product_model.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
-import 'package:gotrust_repository_data/gotrust_repository_data.dart';
-import 'package:gotrust_repository_data/shared/models/emergency/emergency_model.dart';
+
+import '../../../data/repository/api_repository.dart';
 import '../../../shared/dialog_manager/data_models/request/common_dialog_request.dart';
 
-class EmergencyController extends BaseController {
-  EmergencyController({required this.apiRepository});
+class OtoRescueBuyController extends BaseController {
+  OtoRescueBuyController({required this.apiRepository});
 
   final ApiRepository apiRepository;
 
-  var emergencyList = <EmergencyModel>[].obs;
-
-  final int pageSize = 10;
-  var pageNumber = 0.obs;
-
-  final ScrollController scrollController = ScrollController();
-  bool canLoadingMore = true;
+  late List<ProductModel> listProduct;
+  var listProductDisplay = <ProductModel>[].obs;
 
   @override
   Future<void> onInit() async {
-    await getListEmergency();
+    await getRecuseOtoProduct();
     await super.onInit();
   }
 
-  Future<void> getListEmergency() async {
+  @override
+  Future<void> onReady() async {
+    await super.onReady();
+  }
+
+  Future<void> getRecuseOtoProduct() async {
     await EasyLoading.show();
-    await apiRepository.getEmergencyList(pageNumber: pageNumber.value, pageSize: pageSize).then(
+    await apiRepository.getRecuseCarProduct().then(
       (result) async {
         await EasyLoading.dismiss();
-        if (result.data != null) {
-          if (result.data!.length < pageSize) {
-            canLoadingMore = false;
-          }
-          emergencyList.value.addAll(result.data!);
-          emergencyList.refresh();
+        if (result.isNotEmpty) {
+          listProduct = result;
+          listProductDisplay.value = listProduct;
         } else {
           final dialogRequest = CommonDialogRequest(
             title: 'error'.tr,
@@ -57,26 +55,9 @@ class EmergencyController extends BaseController {
     );
   }
 
-  @override
-  Future<void> onReady() async {
-    await super.onReady();
+  void onBuyNowButtonPressed() {
+    Get.toNamed(Routes.OTO_RESCUE_CHECKOUT_SCREEN);
   }
-
-  void notificationButtonPressed() {}
-
-  void menuButtonPressed() {}
-
-  Future<void> onItemListServicePressed(EmergencyModel item) async {
-    final url = 'tel:${item.phone}';
-    final canCall = await canLaunch(url);
-    if (canCall) {
-      await launch(url);
-    } else {
-      showError(content: 'not support');
-    }
-  }
-
-  void onChatButtonPressed() {}
 
   Future<void> _doShowDialog(CommonDialogRequest dialogRequest) async {
     final locator = Get.find<DialogService>();
@@ -100,16 +81,6 @@ class EmergencyController extends BaseController {
       default:
         break;
     }
-  }
-
-  void showError({required String content}) {
-    Get.snackbar(
-      'error'.tr,
-      content,
-      backgroundColor: Colors.red,
-      colorText: Colors.white,
-      snackPosition: SnackPosition.BOTTOM,
-    );
   }
 
   @override

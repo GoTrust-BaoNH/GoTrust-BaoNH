@@ -34,9 +34,11 @@ class YourProductScreen extends GetView<YourProductController> {
             ),
           ),
           _buildHorizontalTabs,
-          Expanded(
-            child: _listProduct(
-              onItemPressed: (item) {},
+          Obx(
+            () => Expanded(
+              child: _listProduct(
+                onItemPressed: (item) {},
+              ),
             ),
           ),
           Align(

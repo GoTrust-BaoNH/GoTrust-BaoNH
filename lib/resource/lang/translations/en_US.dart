@@ -154,4 +154,11 @@ const Map<String, String> en_US = {
   'settings_change_language': 'Change languages',
   'settings_invite_app': 'Share app',
   'settings_logout': 'Logout',
+  'emergency_notsupport': 'Not support',
+  'moto_rescue_name_invalid': 'Name invalid',
+  'moto_rescue_phone_invalid': 'Phone invalid',
+  'moto_rescue_plate_invalid': 'License plate invalid',
+  'moto_rescue_brand_invalid': 'Brand invalid',
+  'moto_rescue_model_invalid': 'Model invalid',
+  'oto_rescue': '24/7 oto rescue',
 };

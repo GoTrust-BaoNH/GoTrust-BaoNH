@@ -45,16 +45,20 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
                       InputWidget(
                         hint: 'input_name_owner_vehicle'.tr,
                         lable: 'name_owner_vehicle'.tr,
+                        controller: controller.nameController,
                       ),
                       const SizedBox(height: 16),
                       InputWidget(
                         hint: 'input_phone'.tr,
                         lable: 'phone'.tr,
+                        inputType: TextInputType.phone,
+                        controller: controller.phoneController,
                       ),
                       const SizedBox(height: 16),
                       InputWidget(
                         hint: 'input_license_plates'.tr,
                         lable: 'license_plates'.tr,
+                        controller: controller.plateController,
                       ),
                       const SizedBox(height: 16),
                       GestureDetector(
