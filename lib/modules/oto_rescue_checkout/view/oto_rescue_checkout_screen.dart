@@ -23,7 +23,7 @@ class OtoRescueCheckoutScreen extends GetView<OtoRescueCheckoutController> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 20),
               child: Text(
-                'motorbike_rescue'.tr,
+                'oto_rescue'.tr,
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
@@ -35,44 +35,42 @@ class OtoRescueCheckoutScreen extends GetView<OtoRescueCheckoutController> {
                 style: TextAppStyle().textTitlePageMotoStyle(),
               ),
             ),
-            Obx(
-              () => Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      InputWidget(
-                        hint: 'input_name_owner_vehicle'.tr,
-                        lable: 'name_owner_vehicle'.tr,
-                        controller: controller.nameController,
-                      ),
-                      const SizedBox(height: 16),
-                      InputWidget(
-                        hint: 'input_phone'.tr,
-                        lable: 'phone'.tr,
-                        inputType: TextInputType.phone,
-                        controller: controller.phoneController,
-                      ),
-                      const SizedBox(height: 16),
-                      InputWidget(
-                        hint: 'input_license_plates'.tr,
-                        lable: 'license_plates'.tr,
-                        controller: controller.plateController,
-                      ),
-                      const SizedBox(height: 16),
-                      InputWidget(
-                        hint: '',
-                        lable: 'Hãng xe',
-                        controller: controller.brandController,
-                      ),
-                      const SizedBox(height: 16),
-                      InputWidget(
-                        hint: '',
-                        lable: 'Chọn xe',
-                        controller: controller.modelController,
-                      ),
-                      const SizedBox(height: 16),
-                    ],
-                  ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    InputWidget(
+                      hint: 'input_name_owner_vehicle'.tr,
+                      lable: 'name_owner_vehicle'.tr,
+                      controller: controller.nameController,
+                    ),
+                    const SizedBox(height: 16),
+                    InputWidget(
+                      hint: 'input_phone'.tr,
+                      lable: 'phone'.tr,
+                      inputType: TextInputType.phone,
+                      controller: controller.phoneController,
+                    ),
+                    const SizedBox(height: 16),
+                    InputWidget(
+                      hint: 'input_license_plates'.tr,
+                      lable: 'license_plates'.tr,
+                      controller: controller.plateController,
+                    ),
+                    const SizedBox(height: 16),
+                    InputWidget(
+                      hint: '',
+                      lable: 'oto_rescue_brand'.tr,
+                      controller: controller.brandController,
+                    ),
+                    const SizedBox(height: 16),
+                    InputWidget(
+                      hint: '',
+                      lable: 'oto_rescue_model'.tr,
+                      controller: controller.modelController,
+                    ),
+                    const SizedBox(height: 16),
+                  ],
                 ),
               ),
             ),

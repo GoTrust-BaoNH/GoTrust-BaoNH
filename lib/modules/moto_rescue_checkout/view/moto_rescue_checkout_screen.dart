@@ -77,7 +77,7 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: 'Hãng xe',
+                                        text: 'moto_rescue_brand'.tr,
                                         style: Theme.of(context).textTheme.subtitle1,
                                       ),
                                       TextSpan(
@@ -119,7 +119,7 @@ class MotoRescueCheckoutScreen extends GetView<MotoRescueCheckoutController> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: 'Chọn xe',
+                                        text: 'moto_rescue_model'.tr,
                                         style: Theme.of(context).textTheme.subtitle1,
                                       ),
                                       TextSpan(

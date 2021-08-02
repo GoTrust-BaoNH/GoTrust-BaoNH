@@ -161,5 +161,9 @@ const Map<String, String> vi_VN = {
   'moto_rescue_plate_invalid': 'Biển số xe không hợp lệ',
   'moto_rescue_brand_invalid': 'Hãng xe không hợp lệ',
   'moto_rescue_model_invalid': 'Xe không hợp lệ',
+  'moto_rescue_brand': 'Hãng xe',
+  'moto_rescue_model': 'Chọn xe',
   'oto_rescue': 'Cứu hộ ô tô 24/7',
+  'oto_rescue_brand': 'Hãng xe',
+  'oto_rescue_model': 'Chọn xe',
 };

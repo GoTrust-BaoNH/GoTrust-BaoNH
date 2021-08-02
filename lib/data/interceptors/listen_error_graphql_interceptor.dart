@@ -1,34 +1,41 @@
+import 'package:get/get.dart';
 import 'package:go_trust/data/common/define_field.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/request/common_dialog_request.dart';
-import 'package:get/get.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/type_dialog.dart';
 import 'package:go_trust/shared/network/constants/constants.dart';
 
 abstract class ListenErrorGraphQL {
   CommonDialogRequest handleErrorGraphQLResponse(Object e) {
-    var dialogRequest = CommonDialogRequest(description: 'unknown_error'.tr);
     if (e == Unauthorized_Error_Code || e == ErrorExpiredTokenCode || e == ACCESS_DENIED) {
-      dialogRequest = CommonDialogRequest(
+      return CommonDialogRequest(
         title: 'error'.tr,
         description: 'expired_token'.tr,
         typeDialog: DIALOG_ONE_BUTTON,
         defineEvent: ErrorExpiredTokenCode,
       );
-    } else if (e == No_Connect_Network) {
-      dialogRequest = CommonDialogRequest(
+    }
+
+    if (e == No_Connect_Network) {
+      return CommonDialogRequest(
         title: 'network_error'.tr,
         description: 'network_error_message'.tr,
         defineEvent: NO_CONNECT_NETWORK,
       );
-    } else {
-      dialogRequest = CommonDialogRequest(
+    }
+
+    if (e.toString().isNotEmpty) {
+      return CommonDialogRequest(
         title: 'error'.tr,
-        description: 'unknown_error'.tr,
-        typeDialog: DIALOG_ONE_BUTTON,
+        description: e.toString(),
         defineEvent: Unknown_Error,
       );
     }
 
-    return dialogRequest;
+    return CommonDialogRequest(
+      title: 'error'.tr,
+      description: 'unknown_error'.tr,
+      typeDialog: DIALOG_ONE_BUTTON,
+      defineEvent: Unknown_Error,
+    );
   }
 }
