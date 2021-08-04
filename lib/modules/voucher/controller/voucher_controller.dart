@@ -11,7 +11,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class VoucherController extends BaseController {
   VoucherController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   final TextEditingController textController = TextEditingController();
   String qrCodeResult = '';

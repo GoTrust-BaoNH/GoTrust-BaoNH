@@ -18,7 +18,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class MotoRescueCheckoutController extends BaseController {
   MotoRescueCheckoutController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
   late List<BrandModel> listBrand;
   List<ModelBikeModel> listModelBike = [];
   var brandSelected = BrandModel().obs;
@@ -38,8 +38,8 @@ class MotoRescueCheckoutController extends BaseController {
     await apiRepository.getRecuseMotoBrand().then(
       (result) async {
         await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listBrand = result;
+        if (result.listBrand!.isNotEmpty) {
+          listBrand = result.listBrand!;
         } else {
           final dialogRequest = CommonDialogRequest(
             title: 'error'.tr,
@@ -62,8 +62,8 @@ class MotoRescueCheckoutController extends BaseController {
     await apiRepository.getRecuseMoto(brandId: brandSelected.value.bikeId).then(
       (result) async {
         await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listModelBike = result;
+        if (result.listModelBikeModel!.isNotEmpty) {
+          listModelBike = result.listModelBikeModel!;
         } else {
           final dialogRequest = CommonDialogRequest(
             title: 'error'.tr,

@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SettingsController extends BaseController {
   SettingsController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   final LocalAuthentication auth = LocalAuthentication();
   final storage = Get.find<SharedPreferences>();

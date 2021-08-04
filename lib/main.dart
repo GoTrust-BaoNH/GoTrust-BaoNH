@@ -12,7 +12,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await DependencyInjection.init(DEV_ENVIRONMENT);
   await auth_data.GoTrustAuthData.init(environment: DEV_ENVIRONMENT);
-  await repository_data.GoTrustRepositoryData.init(environment: DEV_ENVIRONMENT);
+  await repository_data.init(environment: DEV_ENVIRONMENT);
 
   runApp(App());
   configLoading();

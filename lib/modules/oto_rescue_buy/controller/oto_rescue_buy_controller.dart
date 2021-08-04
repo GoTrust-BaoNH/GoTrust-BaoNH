@@ -14,7 +14,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class OtoRescueBuyController extends BaseController {
   OtoRescueBuyController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   late List<ProductModel> listProduct;
   var listProductDisplay = <ProductModel>[].obs;
@@ -35,8 +35,8 @@ class OtoRescueBuyController extends BaseController {
     await apiRepository.getRecuseCarProduct().then(
       (result) async {
         await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listProduct = result;
+        if (result.listProductModel!.isNotEmpty) {
+          listProduct = result.listProductModel!;
           listProductDisplay.value = listProduct;
         } else {
           final dialogRequest = CommonDialogRequest(

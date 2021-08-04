@@ -13,7 +13,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class YourProductController extends BaseController {
   YourProductController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   final int pageSize = 10;
   var pageNumber = 0.obs;

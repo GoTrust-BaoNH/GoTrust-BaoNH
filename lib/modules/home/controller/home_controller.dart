@@ -18,7 +18,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class HomeController extends BaseController {
   HomeController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   final listPromotion = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw8SFwNN-d4aDhHsFD2arg4PcKDjnxXYkug&usqp=CAU',

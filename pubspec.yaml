@@ -24,11 +24,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-#  gotrust_auth_data:
-#    git:
-#      url: https://github.com/gotrust-vn/GoTRUST.App.Auth.git
-#      ref: main
-##      path: gotrust_auth_data
+  gotrust_auth_data:
+    git:
+      url: https://github.com/gotrust-vn/GoTRUST.App.Auth.git
+      ref: main
+#      path: gotrust_auth_data
 
 #  gotrust_repository_data:
 #    git:
@@ -38,8 +38,8 @@ dependencies:
 
   gotrust_repository_data:
     path: ../go_trust/external_library/gotrust_service_data
-  gotrust_auth_data:
-     path: ../go_trust/external_library/gotrust_auth_data
+#  gotrust_auth_data:
+#     path: ../go_trust/external_library/gotrust_auth_data
 
 
   # The following adds the Cupertino Icons font to your application.

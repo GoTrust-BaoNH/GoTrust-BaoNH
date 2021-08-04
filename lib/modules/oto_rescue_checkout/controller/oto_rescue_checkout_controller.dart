@@ -16,7 +16,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class OtoRescueCheckoutController extends BaseController {
   OtoRescueCheckoutController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();

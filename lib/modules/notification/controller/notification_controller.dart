@@ -12,7 +12,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class NotificationController extends BaseController {
   NotificationController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   var list = <NotificationItemModel>[].obs;
 
@@ -26,8 +26,8 @@ class NotificationController extends BaseController {
     await EasyLoading.show();
     await apiRepository.getListNotification(userId: 1).then((result) async {
       await EasyLoading.dismiss();
-      if (result.isNotEmpty) {
-        list.value = result;
+      if (result.listNotification!.isNotEmpty) {
+        list.value = result.listNotification!;
       } else {
         final dialogRequest = CommonDialogRequest(
           title: 'error'.tr,

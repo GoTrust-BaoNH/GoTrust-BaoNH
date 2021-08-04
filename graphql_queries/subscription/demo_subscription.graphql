@@ -1,6 +1,0 @@
-subscription {
-    todos {
-        id
-        title
-    }
-}

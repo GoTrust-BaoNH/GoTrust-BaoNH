@@ -14,7 +14,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class EmergencyController extends BaseController {
   EmergencyController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   var emergencyList = <EmergencyModel>[].obs;
 

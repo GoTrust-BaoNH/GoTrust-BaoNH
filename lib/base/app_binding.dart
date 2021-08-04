@@ -10,8 +10,7 @@ class AppBinding extends Bindings {
     Get
       ..put(auth_data.ApiAuthProvider(), permanent: true)
       ..put(auth_data.ApiAuthRepository(apiProvider: Get.find()), permanent: true)
-      ..put(repository_data.ApiProvider(), permanent: true)
-      ..put(repository_data.ApiRepository(apiProvider: Get.find()), permanent: true)
+      ..put(repository_data.Infrastructure(), permanent: true)
       ..put(NetworkBinding(), permanent: true); // keep the class in memory with "permanent:true"
   }
 }

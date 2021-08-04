@@ -15,7 +15,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class BankController extends BaseController {
   BankController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   late TextEditingController searchController;
   var listBank = <BankModel>[].obs;
@@ -41,9 +41,9 @@ class BankController extends BaseController {
     await apiRepository.getListPaymentBank(paymentType: paymentType.type!).then(
       (result) async {
         await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listBank.value = result;
-          listBankDisplay.value = result;
+        if (result.listBank!.isNotEmpty) {
+          listBank.value = result.listBank!;
+          listBankDisplay.value = result.listBank!;
         } else {
           final dialogRequest = CommonDialogRequest(
             title: 'error'.tr,

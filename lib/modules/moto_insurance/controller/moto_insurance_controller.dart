@@ -15,7 +15,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class MotoInsuranceController extends BaseController {
   MotoInsuranceController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   final PageController pageController = PageController();
 

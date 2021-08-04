@@ -544,9 +544,11 @@ packages:
   gotrust_auth_data:
     dependency: "direct main"
     description:
-      path: "external_library/gotrust_auth_data"
-      relative: true
-    source: path
+      path: "."
+      ref: main
+      resolved-ref: "80fe91292666855b1e42c9580f269bb814694c04"
+      url: "https://github.com/gotrust-vn/GoTRUST.App.Auth.git"
+    source: git
     version: "0.0.1"
   gotrust_repository_data:
     dependency: "direct main"

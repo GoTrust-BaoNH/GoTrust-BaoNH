@@ -1,8 +1,0 @@
-query {
-    getPaymentTypeList {
-        id
-        imageUrl
-        title
-        type
-    }
-}

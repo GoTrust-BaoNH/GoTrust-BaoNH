@@ -1,6 +1,0 @@
-mutation ($phoneNumber: String){
-    registerOtp(phoneNumber: $phoneNumber) {
-        message
-        status
-    }
-}

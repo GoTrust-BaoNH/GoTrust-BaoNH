@@ -10,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependencyInjection.init(PROD_ENVIRONMENT);
   await auth_data.GoTrustAuthData.init(environment: PROD_ENVIRONMENT);
-  await repository_data.GoTrustRepositoryData.init(environment: PROD_ENVIRONMENT);
+  await repository_data.init(environment: PROD_ENVIRONMENT);
 
   runApp(App());
   configLoading();

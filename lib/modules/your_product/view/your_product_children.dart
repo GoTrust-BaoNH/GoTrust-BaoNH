@@ -29,8 +29,8 @@ extension YourProductChildrenExtension on YourProductScreen {
             return ProductItem(
                 productType: ProductEnum.MotoInsurance,
                 productName: item!.name ?? '',
-                contractCode: item.createdDate,
-                expiredDate: item.updatedDate,
+                contractCode: item.code,
+                expiredDate: item.code,
                 price: item.price.toString(),
                 isContractProcessing: index % 2 == 0,
                 onRenewButtonPressed: () {},

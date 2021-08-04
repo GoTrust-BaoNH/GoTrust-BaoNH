@@ -1,9 +1,0 @@
-mutation($answer: String, $question: String) {
-    createFaq(request: { answer: $answer, question: $question }) {
-        data {
-            answer
-            id
-            question
-        }
-    }
-}

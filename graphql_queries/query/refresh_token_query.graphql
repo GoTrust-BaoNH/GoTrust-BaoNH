@@ -1,5 +1,0 @@
-query refreshToken {
-    refreshToken {
-        token
-    }
-}

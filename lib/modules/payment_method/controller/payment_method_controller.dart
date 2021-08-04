@@ -13,7 +13,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class PaymentMethodController extends BaseController {
   PaymentMethodController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   var listMethod = <PaymentType>[].obs;
   int currentMethod = 0;
@@ -29,8 +29,8 @@ class PaymentMethodController extends BaseController {
     await apiRepository.getListPaymentType().then(
       (result) async {
         await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listMethod.value = result;
+        if (result.listPaymentType!.isNotEmpty) {
+          listMethod.value = result.listPaymentType!;
         } else {
           final dialogRequest = CommonDialogRequest(
             title: 'error'.tr,

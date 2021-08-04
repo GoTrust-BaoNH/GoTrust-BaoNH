@@ -13,7 +13,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class PaymentInfoController extends BaseController {
   PaymentInfoController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   late String paymentDescription;
   final int price = 560000;

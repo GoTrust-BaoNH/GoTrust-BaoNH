@@ -13,7 +13,7 @@ import '../../../shared/dialog_manager/data_models/request/common_dialog_request
 class MotoRescueBuyController extends BaseController {
   MotoRescueBuyController({required this.apiRepository});
 
-  final ApiRepository apiRepository;
+  final Infrastructure apiRepository;
 
   late List<ProductModel> listProduct;
   var listProductDisplay = <ProductModel>[].obs;
@@ -43,8 +43,8 @@ class MotoRescueBuyController extends BaseController {
     await apiRepository.getRecuseMotoProduct().then(
       (result) async {
         await EasyLoading.dismiss();
-        if (result.isNotEmpty) {
-          listProduct = result;
+        if (result.listProductModel!.isNotEmpty) {
+          listProduct = result.listProductModel!;
         } else {
           final dialogRequest = CommonDialogRequest(
             title: 'error'.tr,

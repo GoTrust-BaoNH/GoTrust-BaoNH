@@ -15,7 +15,8 @@ import 'package:go_trust/shared/constants/storage.dart';
 import 'package:go_trust/shared/dialog_manager/data_models/request/common_dialog_request.dart';
 import 'package:go_trust/shared/dialog_manager/services/dialog_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:gotrust_auth_data/gotrust_auth_data.dart';
+import 'package:gotrust_repository_data/data/repository/api_repository.dart';
+import 'package:gotrust_repository_data/gotrust_repository_data.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +25,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 class AuthController extends BaseController {
   AuthController({required this.apiRepository});
 
-  final ApiAuthRepository apiRepository;
+  final Infrastructure apiRepository;
   final storage = Get.find<SharedPreferences>();
   final LocalAuthentication auth = LocalAuthentication();
   String qrCodeResult = '';
@@ -62,29 +63,37 @@ class AuthController extends BaseController {
   }
 
   Future<void> loginWithSocial(BuildContext context, LoginType loginType) async {
-    final userCredential = await getUserCredential(loginType);
-    if (userCredential == null) {
-      showError(content: 'error_login_social'.tr);
-    } else {
-      try {
-        await EasyLoading.show();
-        final loginModel = await apiRepository.getLoginUserWithAuth(provider: userCredential.credential!.providerId, token: await userCredential.user!.getIdToken());
-        await EasyLoading.dismiss();
-        if (loginModel.token != null) {
-          await storage.setString(StorageConstants.token, loginModel.token!);
-          await Get.toNamed(Routes.AUTH + Routes.CREATE_PIN_SCREEN);
-        } else {
-          await callDialogErrorNetwork();
-        }
-      } catch (ex) {
-        print('Login fail with error: $ex');
-        showError(content: ex.toString());
-      } finally {
-        if (EasyLoading.isShow) {
-          await EasyLoading.dismiss();
-        }
-      }
-    }
+    // var abc = await apiRepository.getHomeItemList();
+    var afsa = await apiRepository.getListPaymentBank(paymentType: '1');
+    print('fasdfasfasfa');
+
+    // var bcd = await apiRepository.getHomeExtend();
+    // print('fasdfasfasfa');
+
+
+    // final userCredential = await getUserCredential(loginType);
+    // if (userCredential == null) {
+    //   showError(content: 'error_login_social'.tr);
+    // } else {
+    //   try {
+    //     await EasyLoading.show();
+    //     final loginModel = await apiRepository.getLoginUserWithAuth(provider: userCredential.credential!.providerId, token: await userCredential.user!.getIdToken());
+    //     await EasyLoading.dismiss();
+    //     if (loginModel.token != null) {
+    //       await storage.setString(StorageConstants.token, loginModel.token!);
+    //       await Get.toNamed(Routes.AUTH + Routes.CREATE_PIN_SCREEN);
+    //     } else {
+    //       await callDialogErrorNetwork();
+    //     }
+    //   } catch (ex) {
+    //     print('Login fail with error: $ex');
+    //     showError(content: ex.toString());
+    //   } finally {
+    //     if (EasyLoading.isShow) {
+    //       await EasyLoading.dismiss();
+    //     }
+    //   }
+    // }
   }
 
   Future<UserCredential?> getUserCredential(LoginType loginType) async {
@@ -222,14 +231,14 @@ class AuthController extends BaseController {
   }
 
   Future<void> registerOTP() async {
-    if (phoneController!.text.isNotEmpty) {
-      final loginModel = await apiRepository.registerOTP(phoneNumber: phoneController!.text);
-      if (loginModel.status ?? false) {
-        goToVerifyOTP();
-      } else {
-        await callDialogErrorNetwork();
-      }
-    }
+    // if (phoneController!.text.isNotEmpty) {
+    //   final loginModel = await apiRepository.registerOTP(phoneNumber: phoneController!.text);
+    //   if (loginModel.status ?? false) {
+    //     goToVerifyOTP();
+    //   } else {
+    //     await callDialogErrorNetwork();
+    //   }
+    // }
   }
 
   Future<void> savePinStorage() async {
